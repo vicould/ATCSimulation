@@ -10,6 +10,10 @@
 
 extern NSString * const kNVBroadcastMessage;
 
+extern NSString * const kNVKeyOrigin;
+extern NSString * const kNVKeyType;
+extern NSString * const kNVKeyContent;
+
 /* message types
  * 1 airplane
  * 2 zone controller

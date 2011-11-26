@@ -10,4 +10,8 @@
 
 NSString * const kNVBroadcastMessage = @"Broadcast Message";
 
+NSString * const kNVKeyOrigin = @"Destination";
+NSString * const kNVKeyType = @"Type";
+NSString * const kNVKeyContent = @"Content";
+
 // message types
