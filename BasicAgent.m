@@ -16,7 +16,7 @@
 
 @implementation BasicAgent
 
-- (void)initWithAgentName:(NSString *)name {
+- (id)initWithAgentName:(NSString *)name {
     self = [super init];
     if (self) {
         self.agentName = name;
@@ -29,6 +29,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:kNVBroadcastMessage object:nil];
     }
     
+    return self;
 }
 
 - (void)sendMessage:(NSString *)message fromType:(NSInteger)type toAgent:(NSString *)agentName {    

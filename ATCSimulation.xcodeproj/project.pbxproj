@@ -20,6 +20,7 @@
 		8204C4221480888A0029F349 /* AirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C4211480888A0029F349 /* AirportController.m */; };
 		8204C42914808CDB0029F349 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C42814808CDB0029F349 /* Constants.m */; };
 		8204C43414809EE20029F349 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C43314809EE20029F349 /* Environment.m */; };
+		8204C43A148199E30029F349 /* AirplanePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C439148199E20029F349 /* AirplanePosition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		8204C43214809EE20029F349 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		8204C43314809EE20029F349 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
 		8204C43714818C9B0029F349 /* MessageAnalyzerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageAnalyzerDelegate.h; sourceTree = "<group>"; };
+		8204C438148199E20029F349 /* AirplanePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplanePosition.h; sourceTree = "<group>"; };
+		8204C439148199E20029F349 /* AirplanePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplanePosition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				8204C41F148088750029F349 /* Controllers */,
 				8204C41C148088580029F349 /* Airplane.h */,
 				8204C41D148088580029F349 /* Airplane.m */,
+				8204C438148199E20029F349 /* AirplanePosition.h */,
+				8204C439148199E20029F349 /* AirplanePosition.m */,
 				8204C4161480871C0029F349 /* BasicAgent.h */,
 				8204C4171480871C0029F349 /* BasicAgent.m */,
 				8204C43714818C9B0029F349 /* MessageAnalyzerDelegate.h */,
@@ -229,6 +234,7 @@
 				8204C4221480888A0029F349 /* AirportController.m in Sources */,
 				8204C42914808CDB0029F349 /* Constants.m in Sources */,
 				8204C43414809EE20029F349 /* Environment.m in Sources */,
+				8204C43A148199E30029F349 /* AirplanePosition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

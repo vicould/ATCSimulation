@@ -19,7 +19,7 @@
 @property (nonatomic, retain, readonly) NSString *agentName;
 @property (nonatomic, retain) id<MessageAnalyzerDelegate> messageReceiver;
 
-- (void)initWithAgentName:(NSString *)name;
+- (id)initWithAgentName:(NSString *)name;
 
 
 // messaging methods
