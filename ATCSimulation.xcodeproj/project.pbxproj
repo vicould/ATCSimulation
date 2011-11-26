@@ -13,6 +13,14 @@
 		8204C406148080C40029F349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8204C404148080C40029F349 /* InfoPlist.strings */; };
 		8204C408148080C40029F349 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C407148080C40029F349 /* main.m */; };
 		8204C40C148080C40029F349 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C40B148080C40029F349 /* AppDelegate.m */; };
+		8204C4151480870C0029F349 /* ZoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C4141480870C0029F349 /* ZoneController.m */; };
+		8204C4181480871C0029F349 /* BasicAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C4171480871C0029F349 /* BasicAgent.m */; };
+		8204C41B148088300029F349 /* BasicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C41A148088300029F349 /* BasicController.m */; };
+		8204C41E148088580029F349 /* Airplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C41D148088580029F349 /* Airplane.m */; };
+		8204C4221480888A0029F349 /* AirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C4211480888A0029F349 /* AirportController.m */; };
+		8204C42914808CDB0029F349 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C42814808CDB0029F349 /* Constants.m */; };
+		8204C430148092510029F349 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C42F148092510029F349 /* Message.m */; };
+		8204C43414809EE20029F349 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C43314809EE20029F349 /* Environment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +28,28 @@
 		8204C3FB148080C40029F349 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8204C3FD148080C40029F349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8204C3FF148080C40029F349 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8204C403148080C40029F349 /* ATCSimulation-Info.plist */ = {isa = PBXFileReference; path = "ATCSimulation-Info.plist"; sourceTree = "<group>"; };
+		8204C403148080C40029F349 /* ATCSimulation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ATCSimulation-Info.plist"; sourceTree = "<group>"; };
 		8204C405148080C40029F349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8204C407148080C40029F349 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8204C409148080C40029F349 /* ATCSimulation-Prefix.pch */ = {isa = PBXFileReference; path = "ATCSimulation-Prefix.pch"; sourceTree = "<group>"; };
-		8204C40A148080C40029F349 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		8204C409148080C40029F349 /* ATCSimulation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ATCSimulation-Prefix.pch"; sourceTree = "<group>"; };
+		8204C40A148080C40029F349 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8204C40B148080C40029F349 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8204C4131480870C0029F349 /* ZoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneController.h; sourceTree = "<group>"; };
+		8204C4141480870C0029F349 /* ZoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneController.m; sourceTree = "<group>"; };
+		8204C4161480871C0029F349 /* BasicAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicAgent.h; sourceTree = "<group>"; };
+		8204C4171480871C0029F349 /* BasicAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicAgent.m; sourceTree = "<group>"; };
+		8204C419148088300029F349 /* BasicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicController.h; sourceTree = "<group>"; };
+		8204C41A148088300029F349 /* BasicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicController.m; sourceTree = "<group>"; };
+		8204C41C148088580029F349 /* Airplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Airplane.h; sourceTree = "<group>"; };
+		8204C41D148088580029F349 /* Airplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Airplane.m; sourceTree = "<group>"; };
+		8204C4201480888A0029F349 /* AirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirportController.h; sourceTree = "<group>"; };
+		8204C4211480888A0029F349 /* AirportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirportController.m; sourceTree = "<group>"; };
+		8204C42714808CDB0029F349 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		8204C42814808CDB0029F349 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		8204C42E148092510029F349 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		8204C42F148092510029F349 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		8204C43214809EE20029F349 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		8204C43314809EE20029F349 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +69,7 @@
 		8204C3EC148080C30029F349 = {
 			isa = PBXGroup;
 			children = (
+				8204C43514809EEE0029F349 /* Simulation */,
 				8204C401148080C40029F349 /* ATCSimulation */,
 				8204C3FA148080C40029F349 /* Frameworks */,
 				8204C3F8148080C40029F349 /* Products */,
@@ -88,6 +113,53 @@
 				8204C409148080C40029F349 /* ATCSimulation-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8204C412148086E00029F349 /* Agents */ = {
+			isa = PBXGroup;
+			children = (
+				8204C41F148088750029F349 /* Controllers */,
+				8204C41C148088580029F349 /* Airplane.h */,
+				8204C41D148088580029F349 /* Airplane.m */,
+				8204C4161480871C0029F349 /* BasicAgent.h */,
+				8204C4171480871C0029F349 /* BasicAgent.m */,
+			);
+			name = Agents;
+			sourceTree = "<group>";
+		};
+		8204C41F148088750029F349 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8204C4131480870C0029F349 /* ZoneController.h */,
+				8204C4141480870C0029F349 /* ZoneController.m */,
+				8204C419148088300029F349 /* BasicController.h */,
+				8204C41A148088300029F349 /* BasicController.m */,
+				8204C4201480888A0029F349 /* AirportController.h */,
+				8204C4211480888A0029F349 /* AirportController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8204C43514809EEE0029F349 /* Simulation */ = {
+			isa = PBXGroup;
+			children = (
+				8204C412148086E00029F349 /* Agents */,
+				8204C43614809F400029F349 /* Environment */,
+			);
+			name = Simulation;
+			sourceTree = "<group>";
+		};
+		8204C43614809F400029F349 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				8204C42714808CDB0029F349 /* Constants.h */,
+				8204C42814808CDB0029F349 /* Constants.m */,
+				8204C42E148092510029F349 /* Message.h */,
+				8204C42F148092510029F349 /* Message.m */,
+				8204C43214809EE20029F349 /* Environment.h */,
+				8204C43314809EE20029F349 /* Environment.m */,
+			);
+			name = Environment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +225,14 @@
 			files = (
 				8204C408148080C40029F349 /* main.m in Sources */,
 				8204C40C148080C40029F349 /* AppDelegate.m in Sources */,
+				8204C4151480870C0029F349 /* ZoneController.m in Sources */,
+				8204C4181480871C0029F349 /* BasicAgent.m in Sources */,
+				8204C41B148088300029F349 /* BasicController.m in Sources */,
+				8204C41E148088580029F349 /* Airplane.m in Sources */,
+				8204C4221480888A0029F349 /* AirportController.m in Sources */,
+				8204C42914808CDB0029F349 /* Constants.m in Sources */,
+				8204C430148092510029F349 /* Message.m in Sources */,
+				8204C43414809EE20029F349 /* Environment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +336,7 @@
 				8204C411148080C40029F349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
