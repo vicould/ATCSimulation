@@ -20,7 +20,11 @@
 		8204C4221480888A0029F349 /* AirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C4211480888A0029F349 /* AirportController.m */; };
 		8204C42914808CDB0029F349 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C42814808CDB0029F349 /* Constants.m */; };
 		8204C43414809EE20029F349 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C43314809EE20029F349 /* Environment.m */; };
-		8204C43A148199E30029F349 /* AirplanePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C439148199E20029F349 /* AirplanePosition.m */; };
+		8204C43A148199E30029F349 /* ATCPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C439148199E20029F349 /* ATCPosition.m */; };
+		8204C4461482002D0029F349 /* Artifacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C4451482002D0029F349 /* Artifacts.m */; };
+		822170301482F3D000BAADCC /* ATCZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 8221702F1482F3CF00BAADCC /* ATCZone.m */; };
+		82217038148310F400BAADCC /* ATCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 82217037148310F400BAADCC /* ATCPoint.m */; };
+		8221703C148315FC00BAADCC /* ATCZoneBorderSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8221703B148315FC00BAADCC /* ATCZoneBorderSegment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,8 +53,16 @@
 		8204C43214809EE20029F349 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		8204C43314809EE20029F349 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
 		8204C43714818C9B0029F349 /* MessageAnalyzerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageAnalyzerDelegate.h; sourceTree = "<group>"; };
-		8204C438148199E20029F349 /* AirplanePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplanePosition.h; sourceTree = "<group>"; };
-		8204C439148199E20029F349 /* AirplanePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplanePosition.m; sourceTree = "<group>"; };
+		8204C438148199E20029F349 /* ATCPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCPosition.h; sourceTree = "<group>"; };
+		8204C439148199E20029F349 /* ATCPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCPosition.m; sourceTree = "<group>"; };
+		8204C4441482002D0029F349 /* Artifacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artifacts.h; sourceTree = "<group>"; };
+		8204C4451482002D0029F349 /* Artifacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artifacts.m; sourceTree = "<group>"; };
+		8221702E1482F3CF00BAADCC /* ATCZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCZone.h; sourceTree = "<group>"; };
+		8221702F1482F3CF00BAADCC /* ATCZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZone.m; sourceTree = "<group>"; };
+		82217036148310F400BAADCC /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCPoint.h; sourceTree = "<group>"; };
+		82217037148310F400BAADCC /* ATCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCPoint.m; sourceTree = "<group>"; };
+		8221703A148315FC00BAADCC /* ATCZoneBorderSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ATCZoneBorderSegment.h; sourceTree = "<group>"; };
+		8221703B148315FC00BAADCC /* ATCZoneBorderSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZoneBorderSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +134,6 @@
 				8204C41F148088750029F349 /* Controllers */,
 				8204C41C148088580029F349 /* Airplane.h */,
 				8204C41D148088580029F349 /* Airplane.m */,
-				8204C438148199E20029F349 /* AirplanePosition.h */,
-				8204C439148199E20029F349 /* AirplanePosition.m */,
 				8204C4161480871C0029F349 /* BasicAgent.h */,
 				8204C4171480871C0029F349 /* BasicAgent.m */,
 				8204C43714818C9B0029F349 /* MessageAnalyzerDelegate.h */,
@@ -160,6 +170,16 @@
 				8204C42814808CDB0029F349 /* Constants.m */,
 				8204C43214809EE20029F349 /* Environment.h */,
 				8204C43314809EE20029F349 /* Environment.m */,
+				8204C4441482002D0029F349 /* Artifacts.h */,
+				8204C4451482002D0029F349 /* Artifacts.m */,
+				8221702E1482F3CF00BAADCC /* ATCZone.h */,
+				8221702F1482F3CF00BAADCC /* ATCZone.m */,
+				8221703A148315FC00BAADCC /* ATCZoneBorderSegment.h */,
+				8221703B148315FC00BAADCC /* ATCZoneBorderSegment.m */,
+				82217036148310F400BAADCC /* ATCPoint.h */,
+				82217037148310F400BAADCC /* ATCPoint.m */,
+				8204C438148199E20029F349 /* ATCPosition.h */,
+				8204C439148199E20029F349 /* ATCPosition.m */,
 			);
 			name = Environment;
 			sourceTree = "<group>";
@@ -234,7 +254,11 @@
 				8204C4221480888A0029F349 /* AirportController.m in Sources */,
 				8204C42914808CDB0029F349 /* Constants.m in Sources */,
 				8204C43414809EE20029F349 /* Environment.m in Sources */,
-				8204C43A148199E30029F349 /* AirplanePosition.m in Sources */,
+				8204C43A148199E30029F349 /* ATCPosition.m in Sources */,
+				8204C4461482002D0029F349 /* Artifacts.m in Sources */,
+				822170301482F3D000BAADCC /* ATCZone.m in Sources */,
+				82217038148310F400BAADCC /* ATCPoint.m in Sources */,
+				8221703C148315FC00BAADCC /* ATCZoneBorderSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

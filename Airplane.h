@@ -7,23 +7,23 @@
 //
 
 #import "BasicAgent.h"
-#import "AirplanePosition.h"
+#import "ATCPosition.h"
+#import "MessageAnalyzerDelegate.h"
+#import "Artifacts.h"
 
-@class AirplanePosition;
+@class ATCPosition;
+@class Artifacts;
 
-@interface Airplane : BasicAgent {
+@interface Airplane : BasicAgent<MessageAnalyzerDelegate> {
     @private
-    AirplanePosition *_currentPosition;
+    ATCPosition *_currentPosition;
+    NSString *_currentController;
     NSInteger _speed;
-    NSInteger _route;
+    NSInteger _course;
     NSString *_destination;
+    NSDate *_lastPositionCheck;
 }
 
-- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(AirplanePosition *)airplanePosition andDestination:(NSString *)destinationName;
-
-@property (nonatomic, readonly, retain) AirplanePosition *currentPosition;
-@property (nonatomic, readonly, assign) NSInteger speed;
-@property (nonatomic, readonly, assign) NSInteger route;
-@property (nonatomic, readonly, retain) NSString *destination;
+- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCPosition *)airplanePosition andDestination:(NSString *)destinationName;
 
 @end
