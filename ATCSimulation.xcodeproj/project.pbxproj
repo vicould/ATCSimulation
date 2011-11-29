@@ -28,6 +28,7 @@
 		82183959148569C000EF4AFE /* MainInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218394A148569C000EF4AFE /* MainInterfaceController.m */; };
 		8218395A148569C000EF4AFE /* MainInterfaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8218394B148569C000EF4AFE /* MainInterfaceController.xib */; };
 		8218395B148569C000EF4AFE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8218394C148569C000EF4AFE /* MainWindow.xib */; };
+		8218395E14856CCD00EF4AFE /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 8218395D14856CCD00EF4AFE /* airplane.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		8218394A148569C000EF4AFE /* MainInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainInterfaceController.m; path = ATCSimulation/MainInterfaceController.m; sourceTree = "<group>"; };
 		8218394B148569C000EF4AFE /* MainInterfaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainInterfaceController.xib; path = ATCSimulation/MainInterfaceController.xib; sourceTree = "<group>"; };
 		8218394C148569C000EF4AFE /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = ATCSimulation/MainWindow.xib; sourceTree = "<group>"; };
+		8218395D14856CCD00EF4AFE /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane.png; path = Pictures/airplane.png; sourceTree = SOURCE_ROOT; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 		8204C402148080C40029F349 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8218395D14856CCD00EF4AFE /* airplane.png */,
 				8204C403148080C40029F349 /* ATCSimulation-Info.plist */,
 				8204C404148080C40029F349 /* InfoPlist.strings */,
 				8204C407148080C40029F349 /* main.m */,
@@ -276,6 +279,7 @@
 				8204C406148080C40029F349 /* InfoPlist.strings in Resources */,
 				8218395A148569C000EF4AFE /* MainInterfaceController.xib in Resources */,
 				8218395B148569C000EF4AFE /* MainWindow.xib in Resources */,
+				8218395E14856CCD00EF4AFE /* airplane.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
