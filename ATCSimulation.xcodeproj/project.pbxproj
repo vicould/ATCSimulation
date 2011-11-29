@@ -25,6 +25,9 @@
 		822170301482F3D000BAADCC /* ATCZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 8221702F1482F3CF00BAADCC /* ATCZone.m */; };
 		82217038148310F400BAADCC /* ATCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 82217037148310F400BAADCC /* ATCPoint.m */; };
 		8221703C148315FC00BAADCC /* ATCZoneBorderSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8221703B148315FC00BAADCC /* ATCZoneBorderSegment.m */; };
+		822170481484A8B400BAADCC /* MainInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822170461484A8B400BAADCC /* MainInterfaceController.m */; };
+		822170491484A8B400BAADCC /* MainInterfaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822170471484A8B400BAADCC /* MainInterfaceController.xib */; };
+		82D62E9A1484B52D0022DD23 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D62E991484B52D0022DD23 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,10 @@
 		82217037148310F400BAADCC /* ATCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCPoint.m; sourceTree = "<group>"; };
 		8221703A148315FC00BAADCC /* ATCZoneBorderSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCZoneBorderSegment.h; sourceTree = "<group>"; };
 		8221703B148315FC00BAADCC /* ATCZoneBorderSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZoneBorderSegment.m; sourceTree = "<group>"; };
+		822170451484A8B400BAADCC /* MainInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainInterfaceController.h; path = ../MainInterfaceController.h; sourceTree = "<group>"; };
+		822170461484A8B400BAADCC /* MainInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainInterfaceController.m; path = ../MainInterfaceController.m; sourceTree = "<group>"; };
+		822170471484A8B400BAADCC /* MainInterfaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainInterfaceController.xib; path = ../MainInterfaceController.xib; sourceTree = "<group>"; };
+		82D62E991484B52D0022DD23 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = ../MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +117,12 @@
 		8204C401148080C40029F349 /* ATCSimulation */ = {
 			isa = PBXGroup;
 			children = (
+				822170451484A8B400BAADCC /* MainInterfaceController.h */,
+				822170461484A8B400BAADCC /* MainInterfaceController.m */,
+				822170471484A8B400BAADCC /* MainInterfaceController.xib */,
 				8204C40A148080C40029F349 /* AppDelegate.h */,
 				8204C40B148080C40029F349 /* AppDelegate.m */,
+				82D62E991484B52D0022DD23 /* MainWindow.xib */,
 				8204C402148080C40029F349 /* Supporting Files */,
 			);
 			path = ATCSimulation;
@@ -243,6 +254,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8204C406148080C40029F349 /* InfoPlist.strings in Resources */,
+				822170491484A8B400BAADCC /* MainInterfaceController.xib in Resources */,
+				82D62E9A1484B52D0022DD23 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +280,7 @@
 				822170301482F3D000BAADCC /* ATCZone.m in Sources */,
 				82217038148310F400BAADCC /* ATCPoint.m in Sources */,
 				8221703C148315FC00BAADCC /* ATCZoneBorderSegment.m in Sources */,
+				822170481484A8B400BAADCC /* MainInterfaceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

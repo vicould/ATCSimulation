@@ -10,4 +10,16 @@
 
 @implementation Environment
 
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        // creates the different zones composing the map
+    }
+    
+    return self;
+}
+
+@synthesize zones = _zones;
+
 @end

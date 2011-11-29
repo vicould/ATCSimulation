@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ATCZone.h"
 
-@interface Environment : NSObject
+@class ATCZone;
+
+@interface Environment : NSObject {
+    @private
+    NSArray *_zones;
+}
+
+@property (nonatomic, retain) NSArray *zones;
 
 @end

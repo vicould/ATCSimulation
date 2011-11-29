@@ -11,18 +11,24 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize viewController;
 
 - (void)dealloc
 {
     [_window release];
+    [viewController release];
+    
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+//    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.viewController;
+//    [self.window addSubview:self.viewController.view];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
