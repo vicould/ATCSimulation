@@ -10,8 +10,9 @@
 
 @protocol EnvironmentDisplayDelegate <NSObject>
 
-- (BOOL)addAirplaneToMap:(Airplane *)newAirplane;
-- (BOOL)removeAirplaneFromMap:(Airplane *)airplane byLandingIt:(BOOL)landed;
+- (void)addAirplanesToMap:(NSArray *)newAirplanes;
+- (void)addAirplaneToMap:(Airplane *)newAirplane;
+- (void)removeAirplaneFromMap:(Airplane *)airplane byLandingIt:(BOOL)landed;
 - (void)updateAirplanesPositions:(NSArray *)airplanes;
 
 @end

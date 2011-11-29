@@ -14,18 +14,22 @@
 
 @implementation ATCZone
 
-- (id)initWithCorners:(NSArray *)cornersArray {
+- (id)initWithCorners:(NSArray *)cornersArray withControllerName:(NSString *)controllerName andIsAirport:(BOOL)airport {
     self = [super init];
     
     if (self) {
-        self.corners = cornersArray;
+        _controllerName = controllerName;
+        _corners = cornersArray;
+        _airport = airport;
     }
-    
+
     return self;
 }
 
 @synthesize adjacentZones = _adjacentZones;
 @synthesize corners = _corners;
+@synthesize airport = _airport;
+@synthesize controllerName = _controllerName;
 
 - (void)addAdjacentZone:(ATCZone *)zone {
     [self.adjacentZones addObject:zone];

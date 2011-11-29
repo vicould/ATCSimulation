@@ -11,12 +11,17 @@
 #import "Airplane.h"
 #import "ATCPoint.h"
 #import "ATCPosition.h"
+#import "AirportController.h"
+#import "ZoneController.h"
+
 #import "EnvironmentDisplayDelegate.h"
 
 @class ATCZone;
 @class Airplane;
 @class ATCPoint;
 @class ATCPosition;
+@class AirportController;
+@class ZoneController;
 
 @interface Environment : NSObject {
     @private
@@ -29,6 +34,7 @@
 @property (nonatomic, readonly, retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) id<EnvironmentDisplayDelegate> displayDelegate;
 
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName andDestination:(NSString *)destination;
+- (void)startSimulation;
+- (void)stopSimulation;
 
 @end

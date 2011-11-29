@@ -67,10 +67,10 @@
 		82183946148569C000EF4AFE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		82183947148569C000EF4AFE /* ZoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZoneController.h; path = ATCSimulation/Agents/ZoneController.h; sourceTree = "<group>"; };
 		82183948148569C000EF4AFE /* ZoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZoneController.m; path = ATCSimulation/Agents/ZoneController.m; sourceTree = "<group>"; };
-		82183949148569C000EF4AFE /* MainInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainInterfaceController.h; path = ATCSimulation/MainInterfaceController.h; sourceTree = "<group>"; };
-		8218394A148569C000EF4AFE /* MainInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainInterfaceController.m; path = ATCSimulation/MainInterfaceController.m; sourceTree = "<group>"; };
-		8218394B148569C000EF4AFE /* MainInterfaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainInterfaceController.xib; path = ATCSimulation/MainInterfaceController.xib; sourceTree = "<group>"; };
-		8218394C148569C000EF4AFE /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = ATCSimulation/MainWindow.xib; sourceTree = "<group>"; };
+		82183949148569C000EF4AFE /* MainInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInterfaceController.h; sourceTree = "<group>"; };
+		8218394A148569C000EF4AFE /* MainInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainInterfaceController.m; sourceTree = "<group>"; };
+		8218394B148569C000EF4AFE /* MainInterfaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainInterfaceController.xib; sourceTree = "<group>"; };
+		8218394C148569C000EF4AFE /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		8218395D14856CCD00EF4AFE /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane.png; path = Pictures/airplane.png; sourceTree = SOURCE_ROOT; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,11 +92,6 @@
 		8204C3EC148080C30029F349 = {
 			isa = PBXGroup;
 			children = (
-				8218392E148569C000EF4AFE /* Agents */,
-				82183949148569C000EF4AFE /* MainInterfaceController.h */,
-				8218394A148569C000EF4AFE /* MainInterfaceController.m */,
-				8218394B148569C000EF4AFE /* MainInterfaceController.xib */,
-				8218394C148569C000EF4AFE /* MainWindow.xib */,
 				8204C43514809EEE0029F349 /* Simulation */,
 				8204C401148080C40029F349 /* ATCSimulation */,
 				8204C3FA148080C40029F349 /* Frameworks */,
@@ -125,9 +120,13 @@
 		8204C401148080C40029F349 /* ATCSimulation */ = {
 			isa = PBXGroup;
 			children = (
+				82183949148569C000EF4AFE /* MainInterfaceController.h */,
+				8218394A148569C000EF4AFE /* MainInterfaceController.m */,
+				8218394B148569C000EF4AFE /* MainInterfaceController.xib */,
 				82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */,
 				8204C40A148080C40029F349 /* AppDelegate.h */,
 				8204C40B148080C40029F349 /* AppDelegate.m */,
+				8218394C148569C000EF4AFE /* MainWindow.xib */,
 				8204C402148080C40029F349 /* Supporting Files */,
 			);
 			path = ATCSimulation;
@@ -189,14 +188,6 @@
 				8221703D1483239600BAADCC /* Zone */,
 			);
 			name = Environment;
-			sourceTree = "<group>";
-		};
-		8218392E148569C000EF4AFE /* Agents */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Agents;
-			path = ATCSimulation/Agents;
 			sourceTree = "<group>";
 		};
 		8218393A148569C000EF4AFE /* Utils */ = {
