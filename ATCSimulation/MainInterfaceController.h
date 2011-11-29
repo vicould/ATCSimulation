@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Environment.h"
+
+@class Environment;
 
 @interface MainInterfaceController : UIViewController {
     @private
     UIButton *_startStopButton;
     BOOL _started;
+    Environment *_environment;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *startStopButton;

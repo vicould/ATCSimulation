@@ -34,7 +34,7 @@
 
 - (void)sendMessage:(NSString *)message fromType:(NSInteger)type toAgent:(NSString *)agentName {    
     // builds an info dictionary, specifying the originating agent, and some attributes
-    NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.agentName, [NSNumber numberWithInt:type], message, nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyType, kNVKeyContent, nil]];
+    NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.agentName, [NSNumber numberWithInt:type], message, nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, kNVKeyContent, nil]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:agentName object:self userInfo:messageContent];
 }
@@ -52,6 +52,10 @@
 - (void)dealloc {
     self.agentName = nil;
     self.messageReceiver = nil;
+    
+    // unregisters the notifications observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:self.agentName object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNVBroadcastMessage object:nil];
     
     [super dealloc];
 }

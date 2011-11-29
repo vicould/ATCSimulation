@@ -32,7 +32,13 @@
     if (self) {
         self.currentPosition = airplanePosition;
         
+        // inits flight time
+        self.lastPositionCheck = [NSDate date];
+        
         // registers for the broadcast messages in the zone
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[NSString stringWithFormat:@"Zone %d", airplanePosition.zone] object:nil];
+        
+        self.messageReceiver = self;
     }
     
     return self;
@@ -100,6 +106,13 @@
 
 - (void)analyzeMessage:(NSDictionary *)messageContent {
     // depending on the type of the message, activates the corresponding method
+    
+    // generic broadcast messages
+    
+    // zone broadcast messages
+    
+    // specific messages
+    
 }
 
 - (void)changeZoneWithNewController:(NSString *)controllerName {

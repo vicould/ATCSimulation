@@ -11,10 +11,10 @@
 extern NSString * const kNVBroadcastMessage;
 
 extern NSString * const kNVKeyOrigin;
-extern NSString * const kNVKeyType;
+extern NSString * const kNVKeyCode;
 extern NSString * const kNVKeyContent;
 
-/* message types
+/* message codes
  * 1 airplane
  * 2 zone controller
  * 3 airport controller
@@ -40,7 +40,7 @@ enum {
     NVMessageLevelOfFuel = 1304,
     NVMessageAircraftCategory = 1305,
 };
-typedef NSInteger NVMessageType;
+typedef NSInteger NVMessageCode;
 
 /*
  *

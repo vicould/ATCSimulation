@@ -11,6 +11,9 @@
 @interface MainInterfaceController ()
 
 @property (nonatomic, assign) BOOL started;
+@property (nonatomic, retain) Environment *environment;
+
+- (void)addAirplaneToView;
 
 @end
 
@@ -22,12 +25,14 @@
     if (self) {
         // Custom initialization
         _started = NO;
+        _environment = [[Environment alloc] init];
     }
     return self;
 }
 
 @synthesize startStopButton = _startStopButton;
 @synthesize started = _started;
+@synthesize environment = _environment;
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,6 +74,21 @@
     }
     
     self.started = !self.started;
+}
+
+- (void)addAirplaneToView {
+//    Airplane *airplane = [self.environment createAirplane];
+//    
+//    UIImageView *airplane = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Pictures/airplane"]];
+//    [airplane bounds:[CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+//    
+//    self.view addSubview:<#(UIView *)#>
+}
+
+- (void)dealloc {
+    self.environment = nil;
+    
+    [super dealloc];
 }
 
 @end
