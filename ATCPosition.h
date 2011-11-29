@@ -15,11 +15,15 @@
     @private
     NSInteger _zone;
     ATCPoint *_coordinates;
+    NSInteger _speed;
+    NSInteger _course;
 }
 
 - (id)initWithZone:(NSInteger)currentZone andPoint:(ATCPoint *)airplaneCoordinates;
 
 @property (nonatomic, assign) NSInteger zone;
 @property (nonatomic, retain) ATCPoint *coordinates;
+@property (nonatomic, assign) NSInteger speed;
+@property (nonatomic, assign) NSInteger course;
 
 @end

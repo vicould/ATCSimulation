@@ -24,4 +24,11 @@
 @synthesize coordinateX = _coordinateX;
 @synthesize coordinateY = _coordinateY;
 
+- (void)dealloc {
+    self.coordinateX = nil;
+    self.coordinateY = nil;
+    
+    [super dealloc];
+}
+
 @end

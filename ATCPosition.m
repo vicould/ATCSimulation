@@ -24,6 +24,8 @@
 
 @synthesize zone = _zone;
 @synthesize coordinates = _coordinates;
+@synthesize speed = _speed;
+@synthesize course = _course;
 
 - (void)dealloc {
     self.coordinates = nil;

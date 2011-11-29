@@ -61,7 +61,7 @@
 		8221702F1482F3CF00BAADCC /* ATCZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZone.m; sourceTree = "<group>"; };
 		82217036148310F400BAADCC /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCPoint.h; sourceTree = "<group>"; };
 		82217037148310F400BAADCC /* ATCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCPoint.m; sourceTree = "<group>"; };
-		8221703A148315FC00BAADCC /* ATCZoneBorderSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ATCZoneBorderSegment.h; sourceTree = "<group>"; };
+		8221703A148315FC00BAADCC /* ATCZoneBorderSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCZoneBorderSegment.h; sourceTree = "<group>"; };
 		8221703B148315FC00BAADCC /* ATCZoneBorderSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZoneBorderSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +172,14 @@
 				8204C43314809EE20029F349 /* Environment.m */,
 				8204C4441482002D0029F349 /* Artifacts.h */,
 				8204C4451482002D0029F349 /* Artifacts.m */,
+				8221703D1483239600BAADCC /* Zone */,
+			);
+			name = Environment;
+			sourceTree = "<group>";
+		};
+		8221703D1483239600BAADCC /* Zone */ = {
+			isa = PBXGroup;
+			children = (
 				8221702E1482F3CF00BAADCC /* ATCZone.h */,
 				8221702F1482F3CF00BAADCC /* ATCZone.m */,
 				8221703A148315FC00BAADCC /* ATCZoneBorderSegment.h */,
@@ -181,7 +189,7 @@
 				8204C438148199E20029F349 /* ATCPosition.h */,
 				8204C439148199E20029F349 /* ATCPosition.m */,
 			);
-			name = Environment;
+			name = Zone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -52,6 +52,7 @@
 - (void)dealloc {
     self.agentName = nil;
     self.messageReceiver = nil;
+    
     [super dealloc];
 }
 
