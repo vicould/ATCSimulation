@@ -18,8 +18,6 @@
     @private
     ATCPosition *_currentPosition;
     NSString *_currentController;
-    NSInteger _speed;
-    NSInteger _course;
     NSString *_destination;
     NSDate *_lastPositionCheck;
 }

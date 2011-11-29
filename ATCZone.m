@@ -10,8 +10,6 @@
 
 @interface ATCZone ()
 
-- (NSNumber *)distanceFrom;
-
 @end
 
 @implementation ATCZone
@@ -33,33 +31,37 @@
     [self.adjacentZones addObject:zone];
 }
 
-- (NSNumber *)calculateDistanceToZoneBorderWithCourse:(NSInteger)course fromPositionX:(NSNumber *)airplaneX andPositionY:(NSNumber *)airplaneY {
+- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCPosition *)position {
     
-    NSNumber *distance = [[NSNumber alloc] initWithInt:0];
+    NSNumber *distance = [NSNumber numberWithFloat:MAXFLOAT];
     
-    // TODO
+    // tests all segments composing the borders to have the nearest intersection
+    for (ATCZoneBorderSegment *segment in self.corners) {
+        NSNumber *currentDistance = [segment calculateDistanceToSegment:position];
+        if ([currentDistance compare:distance] == NSOrderedDescending) {
+            // new minimum
+            [distance release];
+            distance = [currentDistance retain];
+        }
+    }
     
-    
-    return distance;
-}
-
-- (NSNumber *)distanceFrom {
-    
-    // TODO
-    
-    return [[NSNumber alloc] initWithInt:0];
+    return [distance autorelease];
 }
 
 - (BOOL)pointBelongsToZone:(ATCPoint *)point {
-    // TODO
+    for (ATCZoneBorderSegment *segment in self.corners) {
+        if (![segment pointBelongsToGeneratedHalfSpace:point]) {
+            return NO;
+        }
+    }
     
-    return FALSE;
+    return YES;
 }
 
 - (void)dealloc {
     self.corners = nil;
     self.adjacentZones = nil;
-    
+
     [super dealloc];
 }
 

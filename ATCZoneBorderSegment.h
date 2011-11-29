@@ -8,15 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import "ATCPoint.h"
+#import "ATCPosition.h"
 
 @class ATCPoint;
+@class ATCPosition;
 
 @interface ATCZoneBorderSegment : NSObject {
     @private
     ATCPoint *_extremity1;
     ATCPoint *_extremity2;
-    NSNumber *_slope;
-    NSNumber *_yIntersect;
+    
+    // ax + by + c = 0
+    NSNumber *_aLine;
+    NSNumber *_bLine;
+    NSNumber *_cLine;
+    
+    NSNumber *_aOrthogonalLine1;
+    NSNumber *_bOrthogonalLine1;
+    NSNumber *_cOrthogonalLine1;
+    
+    NSNumber *_aOrthogonalLine2;
+    NSNumber *_bOrthogonalLine2;
+    NSNumber *_cOrthogonalLine2;
     BOOL _directionPositive;
 }
 
@@ -24,10 +37,12 @@
 
 @property (nonatomic, readonly, retain) ATCPoint *extremity1;
 @property (nonatomic, readonly, retain) ATCPoint *extremity2;
-@property (nonatomic, readonly, retain) NSNumber *slope;
-@property (nonatomic, readonly, retain) NSNumber *yIntersect;
+@property (nonatomic, readonly, retain) NSNumber *aLine;
+@property (nonatomic, readonly, retain) NSNumber *bLine;
+@property (nonatomic, readonly, retain) NSNumber *cLine;
 @property (nonatomic, readonly, assign) BOOL directionPositive;
 
-- (BOOL)pointBelongsToGeneratedSpace:(ATCPoint *)testedPoint;
+- (BOOL)pointBelongsToGeneratedHalfSpace:(ATCPoint *)testedPoint;
+- (NSNumber *)calculateDistanceToSegment:(ATCPosition *)testedPosition;
 
 @end

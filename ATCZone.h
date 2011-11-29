@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ATCPoint.h"
+#import "ATCZoneBorderSegment.h"
+
+@class ATCPoint;
+@class ATCZoneBorderSegment;
 
 @interface ATCZone : NSObject {
 @private
@@ -21,7 +25,7 @@
 @property (nonatomic, retain) NSArray *corners;
 
 - (void)addAdjacentZone:(ATCZone *)zone;
-- (NSNumber *)calculateDistanceToZoneBorderWithCourse:(NSInteger)course fromPositionX:(NSNumber *)airplaneX andPositionY:(NSNumber *)airplaneY;
+- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCPosition *)position;
 - (BOOL)pointBelongsToZone:(ATCPoint *)point;
 
 @end

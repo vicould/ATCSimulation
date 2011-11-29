@@ -39,48 +39,46 @@
 }
 
 @synthesize currentPosition = _currentPosition;
-@synthesize course = _course;
+
+- (NSInteger)course {
+    return self.currentPosition.course;
+}
 
 - (void)setCourse:(NSInteger)course {
     // updates the current position each time a change is made in the route
     [self updatePosition];
     
-    _course = course;
+    self.currentPosition.course = course;
 }
 
-@synthesize speed = _speed;
+- (NSInteger)speed {
+    return self.currentPosition.speed;
+}
 
 - (void)setSpeed:(NSInteger)speed {
     // updates the current position each time a change is made in the route
     [self updatePosition];
     
-    _speed = speed;
+    self.currentPosition.speed = speed;
 }
 
 @synthesize destination = _destination;
 @synthesize currentController = _currentController;
 @synthesize lastPositionCheck = _lastPositionCheck;
 
-- (void)dealloc {
-    self.currentPosition = nil;
-    self.destination = nil;
-    
-    [super dealloc];
-}
-
 - (void)updatePosition {
     // calculates current position since last check, and updates the attribute
     NSTimeInterval lastCheckInterval = [self.lastPositionCheck timeIntervalSinceNow];
     float distance = lastCheckInterval * self.speed / 3600;
     
-    self.currentPosition.positionX = [NSNumber numberWithFloat:(distance * cos(self.course * M_2_PI / 360))];
-    self.currentPosition.positionY = [NSNumber numberWithFloat:(distance * sin(self.course * M_2_PI / 360))];
+    self.currentPosition.coordinates.coordinateX = [NSNumber numberWithFloat:(distance * cos(self.course * M_2_PI / 360.0))];
+    self.currentPosition.coordinates.coordinateY = [NSNumber numberWithFloat:(distance * sin(self.course * M_2_PI / 360.0))];
     
     // updates the timestamp since last check
     self.lastPositionCheck = [NSDate date];
     
     // verifies if we changed zone
-    NSInteger newZone = [Artifacts calculateCurrentZonefromX:self.currentPosition.positionX andY:self.currentPosition.positionY];
+    NSInteger newZone = [Artifacts calculateCurrentZonefromX:self.currentPosition.coordinates.coordinateX andY:self.currentPosition.coordinates.coordinateY];
     
     if (newZone != self.currentPosition.zone) {
         // aha, we are leaving a zone
@@ -109,7 +107,7 @@
     self.currentController = controllerName;
     
     // calls new controller, to transmit destination, position, course, and speed
-    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.currentPosition.positionX, self.currentPosition.positionY, self.course, self.speed];
+    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, [self.currentPosition.coordinates.coordinateX floatValue], [self.currentPosition.coordinates.coordinateY floatValue], self.course, self.speed];
     
     [self sendMessage:message fromType:NVMessageEnteringNewZone toAgent:self.currentController];
 }
@@ -119,9 +117,18 @@
     [self updatePosition];
     
     // creates the message as a string
-    NSString *message = [NSString stringWithFormat:@"%f;%f", self.currentPosition.positionX, self.currentPosition.positionY];
+    NSString *message = [NSString stringWithFormat:@"%f;%f", [self.currentPosition.coordinates.coordinateX floatValue], [self.currentPosition.coordinates.coordinateY floatValue]];
     
     [self sendMessage:message fromType:NVMessageCurrentPosition toAgent:self.currentController];
+}
+
+- (void)dealloc {
+    self.currentPosition = nil;
+    self.destination = nil;
+    self.currentPosition = nil;
+    self.lastPositionCheck = nil;
+    
+    [super dealloc];
 }
 
 @end
