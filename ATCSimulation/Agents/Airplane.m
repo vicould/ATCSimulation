@@ -77,10 +77,8 @@
 - (void)updatePosition {
     // calculates current position since last check, and updates the attribute
     NSTimeInterval lastCheckInterval = [self.lastPositionCheck timeIntervalSinceNow];
-    float distance = lastCheckInterval * self.speed / 3600;
     
-    self.currentPosition.coordinates.coordinateX = [NSNumber numberWithFloat:(distance * cos(self.course * 2 * M_PI / 360.0))];
-    self.currentPosition.coordinates.coordinateY = [NSNumber numberWithFloat:(distance * sin(self.course * 2 * M_PI / 360.0))];
+    self.currentPosition.coordinates = [Artifacts calculateNewPositionFromCurrent:self.currentPosition afterInterval:lastCheckInterval];
     
     // updates the timestamp since last check
     self.lastPositionCheck = [NSDate date];

@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSNumber *coordinateX;
 @property (nonatomic, retain) NSNumber *coordinateY;
 
++ (ATCPoint *)pointFromExisting:(ATCPoint *)point;
+
 @end

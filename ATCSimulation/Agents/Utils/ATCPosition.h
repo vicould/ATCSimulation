@@ -26,4 +26,6 @@
 @property (nonatomic, assign) NSInteger speed;
 @property (nonatomic, assign) NSInteger course;
 
++ (ATCPosition *)positionFromExisting:(ATCPosition *)position;
+
 @end

@@ -31,4 +31,11 @@
     [super dealloc];
 }
 
+
+# pragma mark - class methods
+
++ (ATCPoint *)pointFromExisting:(ATCPoint *)point {
+    return [[[ATCPoint alloc] initWithCoordinateX:[NSNumber numberWithFloat:[point.coordinateX floatValue]] andCoordinateY:[NSNumber numberWithFloat:[point.coordinateY floatValue]]] autorelease];
+}
+
 @end

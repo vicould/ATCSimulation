@@ -17,4 +17,6 @@
 
 + (NSNumber *)distanceFromNextZone:(ATCPosition *)position onRoute:(NSInteger *)route;
 
++ (ATCPoint *)calculateNewPositionFromCurrent:(ATCPosition *)currentPosition afterInterval:(NSTimeInterval)interval;
+
 @end

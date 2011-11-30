@@ -19,4 +19,14 @@
     return 0;
 }
 
++ (ATCPoint *)calculateNewPositionFromCurrent:(ATCPosition *)currentPosition afterInterval:(NSTimeInterval)interval {
+    ATCPoint *newPoint = [ATCPoint pointFromExisting:currentPosition.coordinates];
+    float distance = interval * currentPosition.speed / 3600;
+    
+    newPoint.coordinateX = [NSNumber numberWithFloat:(distance * cos(currentPosition.course * 2 * M_PI / 360.0))];
+    newPoint.coordinateY = [NSNumber numberWithFloat:(distance * sin(currentPosition.course * 2 * M_PI / 360.0))];
+    
+    return newPoint;
+}
+
 @end

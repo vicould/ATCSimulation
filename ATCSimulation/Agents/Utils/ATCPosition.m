@@ -33,4 +33,17 @@
     [super dealloc];
 }
 
+# pragma mark - Class methods
+
++ (ATCPosition *)positionFromExisting:(ATCPosition *)position {
+    ATCPoint *newPoint = [ATCPoint pointFromExisting:position.coordinates];
+    
+    ATCPosition *newPosition = [[ATCPosition alloc] initWithZone:position.zone
+                                                        andPoint:newPoint];
+    newPosition.course = position.course;
+    newPosition.speed = position.speed;
+    
+    return [newPosition autorelease];
+}
+
 @end
