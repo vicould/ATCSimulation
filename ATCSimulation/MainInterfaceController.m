@@ -119,37 +119,56 @@
 }
 
 - (void)addAirplaneToMap:(Airplane *)newAirplane {
-    UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Pictures/airplane"]];
-    [newAirplaneView setFrame:CGRectMake([newAirplane.currentPosition.coordinates.coordinateX floatValue] - 5, [newAirplane.currentPosition.coordinates.coordinateY floatValue] - 5, 10, 10)];
+    UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
+    [newAirplaneView setFrame:CGRectMake([newAirplane.currentPosition.coordinates.coordinateX floatValue] - 10, [newAirplane.currentPosition.coordinates.coordinateY floatValue] - 10, 20, 20)];
     
-    [newAirplaneView setBackgroundColor:[UIColor colorWithWhite:0 alpha:1]];
+    CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
+    newAirplaneView.layer.transform = initialCourseRotation;
+    
     [self.mapView addSubview:newAirplaneView];
     [newAirplaneView release];
     
-    [self.airplanesDictionary setObject:newAirplaneView forKey:newAirplane.agentName];
+    [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], nil] forKey:newAirplane.agentName];
 }
 
-- (void)removeAirplaneFromMap:(Airplane *)airplane byLandingIt:(BOOL)landed {    
+- (void)crashAirplane:(Airplane *)airplane {
     UIImageView *airplaneExitingView = [self.airplanesDictionary objectForKey:airplane];
     [self.airplanesDictionary removeObjectForKey:airplane];
     
-    [airplaneExitingView removeFromSuperview];
+    [airplaneExitingView removeFromSuperview];    
+}
+
+- (void)landAirplane:(Airplane *)airplane {    
+    UIImageView *airplaneExitingView = [(NSArray *)[self.airplanesDictionary objectForKey:airplane] objectAtIndex:0];
+    [self.airplanesDictionary removeObjectForKey:airplane];
     
-//    if (landed) {
-//        
-//    } else {
-//        // if not landed display an explosion, to explain the airplane crashed        
-//    }
+    [airplaneExitingView removeFromSuperview];
 }
 
 - (void)updateAirplanesPositions:(NSArray *)airplanes {
     for (Airplane *currentAirplane in airplanes) {
-        UIImageView *airplaneView = [self.airplanesDictionary objectForKey:currentAirplane.agentName];
+        NSMutableArray *currentAirplaneData = [self.airplanesDictionary objectForKey:currentAirplane.agentName];
+        UIImageView *airplaneView = [currentAirplaneData objectAtIndex:0];
+        NSNumber *previousCourse = [currentAirplaneData objectAtIndex:1];
+        
         if (airplaneView == nil) {
             continue;
         }
         
-        [airplaneView setCenter:CGPointMake([currentAirplane.currentPosition.coordinates.coordinateX floatValue] - 5, [currentAirplane.currentPosition.coordinates.coordinateY floatValue] - 5)];
+        // prepares the transformation of the view, with the necessary translation and rotation
+        CATransform3D translation = CATransform3DMakeTranslation([currentAirplane.currentPosition.coordinates.coordinateX floatValue] - airplaneView.layer.position.x, [currentAirplane.currentPosition.coordinates.coordinateY floatValue] - airplaneView.layer.position.y, 0);
+        
+        CATransform3D rotation = CATransform3DMakeRotation((currentAirplane.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
+        
+        // concats the previous transformation applied to the view with the new ones
+        CATransform3D transformResult = CATransform3DConcat(airplaneView.layer.transform, translation);
+        transformResult = CATransform3DConcat(transformResult, rotation);
+        
+        // sets the new transform to the layer
+        airplaneView.layer.transform = transformResult;
+        [airplaneView setNeedsDisplay];
+        
+        [currentAirplaneData replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:currentAirplane.course]];
     }
 }
 

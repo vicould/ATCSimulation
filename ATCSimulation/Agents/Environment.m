@@ -24,7 +24,7 @@
 - (void)performDisplayUpdate;
 - (void)performAddAirplaneToMap:(Airplane *)newAirplane;
 - (void)performAddMultipleAirplanesToMap;
-- (void)performRemoveAirplaneFromMap:(Airplane *)airplane;
+- (void)performAirplane:(Airplane *)airplane;
 
 @end
 
@@ -122,8 +122,8 @@
     [self.displayDelegate addAirplanesToMap:self.airplanes];
 }
 
-- (void)performRemoveAirplaneFromMap:(Airplane *)airplane {
-    [self.displayDelegate removeAirplaneFromMap:airplane byLandingIt:YES];
+- (void)performAirplane:(Airplane *)airplane {
+    [self.displayDelegate landAirplane:airplane];
 }
 
 @end

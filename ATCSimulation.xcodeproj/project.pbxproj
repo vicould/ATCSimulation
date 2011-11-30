@@ -13,6 +13,7 @@
 		8204C406148080C40029F349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8204C404148080C40029F349 /* InfoPlist.strings */; };
 		8204C408148080C40029F349 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C407148080C40029F349 /* main.m */; };
 		8204C40C148080C40029F349 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8204C40B148080C40029F349 /* AppDelegate.m */; };
+		8214C5CE1486A84000B9CDB1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8214C5CD1486A83F00B9CDB1 /* QuartzCore.framework */; };
 		8218394D148569C000EF4AFE /* Airplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183930148569C000EF4AFE /* Airplane.m */; };
 		8218394E148569C000EF4AFE /* AirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183932148569C000EF4AFE /* AirportController.m */; };
 		8218394F148569C000EF4AFE /* BasicAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183934148569C000EF4AFE /* BasicAgent.m */; };
@@ -42,6 +43,7 @@
 		8204C409148080C40029F349 /* ATCSimulation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ATCSimulation-Prefix.pch"; sourceTree = "<group>"; };
 		8204C40A148080C40029F349 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8204C40B148080C40029F349 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8214C5CD1486A83F00B9CDB1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8218392F148569C000EF4AFE /* Airplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Airplane.h; path = ATCSimulation/Agents/Airplane.h; sourceTree = "<group>"; };
 		82183930148569C000EF4AFE /* Airplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Airplane.m; path = ATCSimulation/Agents/Airplane.m; sourceTree = "<group>"; };
 		82183931148569C000EF4AFE /* AirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirportController.h; path = ATCSimulation/Agents/AirportController.h; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 		82183936148569C000EF4AFE /* BasicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicController.m; path = ATCSimulation/Agents/BasicController.m; sourceTree = "<group>"; };
 		82183937148569C000EF4AFE /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Environment.h; path = ATCSimulation/Agents/Environment.h; sourceTree = "<group>"; };
 		82183938148569C000EF4AFE /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Environment.m; path = ATCSimulation/Agents/Environment.m; sourceTree = "<group>"; };
-		82183939148569C000EF4AFE /* AgentBehaviorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AgentBehaviorDelegate.h; path = ATCSimulation/Agents/AgentBehaviorDelegate.h; sourceTree = "<group>"; };
+		82183939148569C000EF4AFE /* AgentBehaviorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgentBehaviorDelegate.h; path = ATCSimulation/Agents/AgentBehaviorDelegate.h; sourceTree = "<group>"; };
 		8218393B148569C000EF4AFE /* Artifacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artifacts.h; sourceTree = "<group>"; };
 		8218393C148569C000EF4AFE /* Artifacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artifacts.m; sourceTree = "<group>"; };
 		8218393D148569C000EF4AFE /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPoint.h; path = ATCSimulation/Agents/Utils/ATCPoint.h; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8214C5CE1486A84000B9CDB1 /* QuartzCore.framework in Frameworks */,
 				8204C3FC148080C40029F349 /* UIKit.framework in Frameworks */,
 				8204C3FE148080C40029F349 /* Foundation.framework in Frameworks */,
 				8204C400148080C40029F349 /* CoreGraphics.framework in Frameworks */,
@@ -110,6 +113,7 @@
 		8204C3FA148080C40029F349 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8214C5CD1486A83F00B9CDB1 /* QuartzCore.framework */,
 				8204C3FB148080C40029F349 /* UIKit.framework */,
 				8204C3FD148080C40029F349 /* Foundation.framework */,
 				8204C3FF148080C40029F349 /* CoreGraphics.framework */,

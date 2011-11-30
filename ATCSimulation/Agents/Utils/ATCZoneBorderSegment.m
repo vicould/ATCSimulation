@@ -82,8 +82,8 @@
     
     if (line) {
         // ok the point belongs to our zone segment, let's calculate the distance
-        float cosCourse = cosf(testedPosition.course * M_2_PI / 360.0);
-        float sinCourse = sinf(testedPosition.course * M_2_PI / 360.0);
+        float cosCourse = cosf(testedPosition.course * 2 * M_PI / 360.0);
+        float sinCourse = sinf(testedPosition.course * 2 * M_PI / 360.0);
         
         float generatedLineYIntersect = sinCourse * [testedPosition.coordinates.coordinateY floatValue] + cosCourse * [testedPosition.coordinates.coordinateX floatValue];
         

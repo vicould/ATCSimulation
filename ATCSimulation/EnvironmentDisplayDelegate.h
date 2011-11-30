@@ -12,7 +12,8 @@
 
 - (void)addAirplanesToMap:(NSArray *)newAirplanes;
 - (void)addAirplaneToMap:(Airplane *)newAirplane;
-- (void)removeAirplaneFromMap:(Airplane *)airplane byLandingIt:(BOOL)landed;
+- (void)crashAirplane:(Airplane *)airplane;
+- (void)landAirplane:(Airplane *)airplane;
 - (void)updateAirplanesPositions:(NSArray *)airplanes;
 
 @end

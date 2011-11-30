@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Environment.h"
 #import "EnvironmentDisplayDelegate.h"
 
