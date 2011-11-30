@@ -35,7 +35,7 @@
 
 - (void)detectAirplanesInZone {
     // send a broadcast message to all airplanes currently in zone
-    [self sendMessage:@"" fromType:NVMessageCurrentPosition toAgent:[BasicController zoneIdentifierAsStringWithID:self.zoneID]];
+    [self sendMessage:@"" fromType:NVMessageCurrentPosition toAgent:[BasicController messageIdentifierForZone:self.zoneID]];
 }
 
 - (void)startSimulation {
@@ -57,6 +57,10 @@ static NSInteger lastID = 0;
 
 + (NSString *)zoneIdentifierAsStringWithID:(NSInteger)ID {
     return [NSString stringWithFormat:@"Zone %d", ID];
+}
+
++ (NSString *)messageIdentifierForZone:(NSInteger)zoneID {
+    return [NSString stringWithFormat:@"Zone %d messages", zoneID];
 }
 
 @end

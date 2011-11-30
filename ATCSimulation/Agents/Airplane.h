@@ -26,7 +26,7 @@
 
 // properties needed for the omniscience of the environment
 // between the agents only messages are used otherwise
-@property (nonatomic, retain, readonly) ATCAirplaneInformation *currentPosition;
+@property (nonatomic, retain, readonly) ATCAirplaneInformation *ownInformation;
 @property (nonatomic, assign, readonly) NSInteger speed;
 @property (nonatomic, assign, readonly) NSInteger course;
 @property (nonatomic, retain, readonly) NSString *destination;

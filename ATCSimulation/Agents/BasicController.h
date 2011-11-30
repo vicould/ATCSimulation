@@ -22,5 +22,6 @@
 
 + (NSInteger)createZoneID;
 + (NSString *)zoneIdentifierAsStringWithID:(NSInteger)ID;
++ (NSString *)messageIdentifierForZone:(NSInteger)zoneID;
 
 @end
