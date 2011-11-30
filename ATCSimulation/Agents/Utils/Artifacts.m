@@ -14,12 +14,12 @@
     return 0;
 }
 
-+ (NSNumber *)distanceFromNextZone:(ATCPosition *)position onRoute:(NSInteger *)route {
++ (NSNumber *)distanceFromNextZone:(ATCAirplaneInformation *)position onRoute:(NSInteger *)route {
     
     return 0;
 }
 
-+ (ATCPoint *)calculateNewPositionFromCurrent:(ATCPosition *)currentPosition afterInterval:(NSTimeInterval)interval {
++ (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval {
     ATCPoint *newPoint = [ATCPoint pointFromExisting:currentPosition.coordinates];
     float distance = interval * currentPosition.speed / 3600;
     

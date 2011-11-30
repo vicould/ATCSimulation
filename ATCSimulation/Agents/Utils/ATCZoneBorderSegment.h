@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ATCPoint.h"
-#import "ATCPosition.h"
+#import "ATCAirplaneInformation.h"
 
 @class ATCPoint;
-@class ATCPosition;
+@class ATCAirplaneInformation;
 
 @interface ATCZoneBorderSegment : NSObject {
     @private
@@ -43,6 +43,6 @@
 @property (nonatomic, readonly, assign) BOOL directionPositive;
 
 - (BOOL)pointBelongsToGeneratedHalfSpace:(ATCPoint *)testedPoint;
-- (NSNumber *)calculateDistanceToSegment:(ATCPosition *)testedPosition;
+- (NSNumber *)calculateDistanceToSegment:(ATCAirplaneInformation *)testedPosition;
 
 @end

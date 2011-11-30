@@ -18,7 +18,7 @@
 
 - (ATCZone *)createZoneWithController:(BasicController *)controller isAirportController:(BOOL)airportController;
 - (AirportController *)createDestinationWithName:(NSString *)destinationName;
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName destination:(NSString *)destination andInitialPosition:(ATCPosition *)position;
+- (Airplane *)createAirplaneWithName:(NSString *)airplaneName destination:(NSString *)destination andInitialPosition:(ATCAirplaneInformation *)position;
 
 - (void)askForDisplayUpdate:(NSTimer *)theTimer;
 - (void)performDisplayUpdate;
@@ -53,7 +53,7 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCPosition *aPosition = [[ATCPosition alloc] initWithZone:0 andPoint:[[ATCPoint alloc] initWithCoordinateX:[NSNumber numberWithInt:250] andCoordinateY:[NSNumber numberWithInt:250]]];
+    ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:0 andPoint:[[ATCPoint alloc] initWithCoordinateX:[NSNumber numberWithInt:250] andCoordinateY:[NSNumber numberWithInt:250]]];
     aPosition.course = 90;
     aPosition.speed = 100;
     
@@ -71,7 +71,7 @@
     return [zone autorelease];
 }
 
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName destination:(NSString *)destination andInitialPosition:(ATCPosition *)position {
+- (Airplane *)createAirplaneWithName:(NSString *)airplaneName destination:(NSString *)destination andInitialPosition:(ATCAirplaneInformation *)position {
     
     Airplane *newAirplane = [[Airplane alloc] initWithTailNumber:airplaneName initialPosition:position andDestination:destination];
     

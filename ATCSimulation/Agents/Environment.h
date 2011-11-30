@@ -10,7 +10,7 @@
 #import "ATCZone.h"
 #import "Airplane.h"
 #import "ATCPoint.h"
-#import "ATCPosition.h"
+#import "ATCAirplaneInformation.h"
 #import "AirportController.h"
 #import "ZoneController.h"
 
@@ -19,7 +19,7 @@
 @class ATCZone;
 @class Airplane;
 @class ATCPoint;
-@class ATCPosition;
+@class ATCAirplaneInformation;
 @class AirportController;
 @class ZoneController;
 

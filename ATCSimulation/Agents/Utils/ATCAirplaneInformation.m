@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "ATCPosition.h"
+#import "ATCAirplaneInformation.h"
 
-@implementation ATCPosition
+@implementation ATCAirplaneInformation
 
 - (id)initWithZone:(NSInteger)currentZone andPoint:(ATCPoint *)airplaneCoordinates {
     
@@ -35,10 +35,10 @@
 
 # pragma mark - Class methods
 
-+ (ATCPosition *)positionFromExisting:(ATCPosition *)position {
++ (ATCAirplaneInformation *)positionFromExisting:(ATCAirplaneInformation *)position {
     ATCPoint *newPoint = [ATCPoint pointFromExisting:position.coordinates];
     
-    ATCPosition *newPosition = [[ATCPosition alloc] initWithZone:position.zone
+    ATCAirplaneInformation *newPosition = [[ATCAirplaneInformation alloc] initWithZone:position.zone
                                                         andPoint:newPoint];
     newPosition.course = position.course;
     newPosition.speed = position.speed;

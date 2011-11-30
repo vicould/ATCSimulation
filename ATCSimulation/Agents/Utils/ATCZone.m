@@ -35,7 +35,7 @@
     [self.adjacentZones addObject:zone];
 }
 
-- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCPosition *)position {
+- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCAirplaneInformation *)position {
     
     NSNumber *distance = [NSNumber numberWithFloat:MAXFLOAT];
     

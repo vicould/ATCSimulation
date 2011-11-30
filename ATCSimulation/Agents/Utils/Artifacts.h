@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ATCPosition.h"
+#import "ATCAirplaneInformation.h"
 
-@class ATCPosition;
+@class ATCAirplaneInformation;
 
 @interface Artifacts : NSObject
 
 + (NSInteger)calculateCurrentZonefromX:(NSNumber *)currentX andY:(NSNumber *)currentY;
 
-+ (NSNumber *)distanceFromNextZone:(ATCPosition *)position onRoute:(NSInteger *)route;
++ (NSNumber *)distanceFromNextZone:(ATCAirplaneInformation *)position onRoute:(NSInteger *)route;
 
-+ (ATCPoint *)calculateNewPositionFromCurrent:(ATCPosition *)currentPosition afterInterval:(NSTimeInterval)interval;
++ (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval;
 
 @end

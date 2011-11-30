@@ -11,7 +11,7 @@
 
 @class ATCPoint;
 
-@interface ATCPosition : NSObject {
+@interface ATCAirplaneInformation : NSObject {
     @private
     NSInteger _zone;
     ATCPoint *_coordinates;
@@ -26,6 +26,6 @@
 @property (nonatomic, assign) NSInteger speed;
 @property (nonatomic, assign) NSInteger course;
 
-+ (ATCPosition *)positionFromExisting:(ATCPosition *)position;
++ (ATCAirplaneInformation *)positionFromExisting:(ATCAirplaneInformation *)position;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface Airplane ()
 
-@property (nonatomic, retain) ATCPosition *currentPosition;
+@property (nonatomic, retain) ATCAirplaneInformation *currentPosition;
 @property (nonatomic, assign) NSInteger speed;
 @property (nonatomic, assign) NSInteger course;
 @property (nonatomic, retain) NSString *destination;
@@ -26,7 +26,7 @@
 
 @implementation Airplane
 
-- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCPosition *)airplanePosition andDestination:(NSString *)destinationName {
+- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePosition andDestination:(NSString *)destinationName {
     self = [super initWithAgentName:tailNumber];
     
     if (self) {

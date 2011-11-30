@@ -31,7 +31,7 @@
 @property (nonatomic, retain, readonly) NSString *controllerName;
 
 - (void)addAdjacentZone:(ATCZone *)zone;
-- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCPosition *)position;
+- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCAirplaneInformation *)position;
 - (BOOL)pointBelongsToZone:(ATCPoint *)point;
 
 @end

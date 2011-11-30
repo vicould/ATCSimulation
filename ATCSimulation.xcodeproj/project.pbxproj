@@ -21,7 +21,7 @@
 		82183951148569C000EF4AFE /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183938148569C000EF4AFE /* Environment.m */; };
 		82183952148569C000EF4AFE /* Artifacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218393C148569C000EF4AFE /* Artifacts.m */; };
 		82183953148569C000EF4AFE /* ATCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218393E148569C000EF4AFE /* ATCPoint.m */; };
-		82183954148569C000EF4AFE /* ATCPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183940148569C000EF4AFE /* ATCPosition.m */; };
+		82183954148569C000EF4AFE /* ATCAirplaneInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183940148569C000EF4AFE /* ATCAirplaneInformation.m */; };
 		82183955148569C000EF4AFE /* ATCZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183942148569C000EF4AFE /* ATCZone.m */; };
 		82183956148569C000EF4AFE /* ATCZoneBorderSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183944148569C000EF4AFE /* ATCZoneBorderSegment.m */; };
 		82183957148569C000EF4AFE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183946148569C000EF4AFE /* Constants.m */; };
@@ -59,8 +59,8 @@
 		8218393C148569C000EF4AFE /* Artifacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artifacts.m; sourceTree = "<group>"; };
 		8218393D148569C000EF4AFE /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPoint.h; path = ATCSimulation/Agents/Utils/ATCPoint.h; sourceTree = "<group>"; };
 		8218393E148569C000EF4AFE /* ATCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPoint.m; path = ATCSimulation/Agents/Utils/ATCPoint.m; sourceTree = "<group>"; };
-		8218393F148569C000EF4AFE /* ATCPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPosition.h; path = ATCSimulation/Agents/Utils/ATCPosition.h; sourceTree = "<group>"; };
-		82183940148569C000EF4AFE /* ATCPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPosition.m; path = ATCSimulation/Agents/Utils/ATCPosition.m; sourceTree = "<group>"; };
+		8218393F148569C000EF4AFE /* ATCAirplaneInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ATCAirplaneInformation.h; path = ATCSimulation/Agents/Utils/ATCAirplaneInformation.h; sourceTree = "<group>"; };
+		82183940148569C000EF4AFE /* ATCAirplaneInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCAirplaneInformation.m; path = ATCSimulation/Agents/Utils/ATCAirplaneInformation.m; sourceTree = "<group>"; };
 		82183941148569C000EF4AFE /* ATCZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCZone.h; path = ATCSimulation/Agents/Utils/ATCZone.h; sourceTree = "<group>"; };
 		82183942148569C000EF4AFE /* ATCZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCZone.m; path = ATCSimulation/Agents/Utils/ATCZone.m; sourceTree = "<group>"; };
 		82183943148569C000EF4AFE /* ATCZoneBorderSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCZoneBorderSegment.h; path = ATCSimulation/Agents/Utils/ATCZoneBorderSegment.h; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 			children = (
 				8218393D148569C000EF4AFE /* ATCPoint.h */,
 				8218393E148569C000EF4AFE /* ATCPoint.m */,
-				8218393F148569C000EF4AFE /* ATCPosition.h */,
-				82183940148569C000EF4AFE /* ATCPosition.m */,
+				8218393F148569C000EF4AFE /* ATCAirplaneInformation.h */,
+				82183940148569C000EF4AFE /* ATCAirplaneInformation.m */,
 				82183941148569C000EF4AFE /* ATCZone.h */,
 				82183942148569C000EF4AFE /* ATCZone.m */,
 				82183943148569C000EF4AFE /* ATCZoneBorderSegment.h */,
@@ -294,7 +294,7 @@
 				82183951148569C000EF4AFE /* Environment.m in Sources */,
 				82183952148569C000EF4AFE /* Artifacts.m in Sources */,
 				82183953148569C000EF4AFE /* ATCPoint.m in Sources */,
-				82183954148569C000EF4AFE /* ATCPosition.m in Sources */,
+				82183954148569C000EF4AFE /* ATCAirplaneInformation.m in Sources */,
 				82183955148569C000EF4AFE /* ATCZone.m in Sources */,
 				82183956148569C000EF4AFE /* ATCZoneBorderSegment.m in Sources */,
 				82183957148569C000EF4AFE /* Constants.m in Sources */,
