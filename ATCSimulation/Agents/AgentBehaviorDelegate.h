@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MessageAnalyzerDelegate <NSObject>
+@protocol AgentBehaviorDelegate <NSObject>
 
-- (void)analyzeMessage:(NSDictionary *)messageContent;
+- (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator;
+
+- (void)startSimulation;
 
 @end

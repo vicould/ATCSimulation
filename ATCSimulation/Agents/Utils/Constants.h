@@ -26,6 +26,7 @@ extern NSString * const kNVKeyContent;
 enum {
     NVMessageAcknowledgement = 1,
     NVMessageRefused = -1,
+    NVMessageSimulationStarted = 10,
     NVMessageEnteringNewZone = 1201,
     NVMessageLeavingZone = 1202,
     NVMessageCurrentPosition = 1203,

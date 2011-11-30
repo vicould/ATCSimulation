@@ -28,9 +28,10 @@
     NSArray *_zones;
     NSMutableArray *_airplanes;
     id<EnvironmentDisplayDelegate> _displayDelegate;
+    NSTimer *_displayUpdateTimer;
 }
 
-@property (nonatomic, retain) NSArray *zones;
+@property (nonatomic, readonly, retain) NSArray *zones;
 @property (nonatomic, readonly, retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) id<EnvironmentDisplayDelegate> displayDelegate;
 

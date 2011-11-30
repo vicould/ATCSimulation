@@ -14,6 +14,8 @@
 @property (nonatomic, retain) Environment *environment;
 @property (nonatomic, retain) NSMutableDictionary *airplanesDictionary;
 
+- (void)createViewsForInterface;
+
 @end
 
 @implementation MainInterfaceController
@@ -50,6 +52,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // creates button
+    self.startStopButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.startStopButton setFrame:CGRectMake(932, 20, 72, 37)];
+    [self.startStopButton setTitleColor:[UIColor colorWithWhite:0 alpha:1] forState:UIControlStateNormal];
+    [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    [self.startStopButton addTarget:self action:@selector(startStopPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self createViewsForInterface];
 }
 
 - (void)viewDidUnload
@@ -64,16 +75,32 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+	return interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight;
 }
 
 # pragma mark - Interface controls
 
+- (void)createViewsForInterface {
+    // creates map view:
+    self.mapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    [self.mapView setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
+    [self.view addSubview:self.mapView];
+    
+    [self.view addSubview:self.startStopButton];
+}
+
 - (IBAction)startStopPressed:(id)sender {
     if (self.started) {
-        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
-    } else {
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        [self.environment stopSimulation];
+        
+        [self.startStopButton removeFromSuperview];
+        [self.mapView removeFromSuperview];
+        
+        [self createViewsForInterface];
+    } else {
+        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.environment startSimulation];
     }
     
     self.started = !self.started;

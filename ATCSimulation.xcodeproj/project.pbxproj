@@ -52,7 +52,7 @@
 		82183936148569C000EF4AFE /* BasicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicController.m; path = ATCSimulation/Agents/BasicController.m; sourceTree = "<group>"; };
 		82183937148569C000EF4AFE /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Environment.h; path = ATCSimulation/Agents/Environment.h; sourceTree = "<group>"; };
 		82183938148569C000EF4AFE /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Environment.m; path = ATCSimulation/Agents/Environment.m; sourceTree = "<group>"; };
-		82183939148569C000EF4AFE /* MessageAnalyzerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageAnalyzerDelegate.h; path = ATCSimulation/Agents/MessageAnalyzerDelegate.h; sourceTree = "<group>"; };
+		82183939148569C000EF4AFE /* AgentBehaviorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AgentBehaviorDelegate.h; path = ATCSimulation/Agents/AgentBehaviorDelegate.h; sourceTree = "<group>"; };
 		8218393B148569C000EF4AFE /* Artifacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artifacts.h; sourceTree = "<group>"; };
 		8218393C148569C000EF4AFE /* Artifacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artifacts.m; sourceTree = "<group>"; };
 		8218393D148569C000EF4AFE /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPoint.h; path = ATCSimulation/Agents/Utils/ATCPoint.h; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 				82183930148569C000EF4AFE /* Airplane.m */,
 				82183933148569C000EF4AFE /* BasicAgent.h */,
 				82183934148569C000EF4AFE /* BasicAgent.m */,
-				82183939148569C000EF4AFE /* MessageAnalyzerDelegate.h */,
+				82183939148569C000EF4AFE /* AgentBehaviorDelegate.h */,
 				8204C41F148088750029F349 /* Controllers */,
 			);
 			name = Agents;

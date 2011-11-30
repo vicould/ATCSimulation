@@ -43,7 +43,7 @@
     NSDictionary *messageContent = [notification userInfo];
     
     // transmits the mesage for further analyze to the delegate
-    [self.messageReceiver analyzeMessage:messageContent];
+    [self.messageReceiver analyzeMessage:messageContent withOriginalDestinator:[notification name]];
 }
 
 @synthesize agentName = _agentName;

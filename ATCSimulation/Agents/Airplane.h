@@ -8,13 +8,13 @@
 
 #import "BasicAgent.h"
 #import "ATCPosition.h"
-#import "MessageAnalyzerDelegate.h"
+#import "AgentBehaviorDelegate.h"
 #import "Artifacts.h"
 
 @class ATCPosition;
 @class Artifacts;
 
-@interface Airplane : BasicAgent<MessageAnalyzerDelegate> {
+@interface Airplane : BasicAgent<AgentBehaviorDelegate> {
     @private
     ATCPosition *_currentPosition;
     NSString *_currentController;

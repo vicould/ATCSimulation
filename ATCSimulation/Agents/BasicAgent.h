@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "Constants.h"
-#import "MessageAnalyzerDelegate.h"
+#import "AgentBehaviorDelegate.h"
 
 @interface BasicAgent : NSObject {
     @private
     NSString *_agentName;
-    id<MessageAnalyzerDelegate> _messageReceiver;
+    id<AgentBehaviorDelegate> _messageReceiver;
 }
 
 @property (nonatomic, retain, readonly) NSString *agentName;
-@property (nonatomic, retain) id<MessageAnalyzerDelegate> messageReceiver;
+@property (nonatomic, retain) id<AgentBehaviorDelegate> messageReceiver;
 
 - (id)initWithAgentName:(NSString *)name;
 

@@ -32,9 +32,6 @@
     if (self) {
         self.currentPosition = airplanePosition;
         
-        // inits flight time
-        self.lastPositionCheck = [NSDate date];
-        
         // registers for the broadcast messages in the zone
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[NSString stringWithFormat:@"Zone %d", airplanePosition.zone] object:nil];
         
@@ -72,6 +69,11 @@
 @synthesize currentController = _currentController;
 @synthesize lastPositionCheck = _lastPositionCheck;
 
+- (void)startSimulation {
+    // inits flight time
+    self.lastPositionCheck = [NSDate date];
+}
+
 - (void)updatePosition {
     // calculates current position since last check, and updates the attribute
     NSTimeInterval lastCheckInterval = [self.lastPositionCheck timeIntervalSinceNow];
@@ -83,6 +85,7 @@
     // updates the timestamp since last check
     self.lastPositionCheck = [NSDate date];
     
+    /*
     // verifies if we changed zone
     NSInteger newZone = [Artifacts calculateCurrentZonefromX:self.currentPosition.coordinates.coordinateX andY:self.currentPosition.coordinates.coordinateY];
     
@@ -100,18 +103,26 @@
     
     // sets a timer calling back this method to verify if we changed zone, based on the current
     // route and speed
+     */
 }
 
 # pragma mark - Messages
 
-- (void)analyzeMessage:(NSDictionary *)messageContent {
+- (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator{
     // depending on the type of the message, activates the corresponding method
     
-    // generic broadcast messages
-    
-    // zone broadcast messages
-    
-    // specific messages
+    if ([destinator isEqualToString:kNVBroadcastMessage]) {
+        // generic broadcast messages
+        if ([(NSNumber *)[messageContent objectForKey:kNVKeyCode] intValue] == NVMessageSimulationStarted) {
+            // message triggering simulation start
+        }
+        
+        
+    } else if ([destinator isEqualToString:[NSString stringWithFormat:@"Zone %d", self.currentPosition.zone]]) {
+        // zone broadcast messages
+    } else if ([destinator isEqualToString:self.agentName]) {
+        // specific messages
+    }
     
 }
 
