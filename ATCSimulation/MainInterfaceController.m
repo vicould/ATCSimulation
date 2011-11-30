@@ -25,8 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _started = NO;
-        _environment = [[Environment alloc] init];
+        _started = NO;        
         _airplanesDictionary = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -48,10 +47,8 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (void)loadView {
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
     
     // creates button
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -61,6 +58,13 @@
     [self.startStopButton addTarget:self action:@selector(startStopPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self createViewsForInterface];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    self.environment = [[Environment alloc] initWithDisplayDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -116,12 +120,13 @@
 
 - (void)addAirplaneToMap:(Airplane *)newAirplane {
     UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Pictures/airplane"]];
-    [newAirplaneView setBounds:CGRectMake([newAirplane.currentPosition.coordinates.coordinateX floatValue] - 5, [newAirplane.currentPosition.coordinates.coordinateY floatValue] - 5, 10, 10)];
+    [newAirplaneView setFrame:CGRectMake([newAirplane.currentPosition.coordinates.coordinateX floatValue] - 5, [newAirplane.currentPosition.coordinates.coordinateY floatValue] - 5, 10, 10)];
     
+    [newAirplaneView setBackgroundColor:[UIColor colorWithWhite:0 alpha:1]];
     [self.mapView addSubview:newAirplaneView];
     [newAirplaneView release];
     
-    [self.airplanesDictionary setObject:newAirplaneView forKey:newAirplane];
+    [self.airplanesDictionary setObject:newAirplaneView forKey:newAirplane.agentName];
 }
 
 - (void)removeAirplaneFromMap:(Airplane *)airplane byLandingIt:(BOOL)landed {    
@@ -139,7 +144,7 @@
 
 - (void)updateAirplanesPositions:(NSArray *)airplanes {
     for (Airplane *currentAirplane in airplanes) {
-        UIImageView *airplaneView = [self.airplanesDictionary objectForKey:currentAirplane];
+        UIImageView *airplaneView = [self.airplanesDictionary objectForKey:currentAirplane.agentName];
         if (airplaneView == nil) {
             continue;
         }

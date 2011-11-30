@@ -31,8 +31,10 @@
     NSTimer *_displayUpdateTimer;
 }
 
+- (id)initWithDisplayDelegate:(id)object;
+
 @property (nonatomic, readonly, retain) NSArray *zones;
-@property (nonatomic, readonly, retain) NSMutableArray *airplanes;
+@property (readonly, retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) id<EnvironmentDisplayDelegate> displayDelegate;
 
 - (void)startSimulation;
