@@ -10,9 +10,11 @@
 #import "ATCAirplaneInformation.h"
 #import "AgentBehaviorDelegate.h"
 #import "Artifacts.h"
+#import "BasicController.h"
 
 @class ATCAirplaneInformation;
 @class Artifacts;
+@class BasicController;
 
 @interface Airplane : BasicAgent<AgentBehaviorDelegate> {
     @private

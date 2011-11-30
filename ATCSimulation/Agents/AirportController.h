@@ -7,7 +7,8 @@
 //
 
 #import "BasicController.h"
+#import "AgentBehaviorDelegate.h"
 
-@interface AirportController : BasicController
+@interface AirportController : BasicController<AgentBehaviorDelegate>
 
 @end

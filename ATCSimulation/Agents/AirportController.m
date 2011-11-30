@@ -10,4 +10,12 @@
 
 @implementation AirportController
 
+- (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator {
+    
+}
+
+- (void)startSimulation {
+    
+}
+
 @end

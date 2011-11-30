@@ -33,7 +33,7 @@
         self.currentPosition = airplanePosition;
         
         // registers for the broadcast messages in the zone
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[NSString stringWithFormat:@"Zone %d", airplanePosition.zone] object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController zoneIdentifierAsStringWithID:airplanePosition.zone] object:nil];
         
         self.messageReceiver = self;
     }
@@ -116,7 +116,7 @@
         }
         
         
-    } else if ([destinator isEqualToString:[NSString stringWithFormat:@"Zone %d", self.currentPosition.zone]]) {
+    } else if ([destinator isEqualToString:[BasicController zoneIdentifierAsStringWithID:self.currentPosition.zone]]) {
         // zone broadcast messages
     } else if ([destinator isEqualToString:self.agentName]) {
         // specific messages

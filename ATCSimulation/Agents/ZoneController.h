@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BasicController.h"
+#import "AgentBehaviorDelegate.h"
 
 @class BasicController;
 
-@interface ZoneController : BasicController
+@interface ZoneController : BasicController<AgentBehaviorDelegate> {
+    
+}
 
 @end

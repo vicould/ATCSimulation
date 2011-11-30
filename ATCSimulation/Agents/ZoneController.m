@@ -8,6 +8,18 @@
 
 #import "ZoneController.h"
 
+@interface ZoneController ()
+
+@end
+
 @implementation ZoneController
+
+- (void)startSimulation {
+    
+}
+
+- (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator {
+    
+}
 
 @end
