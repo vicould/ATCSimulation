@@ -26,6 +26,7 @@
 @synthesize coordinates = _coordinates;
 @synthesize speed = _speed;
 @synthesize course = _course;
+@synthesize destination = _destination;
 
 - (void)dealloc {
     self.coordinates = nil;
@@ -35,13 +36,14 @@
 
 # pragma mark - Class methods
 
-+ (ATCAirplaneInformation *)positionFromExisting:(ATCAirplaneInformation *)position {
-    ATCPoint *newPoint = [ATCPoint pointFromExisting:position.coordinates];
++ (ATCAirplaneInformation *)planeInformationFromExisting:(ATCAirplaneInformation *)info {
+    ATCPoint *newPoint = [ATCPoint pointFromExisting:info.coordinates];
     
-    ATCAirplaneInformation *newPosition = [[ATCAirplaneInformation alloc] initWithZone:position.zone
+    ATCAirplaneInformation *newPosition = [[ATCAirplaneInformation alloc] initWithZone:info.zone
                                                         andPoint:newPoint];
-    newPosition.course = position.course;
-    newPosition.speed = position.speed;
+    newPosition.course = info.course;
+    newPosition.speed = info.speed;
+    newPosition.destination = info.destination;
     
     return [newPosition autorelease];
 }

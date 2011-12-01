@@ -17,6 +17,7 @@
     ATCPoint *_coordinates;
     NSInteger _speed;
     NSInteger _course;
+    NSString *_destination;
 }
 
 - (id)initWithZone:(NSInteger)currentZone andPoint:(ATCPoint *)airplaneCoordinates;
@@ -25,7 +26,8 @@
 @property (nonatomic, retain) ATCPoint *coordinates;
 @property (nonatomic, assign) NSInteger speed;
 @property (nonatomic, assign) NSInteger course;
+@property (nonatomic, retain) NSString *destination;
 
-+ (ATCAirplaneInformation *)positionFromExisting:(ATCAirplaneInformation *)position;
++ (ATCAirplaneInformation *)planeInformationFromExisting:(ATCAirplaneInformation *)info;
 
 @end
