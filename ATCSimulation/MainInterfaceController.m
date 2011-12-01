@@ -174,7 +174,7 @@
         [currentAirplaneData replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:currentAirplane.course]];
         // previous position seems to be indeed changed, but next iteration it is the initial value
         previousPosition.coordinateX = currentAirplane.ownInformation.coordinates.coordinateX;
-        previousPosition.coordinateX = currentAirplane.ownInformation.coordinates.coordinateY;
+        previousPosition.coordinateY = currentAirplane.ownInformation.coordinates.coordinateY;
     }
 }
 
