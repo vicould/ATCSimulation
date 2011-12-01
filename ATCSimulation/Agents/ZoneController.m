@@ -14,6 +14,16 @@
 
 @implementation ZoneController
 
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        self.controllerDelegate = self;
+    }
+    
+    return self;
+}
+
 - (void)finishMessageAnalysis:(NSString *)messageContent withMessageCode:(NVMessageCode)code from:(NSString *)sender originallyTo:(NSString *)originalReceiver {
     
 }

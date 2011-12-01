@@ -16,17 +16,19 @@
 @interface BasicController : BasicAgent<AgentBehaviorDelegate> {
     @private
     NSMutableDictionary *_controlledAirplanes;
-    NSInteger _zoneID;
+    int _zoneID;
     id<ControllerBehaviorDelegate> _controllerDelegate;
+    NSTimer *positionUpdatePollingTimer;
 }
 
-@property (nonatomic, readonly, retain) NSMutableDictionary *controlledAirplanes;
-@property (nonatomic, readonly, assign) NSInteger zoneID;
+@property (readonly, retain) NSMutableDictionary *controlledAirplanes;
+@property (nonatomic, readonly, assign) int zoneID;
+@property (nonatomic, retain) id<ControllerBehaviorDelegate> controllerDelegate;
 
 - (void)detectAirplanesInZone;
 
-+ (NSInteger)createZoneID;
-+ (NSString *)zoneIdentifierAsStringWithID:(NSInteger)ID;
-+ (NSString *)messageIdentifierForZone:(NSInteger)zoneID;
++ (int)createZoneID;
++ (NSString *)zoneIdentifierAsStringWithID:(int)ID;
++ (NSString *)messageIdentifierForZone:(int)zoneID;
 
 @end

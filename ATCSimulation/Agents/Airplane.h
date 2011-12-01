@@ -18,9 +18,8 @@
 
 @interface Airplane : BasicAgent<AgentBehaviorDelegate> {
     @private
-    ATCAirplaneInformation *_currentPosition;
+    ATCAirplaneInformation *_ownInformation;
     NSString *_currentController;
-    NSString *_destination;
     NSDate *_lastPositionCheck;
 }
 
@@ -31,6 +30,6 @@
 @property (nonatomic, assign, readonly) NSInteger course;
 @property (nonatomic, retain, readonly) NSString *destination;
 
-- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePosition andDestination:(NSString *)destinationName;
+- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePositionInformation;
 
 @end

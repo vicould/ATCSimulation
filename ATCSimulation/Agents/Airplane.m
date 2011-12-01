@@ -26,14 +26,14 @@
 
 @implementation Airplane
 
-- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePosition andDestination:(NSString *)destinationName {
+- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePosition {
     self = [super initWithAgentName:tailNumber];
     
     if (self) {
         self.ownInformation = airplanePosition;
         
         // registers for the broadcast messages in the zone
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController messageIdentifierForZone:self.ownInformation.zone] object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController messageIdentifierForZone:self.ownInformation.zoneID] object:nil];
         
         self.messageReceiver = self;
     }
@@ -41,7 +41,7 @@
     return self;
 }
 
-@synthesize ownInformation = _currentPosition;
+@synthesize ownInformation = _ownInformation;
 
 - (NSInteger)course {
     return self.ownInformation.course;
@@ -65,7 +65,14 @@
     self.ownInformation.speed = speed;
 }
 
-@synthesize destination = _destination;
+- (NSString *)destination {
+    return self.ownInformation.destination;
+}
+
+- (void)setDestination:(NSString *)destination {
+    self.ownInformation.destination = destination;
+}
+
 @synthesize currentController = _currentController;
 @synthesize lastPositionCheck = _lastPositionCheck;
 
@@ -76,7 +83,7 @@
 
 - (void)updatePosition {
     // calculates current position since last check, and updates the attribute
-    NSTimeInterval lastCheckInterval = [self.lastPositionCheck timeIntervalSinceNow];
+    NSTimeInterval lastCheckInterval = - [self.lastPositionCheck timeIntervalSinceNow];
     
     self.ownInformation.coordinates = [Artifacts calculateNewPositionFromCurrent:self.ownInformation afterInterval:lastCheckInterval];
     
@@ -108,18 +115,26 @@
 
 - (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator{
     // depending on the type of the message, activates the corresponding method
+    NSNumber *messageCode = (NSNumber *)[messageContent objectForKey:kNVKeyCode];
+    
+    NSString *zoneIdentifier = [BasicController messageIdentifierForZone:self.ownInformation.zoneID];
     
     if ([destinator isEqualToString:kNVBroadcastMessage]) {
         // generic broadcast messages
         if ([(NSNumber *)[messageContent objectForKey:kNVKeyCode] intValue] == NVMessageSimulationStarted) {
             // message triggering simulation start
+            [self startSimulation];
         }
-        
-        
-    } else if ([destinator isEqualToString:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.zone]]) {
-        // zone broadcast messages
+    } else if ([destinator isEqualToString:zoneIdentifier]) {
+        // zone broadcast messages        
+        if ([messageCode intValue] == NVMessageCurrentPosition) {
+            [self sendCurrentPosition];
+        }
     } else if ([destinator isEqualToString:self.agentName]) {
         // specific messages
+        if ([messageCode intValue] == NVMessageCurrentPosition) {
+            [self sendCurrentPosition];
+        }
     }
     
 }
@@ -138,10 +153,12 @@
     // checks where the airplane is, to send actual value
     [self updatePosition];
     
-    // creates the message as a string
-    NSString *message = [NSString stringWithFormat:@"%f;%f", self.ownInformation.coordinates.coordinateX, self.ownInformation.coordinates.coordinateY];
     
-    [self sendMessage:message fromType:NVMessageCurrentPosition toAgent:self.currentController];
+    NSLog(@"Updating position for airplane %@", self.agentName);
+    // creates the message as a string
+    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.ownInformation.coordinates.coordinateX, self.ownInformation.coordinates.coordinateY, self.course, self.speed];
+    
+    [self sendMessage:message fromType:NVMessageCurrentPosition toAgent:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.zoneID]];
 }
 
 - (void)dealloc {

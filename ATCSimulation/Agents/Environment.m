@@ -18,7 +18,7 @@
 
 - (ATCZone *)createZoneWithController:(BasicController *)controller isAirportController:(BOOL)airportController;
 - (AirportController *)createDestinationWithName:(NSString *)destinationName;
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName destination:(NSString *)destination andInitialPosition:(ATCAirplaneInformation *)position;
+- (Airplane *)createAirplaneWithName:(NSString *)airplaneName andInitialPositionInfo:(ATCAirplaneInformation *)position;
 
 - (void)askForDisplayUpdate:(NSTimer *)theTimer;
 - (void)performDisplayUpdate;
@@ -48,16 +48,17 @@
 
 - (void)createEnvironment {
     // creates the different zones composing the map
-//    self.zones = [NSArray arrayWithObject:];
+    self.zones = [NSArray arrayWithObject:[[ZoneController alloc] init]];
     
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:0 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:250]];
-    aPosition.course = 90;
+    ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:250]];
+    aPosition.course = 180;
     aPosition.speed = 100;
+    aPosition.destination = @"KORD";
     
-    [self.airplanes addObject:[self createAirplaneWithName:@"N38394" destination:@"KORD"andInitialPosition:aPosition]];
+    [self.airplanes addObject:[self createAirplaneWithName:@"N38394" andInitialPositionInfo:aPosition]];
     
     [aPosition release];
     
@@ -71,9 +72,9 @@
     return [zone autorelease];
 }
 
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName destination:(NSString *)destination andInitialPosition:(ATCAirplaneInformation *)position {
+- (Airplane *)createAirplaneWithName:(NSString *)airplaneName andInitialPositionInfo:(ATCAirplaneInformation *)position {
     
-    Airplane *newAirplane = [[Airplane alloc] initWithTailNumber:airplaneName initialPosition:position andDestination:destination];
+    Airplane *newAirplane = [[Airplane alloc] initWithTailNumber:airplaneName initialPosition:position];
     
     [self.airplanes addObject:newAirplane];
     

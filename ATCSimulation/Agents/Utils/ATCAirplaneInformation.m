@@ -15,14 +15,14 @@
     self = [super init];
     
     if (self) {
-        self.zone = currentZone;
+        self.zoneID = currentZone;
         self.coordinates = airplaneCoordinates;
     }
     
     return self;
 }
 
-@synthesize zone = _zone;
+@synthesize zoneID = _zoneID;
 @synthesize coordinates = _coordinates;
 @synthesize speed = _speed;
 @synthesize course = _course;
@@ -39,7 +39,7 @@
 + (ATCAirplaneInformation *)planeInformationFromExisting:(ATCAirplaneInformation *)info {
     ATCPoint *newPoint = [ATCPoint pointFromExisting:info.coordinates];
     
-    ATCAirplaneInformation *newPosition = [[ATCAirplaneInformation alloc] initWithZone:info.zone
+    ATCAirplaneInformation *newPosition = [[ATCAirplaneInformation alloc] initWithZone:info.zoneID
                                                         andPoint:newPoint];
     newPosition.course = info.course;
     newPosition.speed = info.speed;
