@@ -54,7 +54,7 @@
     self.airplanes = [NSMutableArray array];
     
     ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:250]];
-    aPosition.course = 180;
+    aPosition.course = 270;
     aPosition.speed = 100;
     aPosition.destination = @"KORD";
     
@@ -75,8 +75,6 @@
 - (Airplane *)createAirplaneWithName:(NSString *)airplaneName andInitialPositionInfo:(ATCAirplaneInformation *)position {
     
     Airplane *newAirplane = [[Airplane alloc] initWithTailNumber:airplaneName initialPosition:position];
-    
-    [self.airplanes addObject:newAirplane];
     
     return [newAirplane autorelease];
 }

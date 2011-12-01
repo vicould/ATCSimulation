@@ -128,7 +128,7 @@
     [self.mapView addSubview:newAirplaneView];
     [newAirplaneView release];
     
-    [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], nil] forKey:newAirplane.agentName];
+    [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], [ATCPoint pointFromExisting:newAirplane.ownInformation.coordinates], nil] forKey:newAirplane.agentName];
 }
 
 - (void)crashAirplane:(Airplane *)airplane {
@@ -150,13 +150,16 @@
         NSMutableArray *currentAirplaneData = [self.airplanesDictionary objectForKey:currentAirplane.agentName];
         UIImageView *airplaneView = [currentAirplaneData objectAtIndex:0];
         NSNumber *previousCourse = [currentAirplaneData objectAtIndex:1];
+        ATCPoint *previousPosition = [currentAirplaneData objectAtIndex:2];
         
         if (airplaneView == nil) {
             continue;
         }
-        
+        NSLog(@"%f, %f", currentAirplane.ownInformation.coordinates.coordinateX - previousPosition.coordinateX, currentAirplane.ownInformation.coordinates.coordinateY - previousPosition.coordinateY);
+                                                                                                                                                                          
         // prepares the transformation of the view, with the necessary translation and rotation
-        CATransform3D translation = CATransform3DMakeTranslation(currentAirplane.ownInformation.coordinates.coordinateX - airplaneView.layer.position.x, currentAirplane.ownInformation.coordinates.coordinateY - airplaneView.layer.position.y, 0);
+        CATransform3D translation = CATransform3DMakeTranslation(currentAirplane.ownInformation.coordinates.coordinateX - previousPosition.coordinateX, currentAirplane.ownInformation.coordinates.coordinateY - previousPosition.coordinateY, 0);
+        // the translation should be made according to what has been previously translated
         
         CATransform3D rotation = CATransform3DMakeRotation((currentAirplane.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
         
@@ -169,6 +172,9 @@
         [airplaneView setNeedsDisplay];
         
         [currentAirplaneData replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:currentAirplane.course]];
+        // previous position seems to be indeed changed, but next iteration it is the initial value
+        previousPosition.coordinateX = currentAirplane.ownInformation.coordinates.coordinateX;
+        previousPosition.coordinateX = currentAirplane.ownInformation.coordinates.coordinateY;
     }
 }
 
