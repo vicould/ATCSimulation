@@ -10,7 +10,7 @@
 
 @implementation ATCPoint
 
-- (id)initWithCoordinateX:(NSNumber *)x andCoordinateY:(NSNumber *)y {
+- (id)initWithCoordinateX:(float)x andCoordinateY:(float)y {
     self = [super init];
     
     if (self) {
@@ -24,18 +24,10 @@
 @synthesize coordinateX = _coordinateX;
 @synthesize coordinateY = _coordinateY;
 
-- (void)dealloc {
-    self.coordinateX = nil;
-    self.coordinateY = nil;
-    
-    [super dealloc];
-}
-
-
 # pragma mark - class methods
 
 + (ATCPoint *)pointFromExisting:(ATCPoint *)point {
-    return [[[ATCPoint alloc] initWithCoordinateX:[NSNumber numberWithFloat:[point.coordinateX floatValue]] andCoordinateY:[NSNumber numberWithFloat:[point.coordinateY floatValue]]] autorelease];
+    return [[[ATCPoint alloc] initWithCoordinateX:point.coordinateX andCoordinateY:point.coordinateY] autorelease];
 }
 
 @end

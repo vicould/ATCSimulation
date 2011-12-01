@@ -47,7 +47,7 @@
 }
 
 @synthesize agentName = _agentName;
-@synthesize messageReceiver = _messageReceiver;
+@synthesize messageReceiver = _messageReceiverDelegate;
 
 - (void)dealloc {
     self.agentName = nil;

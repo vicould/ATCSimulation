@@ -44,6 +44,7 @@
 		8204C40A148080C40029F349 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8204C40B148080C40029F349 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8214C5CD1486A83F00B9CDB1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8214C5D1148703E300B9CDB1 /* ControllerBehaviorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerBehaviorDelegate.h; path = ATCSimulation/Agents/ControllerBehaviorDelegate.h; sourceTree = "<group>"; };
 		8218392F148569C000EF4AFE /* Airplane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Airplane.h; path = ATCSimulation/Agents/Airplane.h; sourceTree = "<group>"; };
 		82183930148569C000EF4AFE /* Airplane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Airplane.m; path = ATCSimulation/Agents/Airplane.m; sourceTree = "<group>"; };
 		82183931148569C000EF4AFE /* AirportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirportController.h; path = ATCSimulation/Agents/AirportController.h; sourceTree = "<group>"; };
@@ -59,7 +60,7 @@
 		8218393C148569C000EF4AFE /* Artifacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artifacts.m; sourceTree = "<group>"; };
 		8218393D148569C000EF4AFE /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPoint.h; path = ATCSimulation/Agents/Utils/ATCPoint.h; sourceTree = "<group>"; };
 		8218393E148569C000EF4AFE /* ATCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPoint.m; path = ATCSimulation/Agents/Utils/ATCPoint.m; sourceTree = "<group>"; };
-		8218393F148569C000EF4AFE /* ATCAirplaneInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ATCAirplaneInformation.h; path = ATCSimulation/Agents/Utils/ATCAirplaneInformation.h; sourceTree = "<group>"; };
+		8218393F148569C000EF4AFE /* ATCAirplaneInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCAirplaneInformation.h; path = ATCSimulation/Agents/Utils/ATCAirplaneInformation.h; sourceTree = "<group>"; };
 		82183940148569C000EF4AFE /* ATCAirplaneInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCAirplaneInformation.m; path = ATCSimulation/Agents/Utils/ATCAirplaneInformation.m; sourceTree = "<group>"; };
 		82183941148569C000EF4AFE /* ATCZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCZone.h; path = ATCSimulation/Agents/Utils/ATCZone.h; sourceTree = "<group>"; };
 		82183942148569C000EF4AFE /* ATCZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCZone.m; path = ATCSimulation/Agents/Utils/ATCZone.m; sourceTree = "<group>"; };
@@ -166,10 +167,11 @@
 			children = (
 				82183931148569C000EF4AFE /* AirportController.h */,
 				82183932148569C000EF4AFE /* AirportController.m */,
-				82183935148569C000EF4AFE /* BasicController.h */,
-				82183936148569C000EF4AFE /* BasicController.m */,
 				82183947148569C000EF4AFE /* ZoneController.h */,
 				82183948148569C000EF4AFE /* ZoneController.m */,
+				82183935148569C000EF4AFE /* BasicController.h */,
+				82183936148569C000EF4AFE /* BasicController.m */,
+				8214C5D1148703E300B9CDB1 /* ControllerBehaviorDelegate.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

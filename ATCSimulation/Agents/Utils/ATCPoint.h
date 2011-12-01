@@ -10,14 +10,14 @@
 
 @interface ATCPoint : NSObject {
     @private
-    NSNumber *_coordinateX;
-    NSNumber *_coordinateY;
+    float _coordinateX;
+    float _coordinateY;
 }
 
-- (id)initWithCoordinateX:(NSNumber *)x andCoordinateY:(NSNumber *)y;
+- (id)initWithCoordinateX:(float)x andCoordinateY:(float)y;
 
-@property (nonatomic, retain) NSNumber *coordinateX;
-@property (nonatomic, retain) NSNumber *coordinateY;
+@property (nonatomic, assign) float coordinateX;
+@property (nonatomic, assign) float coordinateY;
 
 + (ATCPoint *)pointFromExisting:(ATCPoint *)point;
 

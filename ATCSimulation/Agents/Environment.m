@@ -53,7 +53,7 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:0 andPoint:[[ATCPoint alloc] initWithCoordinateX:[NSNumber numberWithInt:250] andCoordinateY:[NSNumber numberWithInt:250]]];
+    ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:0 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:250]];
     aPosition.course = 90;
     aPosition.speed = 100;
     

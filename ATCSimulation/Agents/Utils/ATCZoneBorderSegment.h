@@ -19,17 +19,17 @@
     ATCPoint *_extremity2;
     
     // ax + by + c = 0
-    NSNumber *_aLine;
-    NSNumber *_bLine;
-    NSNumber *_cLine;
+    float _aLine;
+    float _bLine;
+    float _cLine;
     
-    NSNumber *_aOrthogonalLine1;
-    NSNumber *_bOrthogonalLine1;
-    NSNumber *_cOrthogonalLine1;
+    float _aOrthogonalLine1;
+    float _bOrthogonalLine1;
+    float _cOrthogonalLine1;
     
-    NSNumber *_aOrthogonalLine2;
-    NSNumber *_bOrthogonalLine2;
-    NSNumber *_cOrthogonalLine2;
+    float _aOrthogonalLine2;
+    float _bOrthogonalLine2;
+    float _cOrthogonalLine2;
     BOOL _directionPositive;
 }
 
@@ -37,12 +37,12 @@
 
 @property (nonatomic, readonly, retain) ATCPoint *extremity1;
 @property (nonatomic, readonly, retain) ATCPoint *extremity2;
-@property (nonatomic, readonly, retain) NSNumber *aLine;
-@property (nonatomic, readonly, retain) NSNumber *bLine;
-@property (nonatomic, readonly, retain) NSNumber *cLine;
+@property (nonatomic, readonly, assign) float aLine;
+@property (nonatomic, readonly, assign) float bLine;
+@property (nonatomic, readonly, assign) float cLine;
 @property (nonatomic, readonly, assign) BOOL directionPositive;
 
 - (BOOL)pointBelongsToGeneratedHalfSpace:(ATCPoint *)testedPoint;
-- (NSNumber *)calculateDistanceToSegment:(ATCAirplaneInformation *)testedPosition;
+- (float )calculateDistanceToSegment:(ATCAirplaneInformation *)testedPosition;
 
 @end

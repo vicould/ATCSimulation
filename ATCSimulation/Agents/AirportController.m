@@ -10,11 +10,7 @@
 
 @implementation AirportController
 
-- (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator {
-    
-}
-
-- (void)startSimulation {
+- (void)finishMessageAnalysis:(NSString *)messageContent withMessageCode:(NVMessageCode)code from:(NSString *)sender originallyTo:(NSString *)originalReceiver {
     
 }
 

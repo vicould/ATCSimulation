@@ -120,7 +120,7 @@
 
 - (void)addAirplaneToMap:(Airplane *)newAirplane {
     UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
-    [newAirplaneView setFrame:CGRectMake([newAirplane.ownInformation.coordinates.coordinateX floatValue] - 10, [newAirplane.ownInformation.coordinates.coordinateY floatValue] - 10, 20, 20)];
+    [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.coordinateX - 10, newAirplane.ownInformation.coordinates.coordinateY - 10, 20, 20)];
     
     CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
     newAirplaneView.layer.transform = initialCourseRotation;
@@ -156,7 +156,7 @@
         }
         
         // prepares the transformation of the view, with the necessary translation and rotation
-        CATransform3D translation = CATransform3DMakeTranslation([currentAirplane.ownInformation.coordinates.coordinateX floatValue] - airplaneView.layer.position.x, [currentAirplane.ownInformation.coordinates.coordinateY floatValue] - airplaneView.layer.position.y, 0);
+        CATransform3D translation = CATransform3DMakeTranslation(currentAirplane.ownInformation.coordinates.coordinateX - airplaneView.layer.position.x, currentAirplane.ownInformation.coordinates.coordinateY - airplaneView.layer.position.y, 0);
         
         CATransform3D rotation = CATransform3DMakeRotation((currentAirplane.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
         

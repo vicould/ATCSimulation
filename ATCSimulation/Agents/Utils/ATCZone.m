@@ -35,21 +35,20 @@
     [self.adjacentZones addObject:zone];
 }
 
-- (NSNumber *)calculateDistanceToZoneBorderWithPosition:(ATCAirplaneInformation *)position {
+- (float)calculateDistanceToZoneBorderWithPosition:(ATCAirplaneInformation *)position {
     
-    NSNumber *distance = [NSNumber numberWithFloat:MAXFLOAT];
+    float distance = MAXFLOAT;
     
     // tests all segments composing the borders to have the nearest intersection
     for (ATCZoneBorderSegment *segment in self.corners) {
-        NSNumber *currentDistance = [segment calculateDistanceToSegment:position];
-        if ([currentDistance compare:distance] == NSOrderedDescending) {
+        float currentDistance = [segment calculateDistanceToSegment:position];
+        if (currentDistance < distance) {
             // new minimum
-            [distance release];
-            distance = [currentDistance retain];
+            distance = currentDistance;
         }
     }
     
-    return [distance autorelease];
+    return distance;
 }
 
 - (BOOL)pointBelongsToZone:(ATCPoint *)point {

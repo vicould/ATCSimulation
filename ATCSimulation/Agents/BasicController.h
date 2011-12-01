@@ -8,14 +8,19 @@
 
 #import "BasicAgent.h"
 #import "AgentBehaviorDelegate.h"
+#import "ControllerBehaviorDelegate.h"
+#import "ATCAirplaneInformation.h"
+
+@class ATCAirplaneInformation;
 
 @interface BasicController : BasicAgent<AgentBehaviorDelegate> {
     @private
-    NSMutableArray *_controlledAirplanes;
+    NSMutableDictionary *_controlledAirplanes;
     NSInteger _zoneID;
+    id<ControllerBehaviorDelegate> _controllerDelegate;
 }
 
-@property (nonatomic, readonly, retain) NSMutableArray *controlledAirplanes;
+@property (nonatomic, readonly, retain) NSMutableDictionary *controlledAirplanes;
 @property (nonatomic, readonly, assign) NSInteger zoneID;
 
 - (void)detectAirplanesInZone;
