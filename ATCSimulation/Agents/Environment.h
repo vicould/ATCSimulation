@@ -15,6 +15,7 @@
 #import "ZoneController.h"
 
 #import "EnvironmentDisplayDelegate.h"
+#import "ArtifactsDelegate.h"
 
 @class ATCZone;
 @class Airplane;
@@ -23,7 +24,7 @@
 @class AirportController;
 @class ZoneController;
 
-@interface Environment : NSObject {
+@interface Environment : NSObject<ArtifactsDelegate> {
     @private
     NSArray *_zones;
     NSMutableArray *_airplanes;

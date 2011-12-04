@@ -102,8 +102,6 @@
         if (new) {
             [self.controlledAirplanes setValue:information forKey:tailNumber];
         }
-        
-        NSLog(@"Finished position update for airplane %@", tailNumber);
     }
 
 }

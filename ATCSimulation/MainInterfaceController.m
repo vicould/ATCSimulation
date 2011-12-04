@@ -120,7 +120,7 @@
 
 - (void)addAirplaneToMap:(Airplane *)newAirplane {
     UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
-    [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.coordinateX - 10, newAirplane.ownInformation.coordinates.coordinateY - 10, 20, 20)];
+    [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.coordinateX * SCALE - 10, newAirplane.ownInformation.coordinates.coordinateY * SCALE - 10, 20, 20)];
     
     CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
     newAirplaneView.layer.transform = initialCourseRotation;
@@ -128,7 +128,7 @@
     [self.mapView addSubview:newAirplaneView];
     [newAirplaneView release];
     
-    [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], [ATCPoint pointFromExisting:newAirplane.ownInformation.coordinates], nil] forKey:newAirplane.agentName];
+    [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], [ATCPoint pointFromExisting:newAirplane.ownInformation.coordinates], nil] forKey:newAirplane.ownInformation.airplaneName];
 }
 
 - (void)crashAirplane:(Airplane *)airplane {
@@ -147,7 +147,7 @@
 
 - (void)updateAirplanesPositions:(NSArray *)airplanes {
     for (Airplane *currentAirplane in airplanes) {
-        NSMutableArray *currentAirplaneData = [self.airplanesDictionary objectForKey:currentAirplane.agentName];
+        NSMutableArray *currentAirplaneData = [self.airplanesDictionary objectForKey:currentAirplane.ownInformation.airplaneName];
         UIImageView *airplaneView = [currentAirplaneData objectAtIndex:0];
         NSNumber *previousCourse = [currentAirplaneData objectAtIndex:1];
         ATCPoint *previousPosition = [currentAirplaneData objectAtIndex:2];
@@ -155,10 +155,9 @@
         if (airplaneView == nil) {
             continue;
         }
-        NSLog(@"%f, %f", currentAirplane.ownInformation.coordinates.coordinateX - previousPosition.coordinateX, currentAirplane.ownInformation.coordinates.coordinateY - previousPosition.coordinateY);
                                                                                                                                                                           
         // prepares the transformation of the view, with the necessary translation and rotation
-        CATransform3D translation = CATransform3DMakeTranslation(currentAirplane.ownInformation.coordinates.coordinateX - previousPosition.coordinateX, currentAirplane.ownInformation.coordinates.coordinateY - previousPosition.coordinateY, 0);
+        CATransform3D translation = CATransform3DMakeTranslation((currentAirplane.ownInformation.coordinates.coordinateX - previousPosition.coordinateX) * SCALE, (currentAirplane.ownInformation.coordinates.coordinateY - previousPosition.coordinateY) * SCALE, 0);
         // the translation should be made according to what has been previously translated
         
         CATransform3D rotation = CATransform3DMakeRotation((currentAirplane.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
@@ -176,6 +175,19 @@
         previousPosition.coordinateX = currentAirplane.ownInformation.coordinates.coordinateX;
         previousPosition.coordinateY = currentAirplane.ownInformation.coordinates.coordinateY;
     }
+}
+
+
+- (void)displayZones:(NSArray *)zonesBorders {
+    
+}
+
+- (void)displayZonesControllers:(NSArray *)zonesControllers {
+    
+}
+
+- (void)displayAirportControllers:(NSArray *)airportsControllers {
+    
 }
 
 - (void)dealloc {

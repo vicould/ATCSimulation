@@ -12,6 +12,7 @@
 #import "ATCAirplaneInformation.h"
 
 @class ATCAirplaneInformation;
+@class Environment;
 
 @interface BasicController : BasicAgent<AgentBehaviorDelegate> {
     @private

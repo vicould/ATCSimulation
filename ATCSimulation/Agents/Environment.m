@@ -18,7 +18,7 @@
 
 - (ATCZone *)createZoneWithController:(BasicController *)controller isAirportController:(BOOL)airportController;
 - (AirportController *)createDestinationWithName:(NSString *)destinationName;
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName andInitialPositionInfo:(ATCAirplaneInformation *)position;
+- (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position;
 
 - (void)askForDisplayUpdate:(NSTimer *)theTimer;
 - (void)performDisplayUpdate;
@@ -53,14 +53,15 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *aPosition = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:250]];
-    aPosition.course = 270;
-    aPosition.speed = 100;
-    aPosition.destination = @"KORD";
+    ATCAirplaneInformation *airplaneData = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:80]];
+    airplaneData.course = 270;
+    airplaneData.speed = 100;
+    airplaneData.destination = @"KORD";
+    airplaneData.airplaneName = @"N38394";
     
-    [self.airplanes addObject:[self createAirplaneWithName:@"N38394" andInitialPositionInfo:aPosition]];
+    [self.airplanes addObject:[self createAirplaneWithInitialInfo:airplaneData]];
     
-    [aPosition release];
+    [airplaneData release];
     
     // displays the first airplanes on the interface    
     [self performSelectorOnMainThread:@selector(performAddMultipleAirplanesToMap) withObject:nil waitUntilDone:NO];
@@ -72,9 +73,9 @@
     return [zone autorelease];
 }
 
-- (Airplane *)createAirplaneWithName:(NSString *)airplaneName andInitialPositionInfo:(ATCAirplaneInformation *)position {
+- (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position {
     
-    Airplane *newAirplane = [[Airplane alloc] initWithTailNumber:airplaneName initialPosition:position];
+    Airplane *newAirplane = [[Airplane alloc] initWithInitialData:position];
     
     return [newAirplane autorelease];
 }
@@ -86,6 +87,8 @@
 }
 
 - (void)startSimulation {
+    // draws the borders of the zones on the interface
+    
     // sends broadcast message so that the agents know the simulation started
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Environment", [NSNumber numberWithInt:NVMessageSimulationStarted], nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, nil]];
     
@@ -123,6 +126,20 @@
 
 - (void)performAirplane:(Airplane *)airplane {
     [self.displayDelegate landAirplane:airplane];
+}
+
+# pragma mark - Artifacts delegation
+
+- (void)updateInterfaceWithInformationsForZone:(NSArray *)informations {
+    
+}
+
+- (void)landAirplane:(ATCAirplaneInformation *)airplane {
+    
+}
+
+- (void)crashAirplane:(ATCAirplaneInformation *)airplane {
+    
 }
 
 @end

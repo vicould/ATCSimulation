@@ -76,6 +76,7 @@
 		8218394C148569C000EF4AFE /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		8218395D14856CCD00EF4AFE /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane.png; path = Pictures/airplane.png; sourceTree = SOURCE_ROOT; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
+		82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtifactsDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				8218393B148569C000EF4AFE /* Artifacts.h */,
+				82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */,
 				8218393C148569C000EF4AFE /* Artifacts.m */,
 				82183945148569C000EF4AFE /* Constants.h */,
 				82183946148569C000EF4AFE /* Constants.m */,

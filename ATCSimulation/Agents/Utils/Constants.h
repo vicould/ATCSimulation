@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define SCALE 3
+
 extern NSString * const kNVBroadcastMessage;
 
 extern NSString * const kNVKeyOrigin;

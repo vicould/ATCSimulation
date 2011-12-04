@@ -26,14 +26,14 @@
 
 @implementation Airplane
 
-- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePosition {
-    self = [super initWithAgentName:tailNumber];
+- (id)initWithInitialData:(ATCAirplaneInformation *)airplaneInformation {
+    self = [super initWithAgentName:airplaneInformation.airplaneName];
     
     if (self) {
-        self.ownInformation = airplanePosition;
+        self.ownInformation = airplaneInformation;
         
         // registers for the broadcast messages in the zone
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController messageIdentifierForZone:self.ownInformation.zoneID] object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController messageIdentifierForZone:self.ownInformation.currentZoneID] object:nil];
         
         self.messageReceiver = self;
     }
@@ -117,7 +117,7 @@
     // depending on the type of the message, activates the corresponding method
     NSNumber *messageCode = (NSNumber *)[messageContent objectForKey:kNVKeyCode];
     
-    NSString *zoneIdentifier = [BasicController messageIdentifierForZone:self.ownInformation.zoneID];
+    NSString *zoneIdentifier = [BasicController messageIdentifierForZone:self.ownInformation.currentZoneID];
     
     if ([destinator isEqualToString:kNVBroadcastMessage]) {
         // generic broadcast messages
@@ -153,12 +153,10 @@
     // checks where the airplane is, to send actual value
     [self updatePosition];
     
-    
-    NSLog(@"Updating position for airplane %@", self.agentName);
     // creates the message as a string
     NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.ownInformation.coordinates.coordinateX, self.ownInformation.coordinates.coordinateY, self.course, self.speed];
     
-    [self sendMessage:message fromType:NVMessageCurrentPosition toAgent:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.zoneID]];
+    [self sendMessage:message fromType:NVMessageCurrentPosition toAgent:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID]];
 }
 
 - (void)dealloc {

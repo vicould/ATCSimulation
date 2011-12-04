@@ -23,13 +23,13 @@
     NSDate *_lastPositionCheck;
 }
 
+- (id)initWithInitialData:(ATCAirplaneInformation *)airplaneInformation;
+
 // properties needed for the omniscience of the environment
 // between the agents only messages are used otherwise
 @property (nonatomic, retain, readonly) ATCAirplaneInformation *ownInformation;
 @property (nonatomic, assign, readonly) NSInteger speed;
 @property (nonatomic, assign, readonly) NSInteger course;
 @property (nonatomic, retain, readonly) NSString *destination;
-
-- (id)initWithTailNumber:(NSString *)tailNumber initialPosition:(ATCAirplaneInformation *)airplanePositionInformation;
 
 @end

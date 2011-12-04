@@ -13,20 +13,22 @@
 
 @interface ATCAirplaneInformation : NSObject {
     @private
-    NSInteger _zoneID;
+    NSInteger _currentZoneID;
     ATCPoint *_coordinates;
     NSInteger _speed;
     NSInteger _course;
     NSString *_destination;
+    NSString *_airplaneName;
 }
 
 - (id)initWithZone:(NSInteger)currentZone andPoint:(ATCPoint *)airplaneCoordinates;
 
-@property (nonatomic, assign) NSInteger zoneID;
+@property (nonatomic, assign) NSInteger currentZoneID;
 @property (nonatomic, retain) ATCPoint *coordinates;
 @property (nonatomic, assign) NSInteger speed;
 @property (nonatomic, assign) NSInteger course;
 @property (nonatomic, retain) NSString *destination;
+@property (nonatomic, retain) NSString *airplaneName;
 
 + (ATCAirplaneInformation *)planeInformationFromExisting:(ATCAirplaneInformation *)info;
 
