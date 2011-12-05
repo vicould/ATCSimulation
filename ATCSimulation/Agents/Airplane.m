@@ -144,7 +144,7 @@
     self.currentController = controllerName;
     
     // calls new controller, to transmit destination, position, course, and speed
-    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.ownInformation.coordinates.coordinateX, self.ownInformation.coordinates.coordinateY, self.course, self.speed];
+    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.ownInformation.coordinates.X, self.ownInformation.coordinates.Y, self.course, self.speed];
     
     [self sendMessage:message fromType:NVMessageEnteringNewZone toAgent:self.currentController];
 }
@@ -154,7 +154,7 @@
     [self updatePosition];
     
     // creates the message as a string
-    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.ownInformation.coordinates.coordinateX, self.ownInformation.coordinates.coordinateY, self.course, self.speed];
+    NSString *message = [NSString stringWithFormat:@"%@;%f;%f;%d;%d", self.destination, self.ownInformation.coordinates.X, self.ownInformation.coordinates.Y, self.course, self.speed];
     
     [self sendMessage:message fromType:NVMessageCurrentPosition toAgent:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID]];
 }

@@ -96,8 +96,8 @@
         }
         
         information.destination = [positionElements objectAtIndex:0];
-        information.coordinates.coordinateX = [(NSString *)[positionElements objectAtIndex:1] floatValue];
-        information.coordinates.coordinateY = [(NSString *)[positionElements objectAtIndex:2] floatValue];
+        information.coordinates.X = [(NSString *)[positionElements objectAtIndex:1] floatValue];
+        information.coordinates.Y = [(NSString *)[positionElements objectAtIndex:2] floatValue];
         information.course = [(NSString *)[positionElements objectAtIndex:3] intValue];
         information.speed = [(NSString *)[positionElements objectAtIndex:4] intValue];
         

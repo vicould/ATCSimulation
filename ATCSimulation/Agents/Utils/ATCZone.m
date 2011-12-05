@@ -38,8 +38,8 @@
             ATCPoint *extremity2 = [cornersArray objectAtIndex:(i + 1)];
             
             // calculates the deltas of x and y
-            deltaX = extremity2.coordinateX - extremity1.coordinateX;
-            deltaY = extremity2.coordinateY - extremity1.coordinateY;
+            deltaX = extremity2.X - extremity1.X;
+            deltaY = extremity2.Y - extremity1.Y;
             
             if (deltaX > 0) {
                 if (deltaY >= 0) {
@@ -71,8 +71,8 @@
         ATCPoint *extremity2 = [cornersArray objectAtIndex:(i + 1)];
         
         // calculates the deltas of x and y
-        deltaX = extremity2.coordinateX - extremity1.coordinateX;
-        deltaY = extremity2.coordinateY - extremity1.coordinateY;
+        deltaX = extremity2.X - extremity1.X;
+        deltaY = extremity2.Y - extremity1.Y;
         
         if (deltaX > 0) {
             if (deltaY >= 0) {

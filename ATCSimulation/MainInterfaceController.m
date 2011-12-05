@@ -142,7 +142,7 @@
 
 - (void)addAirplaneToMap:(Airplane *)newAirplane {
     UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
-    [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.coordinateX * SCALE - 10, newAirplane.ownInformation.coordinates.coordinateY * SCALE - 10, 20, 20)];
+    [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.X * SCALE - 10, newAirplane.ownInformation.coordinates.Y * SCALE - 10, 20, 20)];
     
     // sets the initial orientation for the aircraft
     CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
@@ -181,7 +181,7 @@
         }
                                                                                                                                                                           
         // prepares the transformation of the view, with the necessary translation and rotation
-        CATransform3D translation = CATransform3DMakeTranslation((currentAirplane.ownInformation.coordinates.coordinateX - previousPosition.coordinateX) * SCALE, (currentAirplane.ownInformation.coordinates.coordinateY - previousPosition.coordinateY) * SCALE, 0);
+        CATransform3D translation = CATransform3DMakeTranslation((currentAirplane.ownInformation.coordinates.X - previousPosition.X) * SCALE, (currentAirplane.ownInformation.coordinates.Y - previousPosition.Y) * SCALE, 0);
         // the translation should be made according to what has been previously translated
         
         CATransform3D rotation = CATransform3DMakeRotation((currentAirplane.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
@@ -196,8 +196,8 @@
         
         [currentAirplaneData replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:currentAirplane.course]];
         // previous position seems to be indeed changed, but next iteration it is the initial value
-        previousPosition.coordinateX = currentAirplane.ownInformation.coordinates.coordinateX;
-        previousPosition.coordinateY = currentAirplane.ownInformation.coordinates.coordinateY;
+        previousPosition.X = currentAirplane.ownInformation.coordinates.X;
+        previousPosition.Y = currentAirplane.ownInformation.coordinates.Y;
     }
 }
 
@@ -216,17 +216,17 @@
         // moves from point to point to draw the contour
         for (ATCPoint *point in currentZone.corners) {
             if (firstPoint) {
-                CGContextMoveToPoint(drawingContext,  point.coordinateX * SCALE, point.coordinateY * SCALE);
+                CGContextMoveToPoint(drawingContext,  point.X * SCALE, point.Y * SCALE);
                 firstPoint = NO;
             } else {
-                CGContextAddLineToPoint(drawingContext, point.coordinateX * SCALE, point.coordinateY * SCALE);
+                CGContextAddLineToPoint(drawingContext, point.X * SCALE, point.Y * SCALE);
             }
         }
         CGContextClosePath(drawingContext);
         CGContextStrokePath(drawingContext);
         
         // displays the id of the zone in the top left corner
-        UILabel *zoneIDLabel = [[UILabel alloc] initWithFrame:CGRectMake(((ATCPoint *)[currentZone.corners objectAtIndex:0]).coordinateX * SCALE + 20, ((ATCPoint *)[currentZone.corners objectAtIndex:0]).coordinateY * SCALE + 20, 55, 21)];
+        UILabel *zoneIDLabel = [[UILabel alloc] initWithFrame:CGRectMake(((ATCPoint *)[currentZone.corners objectAtIndex:0]).X * SCALE + 20, ((ATCPoint *)[currentZone.corners objectAtIndex:0]).Y * SCALE + 20, 55, 21)];
         zoneIDLabel.text = [NSString stringWithFormat:@"Zone %@", currentZone.controllerName];
         [self.mapView addSubview:zoneIDLabel];
         [zoneIDLabel release];
@@ -240,7 +240,7 @@
     for (NSString *name in zonesControllers.keyEnumerator) {
         UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"controller"]];
         ATCPoint *controller_position = [zonesControllers objectForKey:name];
-        controllerView.center = CGPointMake(controller_position.coordinateX * SCALE + 60, controller_position.coordinateY * SCALE + 60);
+        controllerView.center = CGPointMake(controller_position.X * SCALE + 60, controller_position.Y * SCALE + 60);
         [self.mapView addSubview:controllerView];
         [controllerView release];
     }
@@ -252,7 +252,7 @@
         UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"runway"]];
         ATCPoint *controller_position = [airportsControllers objectForKey:name];
         // the position of runway needs to be accurate, that's why we don't add an offset
-        controllerView.center = CGPointMake(controller_position.coordinateX * SCALE, controller_position.coordinateY * SCALE);
+        controllerView.center = CGPointMake(controller_position.X * SCALE, controller_position.Y * SCALE);
         [self.mapView addSubview:controllerView];
         [controllerView release];
     }

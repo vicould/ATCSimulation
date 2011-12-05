@@ -38,9 +38,9 @@
         self.extremity1 = extremity1;
         self.extremity2 = extremity2;
         
-        self.aLine = self.extremity2.coordinateY - self.extremity1.coordinateY;
-        self.bLine = self.extremity1.coordinateX - self.extremity2.coordinateX;
-        self.cLine = - self.bLine * self.extremity1.coordinateY - self.aLine * self.extremity1.coordinateX;
+        self.aLine = self.extremity2.Y - self.extremity1.Y;
+        self.bLine = self.extremity1.X - self.extremity2.X;
+        self.cLine = - self.bLine * self.extremity1.Y - self.aLine * self.extremity1.X;
         
         self.aOrthogonalLine1 = - self.bLine;
         self.bOrthogonalLine1 = self.aLine;
@@ -85,14 +85,14 @@
         float cosCourse = cosf(testedPosition.course * 2 * M_PI / 360.0);
         float sinCourse = sinf(testedPosition.course * 2 * M_PI / 360.0);
         
-        float generatedLineYIntersect = sinCourse * testedPosition.coordinates.coordinateY + cosCourse * testedPosition.coordinates.coordinateX;
+        float generatedLineYIntersect = sinCourse * testedPosition.coordinates.Y + cosCourse * testedPosition.coordinates.X;
         
         float intersectionY = (generatedLineYIntersect + cosCourse) / (self.aLine * sinCourse - self.bLine * cosCourse);
         float intersectionX = - (sinCourse * intersectionY - generatedLineYIntersect) / cosCourse;
         
-        if (intersectionX >= self.extremity1.coordinateX && intersectionX <= self.extremity2.coordinateX && intersectionY >= self.extremity1.coordinateY  && intersectionY <= self.extremity2.coordinateY) {
+        if (intersectionX >= self.extremity1.X && intersectionX <= self.extremity2.X && intersectionY >= self.extremity1.Y  && intersectionY <= self.extremity2.Y) {
             // intersection is inside the segment, ok
-            return sqrtf(powf(testedPosition.coordinates.coordinateX - intersectionX, 2) + powf(testedPosition.coordinates.coordinateY - intersectionY, 2));
+            return sqrtf(powf(testedPosition.coordinates.X - intersectionX, 2) + powf(testedPosition.coordinates.Y - intersectionY, 2));
         }
     }
     
@@ -100,7 +100,7 @@
 }
 
 - (BOOL)testHalfSpaceWithInequationCoefficientsA:(float )a andB:(float )b andC:(float )c andInequalityPositive:(BOOL)positive atPoint:(ATCPoint *)testedPoint {
-    float inequationResult = a * testedPoint.coordinateX + b * testedPoint.coordinateY + c;
+    float inequationResult = a * testedPoint.X + b * testedPoint.Y + c;
     
     if (positive) {
         return inequationResult >= 0;

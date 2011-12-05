@@ -14,20 +14,20 @@
     self = [super init];
     
     if (self) {
-        self.coordinateX = x;
-        self.coordinateY = y;
+        self.X = x;
+        self.Y = y;
     }
     
     return self;
 }
 
-@synthesize coordinateX = _coordinateX;
-@synthesize coordinateY = _coordinateY;
+@synthesize X = _X;
+@synthesize Y = _Y;
 
 # pragma mark - class methods
 
 + (ATCPoint *)pointFromExisting:(ATCPoint *)point {
-    return [[[ATCPoint alloc] initWithCoordinateX:point.coordinateX andCoordinateY:point.coordinateY] autorelease];
+    return [[[ATCPoint alloc] initWithCoordinateX:point.X andCoordinateY:point.Y] autorelease];
 }
 
 @end
