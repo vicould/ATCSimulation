@@ -10,7 +10,9 @@
 
 @interface Environment ()
 
-@property (nonatomic, retain) NSArray *zones;
+@property (nonatomic, retain) NSMutableArray *zones;
+@property (nonatomic, retain) NSMutableArray *airportControllers;
+@property (nonatomic, retain) NSMutableArray *zoneControllers;
 @property (retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) NSTimer *displayUpdateTimer;
 
@@ -42,6 +44,8 @@
 }
 
 @synthesize zones = _zones;
+@synthesize airportControllers = _airportControllers;
+@synthesize zoneControllers = _zoneControllers;
 @synthesize airplanes = _airplanes;
 @synthesize displayDelegate = _displayDelegate;
 @synthesize displayUpdateTimer = _displayUpdateTimer;
@@ -101,6 +105,8 @@
 - (void)stopSimulation {
     self.zones = nil;
     self.airplanes = nil;
+    self.airportControllers = nil;
+    self.zoneControllers = nil;
     
     // stops the timer
     [self.displayUpdateTimer invalidate];

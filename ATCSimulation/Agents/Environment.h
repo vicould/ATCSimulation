@@ -26,7 +26,9 @@
 
 @interface Environment : NSObject<ArtifactsDelegate> {
     @private
-    NSArray *_zones;
+    NSMutableArray *_zones;
+    NSMutableArray *_airportControllers;
+    NSMutableArray *_zoneControllers;
     NSMutableArray *_airplanes;
     id<EnvironmentDisplayDelegate> _displayDelegate;
     NSTimer *_displayUpdateTimer;
@@ -34,7 +36,9 @@
 
 - (id)initWithDisplayDelegate:(id)object;
 
-@property (nonatomic, readonly, retain) NSArray *zones;
+@property (nonatomic, readonly, retain) NSMutableArray *zones;
+@property (nonatomic, readonly, retain) NSMutableArray *airportControllers;
+@property (nonatomic, readonly, retain) NSMutableArray *zoneControllers;
 @property (readonly, retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) id<EnvironmentDisplayDelegate> displayDelegate;
 

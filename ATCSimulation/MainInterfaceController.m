@@ -122,12 +122,14 @@
     UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
     [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.coordinateX * SCALE - 10, newAirplane.ownInformation.coordinates.coordinateY * SCALE - 10, 20, 20)];
     
+    // sets the initial orientation for the aircraft
     CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
     newAirplaneView.layer.transform = initialCourseRotation;
     
     [self.mapView addSubview:newAirplaneView];
     [newAirplaneView release];
     
+    // the dict contains as key the name of the aircraft, and an array as object containing the view, the orientation and the position
     [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], [ATCPoint pointFromExisting:newAirplane.ownInformation.coordinates], nil] forKey:newAirplane.ownInformation.airplaneName];
 }
 
@@ -178,16 +180,60 @@
 }
 
 
-- (void)displayZones:(NSArray *)zonesBorders {
+- (void)displayZones:(NSArray *)zones {
+    CGContextRef drawingContext = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(drawingContext, 3);
     
+    UIColor *color = [UIColor blueColor];
+    CGContextSetStrokeColorWithColor(drawingContext, color.CGColor);
+    
+    // Array of zones, each having a property storing the corners of the zone
+    for (ATCZone *currentZone in zones) {
+        BOOL firstPoint = YES;
+        
+        // moves from point to point to draw the contour
+        for (ATCPoint *point in currentZone.corners) {
+            if (firstPoint) {
+                CGContextMoveToPoint(drawingContext,  point.coordinateX * SCALE, point.coordinateY * SCALE);
+                firstPoint = NO;
+            } else {
+                CGContextAddLineToPoint(drawingContext, point.coordinateX * SCALE, point.coordinateY * SCALE);
+            }
+        }
+        CGContextClosePath(drawingContext);
+        CGContextStrokePath(drawingContext);
+        
+        // displays the id of the zone in the top left corner
+        UILabel *zoneIDLabel = [[UILabel alloc] initWithFrame:CGRectMake(((ATCPoint *)[currentZone.corners objectAtIndex:0]).coordinateX * SCALE + 20, ((ATCPoint *)[currentZone.corners objectAtIndex:0]).coordinateY * SCALE + 20, 55, 21)];
+        zoneIDLabel.text = [NSString stringWithFormat:@"Zone %@", currentZone.controllerName];
+        [self.mapView addSubview:zoneIDLabel];
+        [zoneIDLabel release];
+    }
+    
+    [color release];
 }
 
-- (void)displayZonesControllers:(NSArray *)zonesControllers {
-    
+- (void)displayZonesControllers:(NSDictionary *)zonesControllers {
+    // the dictionary contains the name of the agent as key, and the position as value
+    for (NSString *name in zonesControllers.keyEnumerator) {
+        UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"controller"]];
+        ATCPoint *controller_position = [zonesControllers objectForKey:name];
+        controllerView.center = CGPointMake(controller_position.coordinateX * SCALE + 60, controller_position.coordinateY * SCALE + 60);
+        [self.mapView addSubview:controllerView];
+        [controllerView release];
+    }
 }
 
-- (void)displayAirportControllers:(NSArray *)airportsControllers {
-    
+- (void)displayAirportControllers:(NSDictionary *)airportsControllers {
+    // the dictionary contains the name of the agent as key, and the position as value
+    for (NSString *name in airportsControllers.keyEnumerator) {
+        UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"runway"]];
+        ATCPoint *controller_position = [airportsControllers objectForKey:name];
+        // the position of runway needs to be accurate, that's why we don't add an offset
+        controllerView.center = CGPointMake(controller_position.coordinateX * SCALE, controller_position.coordinateY * SCALE);
+        [self.mapView addSubview:controllerView];
+        [controllerView release];
+    }
 }
 
 - (void)dealloc {

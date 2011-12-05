@@ -16,8 +16,8 @@
 - (void)landAirplane:(Airplane *)airplane;
 - (void)updateAirplanesPositions:(NSArray *)airplanes;
 
-- (void)displayZones:(NSArray *)zonesBorders;
-- (void)displayZonesControllers:(NSArray *)zonesControllers;
-- (void)displayAirportControllers:(NSArray *)airportsControllers;
+- (void)displayZones:(NSArray *)zones;
+- (void)displayZonesControllers:(NSDictionary *)zonesControllers;
+- (void)displayAirportControllers:(NSDictionary *)airportsControllers;
 
 @end

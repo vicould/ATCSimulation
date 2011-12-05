@@ -19,14 +19,16 @@
 @private
     NSMutableSet *_adjacentZones;
     NSArray *_corners;
+    NSMutableArray *_borders;
     NSString *_controllerName;
     BOOL _airport;
 }
 
 - (id)initWithCorners:(NSArray *)cornersArray withControllerName:(NSString *)controllerName andIsAirport:(BOOL)airport;
 
-@property (nonatomic, retain) NSMutableSet *adjacentZones;
-@property (nonatomic, retain) NSArray *corners;
+@property (nonatomic, readonly, retain) NSMutableSet *adjacentZones;
+@property (nonatomic, readonly, retain) NSArray *corners;
+@property (nonatomic, readonly, retain) NSMutableArray *borders;
 @property (nonatomic, assign, readonly, getter=isAirport) BOOL airport;
 @property (nonatomic, retain, readonly) NSString *controllerName;
 
