@@ -30,6 +30,10 @@
 		8218395A148569C000EF4AFE /* MainInterfaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8218394B148569C000EF4AFE /* MainInterfaceController.xib */; };
 		8218395B148569C000EF4AFE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8218394C148569C000EF4AFE /* MainWindow.xib */; };
 		8218395E14856CCD00EF4AFE /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 8218395D14856CCD00EF4AFE /* airplane.png */; };
+		824300A0148C7E1B00DDA901 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009C148C7E1B00DDA901 /* controller.png */; };
+		824300A1148C7E1B00DDA901 /* crash.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009D148C7E1B00DDA901 /* crash.png */; };
+		824300A2148C7E1B00DDA901 /* runway.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009E148C7E1B00DDA901 /* runway.png */; };
+		824300A3148C7E1B00DDA901 /* small_airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009F148C7E1B00DDA901 /* small_airplane.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +79,10 @@
 		8218394B148569C000EF4AFE /* MainInterfaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainInterfaceController.xib; sourceTree = "<group>"; };
 		8218394C148569C000EF4AFE /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		8218395D14856CCD00EF4AFE /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane.png; path = Pictures/airplane.png; sourceTree = SOURCE_ROOT; };
+		8243009C148C7E1B00DDA901 /* controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controller.png; path = Pictures/controller.png; sourceTree = SOURCE_ROOT; };
+		8243009D148C7E1B00DDA901 /* crash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = crash.png; path = Pictures/crash.png; sourceTree = SOURCE_ROOT; };
+		8243009E148C7E1B00DDA901 /* runway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = runway.png; path = Pictures/runway.png; sourceTree = SOURCE_ROOT; };
+		8243009F148C7E1B00DDA901 /* small_airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = small_airplane.png; path = Pictures/small_airplane.png; sourceTree = SOURCE_ROOT; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 		82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtifactsDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +149,10 @@
 		8204C402148080C40029F349 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8243009C148C7E1B00DDA901 /* controller.png */,
+				8243009D148C7E1B00DDA901 /* crash.png */,
+				8243009E148C7E1B00DDA901 /* runway.png */,
+				8243009F148C7E1B00DDA901 /* small_airplane.png */,
 				8218395D14856CCD00EF4AFE /* airplane.png */,
 				8204C403148080C40029F349 /* ATCSimulation-Info.plist */,
 				8204C404148080C40029F349 /* InfoPlist.strings */,
@@ -279,6 +291,10 @@
 				8218395A148569C000EF4AFE /* MainInterfaceController.xib in Resources */,
 				8218395B148569C000EF4AFE /* MainWindow.xib in Resources */,
 				8218395E14856CCD00EF4AFE /* airplane.png in Resources */,
+				824300A0148C7E1B00DDA901 /* controller.png in Resources */,
+				824300A1148C7E1B00DDA901 /* crash.png in Resources */,
+				824300A2148C7E1B00DDA901 /* runway.png in Resources */,
+				824300A3148C7E1B00DDA901 /* small_airplane.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
