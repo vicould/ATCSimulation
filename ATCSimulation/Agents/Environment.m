@@ -103,13 +103,21 @@
 }
 
 - (void)stopSimulation {
+    // sends a message to the agents so that they stop playing with each other
+    NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Environment", [NSNumber numberWithInt:NVMessageSimulationStopped], nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, nil]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNVBroadcastMessage object:nil userInfo:messageContent];
+    
+    // stops the timer
+    [self.displayUpdateTimer invalidate];
+    
+}
+
+- (void)resetSimulation {
     self.zones = nil;
     self.airplanes = nil;
     self.airportControllers = nil;
     self.zoneControllers = nil;
-    
-    // stops the timer
-    [self.displayUpdateTimer invalidate];
     
     [self createEnvironment];
 }

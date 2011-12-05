@@ -13,11 +13,11 @@
 @interface BasicAgent : NSObject {
     @private
     NSString *_agentName;
-    id<AgentBehaviorDelegate> _messageReceiverDelegate;
+    id<AgentBehaviorDelegate> _agentBehaviorDelegate;
 }
 
 @property (nonatomic, retain, readonly) NSString *agentName;
-@property (nonatomic, retain) id<AgentBehaviorDelegate> messageReceiver;
+@property (nonatomic, retain) id<AgentBehaviorDelegate> agentBehaviorDelegate;
 
 - (id)initWithAgentName:(NSString *)name;
 

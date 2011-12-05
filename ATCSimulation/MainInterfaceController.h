@@ -11,6 +11,11 @@
 #import "Environment.h"
 #import "EnvironmentDisplayDelegate.h"
 
+#define SimulationReady 0
+#define SimulationStarted 1
+#define SimulationStopped 2
+
+
 @class Environment;
 
 @interface MainInterfaceController : UIViewController<EnvironmentDisplayDelegate> {
@@ -18,7 +23,7 @@
     UIButton *_startStopButton;
     UIView *_mapView;
     
-    BOOL _started;
+    int _simulationState;
     Environment *_environment;
     NSMutableDictionary *_airplanesDictionary;
 }

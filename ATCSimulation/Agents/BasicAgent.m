@@ -42,16 +42,30 @@
 - (void)receiveMessage:(NSNotification *)notification {
     NSDictionary *messageContent = [notification userInfo];
     
+    int code = [(NSNumber *)[messageContent objectForKey:kNVKeyCode] intValue];
+    
+    if ([[notification name] isEqualToString:kNVBroadcastMessage]) {
+        // generic broadcast messages
+        if (code == NVMessageSimulationStarted) {
+            // message triggering simulation start
+            [self.agentBehaviorDelegate startSimulation];
+            return;
+        } else if (code == NVMessageSimulationStopped) {
+            [self.agentBehaviorDelegate stopSimulation];
+            return;
+        }
+    }
+    
     // transmits the mesage for further analyze to the delegate
-    [self.messageReceiver analyzeMessage:messageContent withOriginalDestinator:[notification name]];
+    [self.agentBehaviorDelegate analyzeMessage:messageContent withOriginalDestinator:[notification name]];
 }
 
 @synthesize agentName = _agentName;
-@synthesize messageReceiver = _messageReceiverDelegate;
+@synthesize agentBehaviorDelegate = _agentBehaviorDelegate;
 
 - (void)dealloc {
     self.agentName = nil;
-    self.messageReceiver = nil;
+    self.agentBehaviorDelegate = nil;
     
     // unregisters the notifications observers
     [[NSNotificationCenter defaultCenter] removeObserver:self name:self.agentName object:nil];

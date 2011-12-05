@@ -10,7 +10,7 @@
 
 @interface MainInterfaceController ()
 
-@property (nonatomic, assign) BOOL started;
+@property (nonatomic, assign) int simulationState;
 @property (nonatomic, retain) Environment *environment;
 @property (nonatomic, retain) NSMutableDictionary *airplanesDictionary;
 
@@ -25,14 +25,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _started = NO;        
+        _simulationState = -1;        
         _airplanesDictionary = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 @synthesize startStopButton = _startStopButton;
-@synthesize started = _started;
+@synthesize simulationState = _simulationState;
 @synthesize environment = _environment;
 @synthesize airplanesDictionary = _airplanesDictionary;
 @synthesize mapView = _mapView;
@@ -65,6 +65,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.environment = [[Environment alloc] initWithDisplayDelegate:self];
+    self.simulationState = SimulationReady;
 }
 
 - (void)viewDidUnload
@@ -94,20 +95,41 @@
 }
 
 - (IBAction)startStopPressed:(id)sender {
-    if (self.started) {
-        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
-        [self.environment stopSimulation];
-        
-        [self.startStopButton removeFromSuperview];
-        [self.mapView removeFromSuperview];
-        
-        [self createViewsForInterface];
-    } else {
-        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
-        [self.environment startSimulation];
+    switch (self.simulationState) {
+        case SimulationReady:
+            [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+            
+            // starts the simulation
+            [self.environment startSimulation];
+            self.simulationState = SimulationStarted;
+            break;
+            
+        case SimulationStarted:
+            [self.startStopButton setTitle:@"Reset" forState:UIControlStateNormal];
+            
+            // stops the simulation
+            [self.environment stopSimulation];
+            self.simulationState = SimulationStopped;
+            break;
+            
+        case SimulationStopped:
+            [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+            
+            // resets the simulation
+            [self.environment resetSimulation];
+            [self.mapView removeFromSuperview];
+            self.mapView = nil;
+            // as the views are stacks, and we want the button to be always on top of the stack, remove it
+            // from the superview to add it above the map layer
+            [self.startStopButton removeFromSuperview];
+            
+            [self createViewsForInterface];
+            self.simulationState = SimulationReady;
+            break;
+            
+        default:
+            break;
     }
-    
-    self.started = !self.started;
 }
 
 # pragma mark - environment delegate methods

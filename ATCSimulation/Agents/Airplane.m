@@ -35,7 +35,7 @@
         // registers for the broadcast messages in the zone
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController messageIdentifierForZone:self.ownInformation.currentZoneID] object:nil];
         
-        self.messageReceiver = self;
+        self.agentBehaviorDelegate = self;
     }
     
     return self;
@@ -81,6 +81,10 @@
     self.lastPositionCheck = [NSDate date];
 }
 
+- (void)stopSimulation {
+    // nothing special to do
+}
+
 - (void)updatePosition {
     // calculates current position since last check, and updates the attribute
     NSTimeInterval lastCheckInterval = - [self.lastPositionCheck timeIntervalSinceNow];
@@ -121,10 +125,6 @@
     
     if ([destinator isEqualToString:kNVBroadcastMessage]) {
         // generic broadcast messages
-        if ([(NSNumber *)[messageContent objectForKey:kNVKeyCode] intValue] == NVMessageSimulationStarted) {
-            // message triggering simulation start
-            [self startSimulation];
-        }
     } else if ([destinator isEqualToString:zoneIdentifier]) {
         // zone broadcast messages        
         if ([messageCode intValue] == NVMessageCurrentPosition) {

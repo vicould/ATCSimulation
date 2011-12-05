@@ -27,7 +27,7 @@
         _zoneID = ID;
         _controlledAirplanes = [[NSMutableDictionary alloc] init];
         
-        self.messageReceiver = self;
+        self.agentBehaviorDelegate = self;
         
     }
     
@@ -52,6 +52,11 @@
     positionUpdatePollingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(detectAirplanesInZone) userInfo:nil repeats:YES];    
 }
 
+- (void)stopSimulation {
+    // stops position polling timer
+    [positionUpdatePollingTimer invalidate];
+}
+
 # pragma mark - Messages
 
 # pragma mark Emission
@@ -66,9 +71,6 @@
     
     if (code == NVMessageCurrentPosition) {
         [self analyzePosition:[messageContent objectForKey:kNVKeyContent] fromAirplaneName:[messageContent objectForKey:kNVKeyOrigin]];
-        
-    } else if (code == NVMessageSimulationStarted) {
-        [self startSimulation];
     } else {
         // passes the message for further analysis to the delegate
         [self.controllerDelegate finishMessageAnalysis:(NSString *)[messageContent objectForKey:kNVKeyContent] withMessageCode:(NSInteger)code from:(NSString *)[messageContent objectForKey:kNVKeyOrigin] originallyTo:destinator];

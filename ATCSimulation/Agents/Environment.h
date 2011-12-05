@@ -44,5 +44,6 @@
 
 - (void)startSimulation;
 - (void)stopSimulation;
+- (void)resetSimulation;
 
 @end
