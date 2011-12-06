@@ -10,18 +10,16 @@
 
 @implementation Artifacts
 
-+ (NSInteger)calculateCurrentZonefromX:(NSNumber *)currentX andY:(NSNumber *)currentY {
++ (NSInteger)calculateCurrentZonefromPoint:(ATCPoint *)location{
     return 0;
 }
 
-+ (NSNumber *)distanceFromNextZone:(ATCAirplaneInformation *)position onRoute:(NSInteger *)route {
++ (float)distanceFromNextZone:(ATCPoint *)position onRoute:(NSInteger *)route {
     
     return 0;
 }
 
-+ (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval {
-
-    
++ (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval {    
     ATCPoint *newPoint = [ATCPoint pointFromExisting:currentPosition.coordinates];
     float distance = interval * 10 * currentPosition.speed / 3600.0;
     

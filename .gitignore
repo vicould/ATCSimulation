@@ -13,3 +13,7 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+
+# ignore doc
+doc/*
+ATCSimulation.conf

@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void)sendMessage:(NSString *)message fromType:(NSInteger)type toAgent:(NSString *)agentName {    
+- (void)sendMessage:(NSString *)message fromType:(NVMessageCode)type toAgent:(NSString *)agentName {    
     // builds an info dictionary, specifying the originating agent, and some attributes
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.agentName, [NSNumber numberWithInt:type], message, nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, kNVKeyContent, nil]];
     

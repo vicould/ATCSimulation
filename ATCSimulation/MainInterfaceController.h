@@ -19,6 +19,9 @@
 
 @class Environment;
 
+/**
+ * The view controller for the interface, communicating with the user and the simulation.
+ */
 @interface MainInterfaceController : UIViewController<EnvironmentDisplayDelegate> {
     @private
     UIButton *_startStopButton;

@@ -12,6 +12,10 @@
 
 @class BasicController;
 
+/**
+ * One of the two specialized agent playing the role of a controller. It can track the airplanes, and communicate with
+ * them.
+ */
 @interface ZoneController : BasicController<ControllerBehaviorDelegate> {
     
 }

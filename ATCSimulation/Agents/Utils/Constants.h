@@ -16,7 +16,8 @@ extern NSString * const kNVKeyOrigin;
 extern NSString * const kNVKeyCode;
 extern NSString * const kNVKeyContent;
 
-/* message codes
+/**
+ * Codes for the messages exchanged by the agents.
  * 1 airplane
  * 2 zone controller
  * 3 airport controller
@@ -69,8 +70,8 @@ enum {
 };
 typedef NSInteger NVMessageCode;
 
-/*
- *
+/**
+ * Priority for the airplanes, to set the right order for landing.
  */
 enum {
     NVPriorityLow = -100,
