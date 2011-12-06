@@ -13,8 +13,6 @@
 @property (retain) NSMutableDictionary *controlledAirplanes;
 @property (nonatomic, assign) int zoneID;
 
-- (void)analyzePosition:(NSString *)positionString fromAirplaneName:(NSString *)tailNumber;
-
 @end
 
 @implementation BasicController
@@ -68,44 +66,11 @@
 # pragma mark Processing
 - (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator {
     int code = [(NSNumber *)[messageContent objectForKey:kNVKeyCode] intValue];
-    
-    if (code == NVMessageCurrentPosition) {
-        [self analyzePosition:[messageContent objectForKey:kNVKeyContent] fromAirplaneName:[messageContent objectForKey:kNVKeyOrigin]];
-    } else {
-        // passes the message for further analysis to the delegate
-        [self.controllerDelegate finishMessageAnalysis:(NSString *)[messageContent objectForKey:kNVKeyContent] withMessageCode:(NSInteger)code from:(NSString *)[messageContent objectForKey:kNVKeyOrigin] originallyTo:destinator];
-    }
-}
 
-- (void)analyzePosition:(NSString *)positionString fromAirplaneName:(NSString *)tailNumber {
-    // message is a position
-    // let's parse it
-    NSArray *positionElements = [positionString componentsSeparatedByString:@";"];
+    // common messages evaluation
     
-    if ([positionElements count] != 5) {
-        // invalid message ...
-    } else  {
-        BOOL new = NO;
-        
-        ATCAirplaneInformation *information = [self.controlledAirplanes objectForKey:[positionElements objectAtIndex:0]];
-        
-        if (information == nil) {
-            // airplane is new, we should add it to the collection of controlled airplanes
-            new = YES;
-            information = [[ATCAirplaneInformation alloc] initWithZone:self.zoneID andPoint:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0]];
-        }
-        
-        information.destination = [positionElements objectAtIndex:0];
-        information.coordinates.X = [(NSString *)[positionElements objectAtIndex:1] floatValue];
-        information.coordinates.Y = [(NSString *)[positionElements objectAtIndex:2] floatValue];
-        information.course = [(NSString *)[positionElements objectAtIndex:3] intValue];
-        information.speed = [(NSString *)[positionElements objectAtIndex:4] intValue];
-        
-        if (new) {
-            [self.controlledAirplanes setValue:information forKey:tailNumber];
-        }
-    }
-
+    // otherwise passes the message for further analysis to the delegate
+    [self.controllerDelegate finishMessageAnalysis:(NSString *)[messageContent objectForKey:kNVKeyContent] withMessageCode:(NSInteger)code from:(NSString *)[messageContent objectForKey:kNVKeyOrigin] originallyTo:destinator];
 }
 
 # pragma mark - Class stuff

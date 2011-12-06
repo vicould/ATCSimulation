@@ -79,15 +79,25 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *airplaneData = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:230 andCoordinateY:80]];
-    airplaneData.course = 270;
-    airplaneData.speed = 100;
-    airplaneData.destination = @"KORD";
-    airplaneData.airplaneName = @"N38394";
+    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:230 andCoordinateY:80]];
+    airplaneData1.course = 270;
+    airplaneData1.speed = 100;
+    airplaneData1.destination = @"KLAF";
+    airplaneData1.airplaneName = @"N38394";
     
-    [self.airplanes addObject:[self createAirplaneWithInitialInfo:airplaneData]];
+    [self.airplanes addObject:[self createAirplaneWithInitialInfo:airplaneData1]];
     
-    [airplaneData release];
+    [airplaneData1 release];
+    
+    ATCAirplaneInformation *airplaneData2 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:30 andCoordinateY:20]];
+    airplaneData2.course = 120;
+    airplaneData2.speed = 100;
+    airplaneData2.destination = @"KORD";
+    airplaneData2.airplaneName = @"N39862";
+    
+    [self.airplanes addObject:[self createAirplaneWithInitialInfo:airplaneData2]];
+    
+    [airplaneData2 release];
     
     // display the initial interface
     [self performSelectorOnMainThread:@selector(representStartingEnvironment) withObject:nil waitUntilDone:NO];
