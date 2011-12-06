@@ -44,11 +44,11 @@
         
         self.aOrthogonalLine1 = - self.bLine;
         self.bOrthogonalLine1 = self.aLine;
-        self.cOrthogonalLine1 = - self.bOrthogonalLine1 * self.extremity1.coordinateY - self.aOrthogonalLine1 * self.extremity1.coordinateX;
+        self.cOrthogonalLine1 = - self.bOrthogonalLine1 * self.extremity1.Y - self.aOrthogonalLine1 * self.extremity1.X;
         
         self.aOrthogonalLine2 = - self.bLine;
         self.bOrthogonalLine2 = self.aLine;
-        self.cOrthogonalLine2 = - self.bOrthogonalLine2 * self.extremity2.coordinateY - self.aOrthogonalLine2 * self.extremity2.coordinateX;
+        self.cOrthogonalLine2 = - self.bOrthogonalLine2 * self.extremity2.Y - self.aOrthogonalLine2 * self.extremity2.X;
     }
     
     return self;

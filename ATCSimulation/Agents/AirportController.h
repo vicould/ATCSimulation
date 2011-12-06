@@ -9,6 +9,15 @@
 #import "BasicController.h"
 #import "ControllerBehaviorDelegate.h"
 
-@interface AirportController : BasicController<ControllerBehaviorDelegate>
+@interface AirportController : BasicController<ControllerBehaviorDelegate> {
+    @private
+    NSString *_airportName;
+    ATCPoint *_airportLocation;
+}
+
+- (id)initWithAirportName:(NSString *)airportName andLocation:(ATCPoint *)airportLocation;
+
+@property (nonatomic, readonly, retain) NSString *airportName;
+@property (nonatomic, readonly, retain) ATCPoint *airportLocation;
 
 @end

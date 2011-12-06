@@ -8,17 +8,30 @@
 
 #import "AirportController.h"
 
+@interface AirportController ()
+
+@property (nonatomic, retain) NSString *airportName;
+@property (nonatomic, retain) ATCPoint *airportLocation;
+
+@end
+
 @implementation AirportController
 
-- (id)init {
+
+- (id)initWithAirportName:(NSString *)airportName andLocation:(ATCPoint *)airportLocation {
     self = [super init];
     
     if (self) {
         self.controllerDelegate = self;
+        _airportName = airportName;
+        _airportLocation = airportLocation;
     }
     
-    return self;
+    return self;    
 }
+
+@synthesize airportName = _airportName;
+@synthesize airportLocation = _airportLocation;
 
 - (void)finishMessageAnalysis:(NSString *)messageContent withMessageCode:(NVMessageCode)code from:(NSString *)sender originallyTo:(NSString *)originalReceiver {
     

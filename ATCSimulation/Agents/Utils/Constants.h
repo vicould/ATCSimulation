@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define SCALE 3
+#define SCALE 4
 
 extern NSString * const kNVBroadcastMessage;
 
@@ -30,6 +30,8 @@ enum {
     NVMessageRefused = -1,
     NVMessageSimulationStarted = 10,
     NVMessageSimulationStopped = 11,
+
+//Airplane to zone controller
     NVMessageEnteringNewZone = 1201,
     NVMessageLeavingZone = 1202,
     NVMessageCurrentPosition = 1203,
@@ -38,11 +40,32 @@ enum {
     NVMessageEmergency = 1206,
     NVMessageIncident = 1207,
     NVMessageLandingIntentionZone = 1208,
+
+//Airplane to airpvort controller
     NVMessageLandingIntentionAirport = 1301,
     NVMessagePlaneLanded = 1302,
     NVMessageDistanceFromAirport = 1303,
     NVMessageLevelOfFuel = 1304,
     NVMessageAircraftCategory = 1305,
+
+//Zone controller to airplane
+    NVMessageEnteringNewZoneClearance = 2301,
+    NVMessageEnteringNewZoneRefusal = 2302,    
+    NVMessageContactAirport = 2303,
+    NVMessageRefuseContactAirport = 2304,
+    NVMessageNewRouteInstruction = 2305,
+    
+    
+//Zone controller to zone controller
+    NVMessageInformAdjacentController = 2201,
+    
+//Airport controller to airplane
+    NVMessageNewZoneClearance = 3101, 
+    NVMessageEnterZoneRefusal = 3102,
+    NVMessageLandingIntentionAirplane = 3103, 
+    NVMessageCancelLanding = 3104,
+    NVMessageWaitingTime = 3105
+
 };
 typedef NSInteger NVMessageCode;
 

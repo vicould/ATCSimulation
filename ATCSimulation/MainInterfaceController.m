@@ -36,6 +36,8 @@
 @synthesize environment = _environment;
 @synthesize airplanesDictionary = _airplanesDictionary;
 @synthesize mapView = _mapView;
+@synthesize controllersView = _controllersView;
+@synthesize airplanesView = _airplanesView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -75,6 +77,7 @@
     // e.g. self.myOutlet = nil;
     self.startStopButton = nil;
     self.mapView = nil;
+    self.airplanesView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -87,9 +90,17 @@
 
 - (void)createViewsForInterface {
     // creates map view:
-    self.mapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    self.mapView = [[MapView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
     [self.mapView setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
     [self.view addSubview:self.mapView];
+
+    self.controllersView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    [self.controllersView setBackgroundColor:[UIColor colorWithWhite:1 alpha:0]];
+    [self.view addSubview:self.controllersView];
+    
+    self.airplanesView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    [self.airplanesView setBackgroundColor:[UIColor colorWithWhite:1 alpha:0]];
+    [self.view addSubview:self.airplanesView];
     
     [self.view addSubview:self.startStopButton];
 }
@@ -119,6 +130,10 @@
             [self.environment resetSimulation];
             [self.mapView removeFromSuperview];
             self.mapView = nil;
+            
+            [self.airplanesView removeFromSuperview];
+            self.airplanesView = nil;
+            
             // as the views are stacks, and we want the button to be always on top of the stack, remove it
             // from the superview to add it above the map layer
             [self.startStopButton removeFromSuperview];
@@ -148,7 +163,7 @@
     CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
     newAirplaneView.layer.transform = initialCourseRotation;
     
-    [self.mapView addSubview:newAirplaneView];
+    [self.controllersView addSubview:newAirplaneView];
     [newAirplaneView release];
     
     // the dict contains as key the name of the aircraft, and an array as object containing the view, the orientation and the position
@@ -203,36 +218,8 @@
 
 
 - (void)displayZones:(NSArray *)zones {
-    CGContextRef drawingContext = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(drawingContext, 3);
-    
-    UIColor *color = [UIColor blueColor];
-    CGContextSetStrokeColorWithColor(drawingContext, color.CGColor);
-    
-    // Array of zones, each having a property storing the corners of the zone
-    for (ATCZone *currentZone in zones) {
-        BOOL firstPoint = YES;
-        
-        // moves from point to point to draw the contour
-        for (ATCPoint *point in currentZone.corners) {
-            if (firstPoint) {
-                CGContextMoveToPoint(drawingContext,  point.X * SCALE, point.Y * SCALE);
-                firstPoint = NO;
-            } else {
-                CGContextAddLineToPoint(drawingContext, point.X * SCALE, point.Y * SCALE);
-            }
-        }
-        CGContextClosePath(drawingContext);
-        CGContextStrokePath(drawingContext);
-        
-        // displays the id of the zone in the top left corner
-        UILabel *zoneIDLabel = [[UILabel alloc] initWithFrame:CGRectMake(((ATCPoint *)[currentZone.corners objectAtIndex:0]).X * SCALE + 20, ((ATCPoint *)[currentZone.corners objectAtIndex:0]).Y * SCALE + 20, 55, 21)];
-        zoneIDLabel.text = [NSString stringWithFormat:@"Zone %@", currentZone.controllerName];
-        [self.mapView addSubview:zoneIDLabel];
-        [zoneIDLabel release];
-    }
-    
-    [color release];
+    self.mapView.zonesAndTheirBorders = zones;
+    [self.mapView setNeedsDisplay];
 }
 
 - (void)displayZonesControllers:(NSDictionary *)zonesControllers {
@@ -241,7 +228,7 @@
         UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"controller"]];
         ATCPoint *controller_position = [zonesControllers objectForKey:name];
         controllerView.center = CGPointMake(controller_position.X * SCALE + 60, controller_position.Y * SCALE + 60);
-        [self.mapView addSubview:controllerView];
+        [self.controllersView addSubview:controllerView];
         [controllerView release];
     }
 }
@@ -252,8 +239,9 @@
         UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"runway"]];
         ATCPoint *controller_position = [airportsControllers objectForKey:name];
         // the position of runway needs to be accurate, that's why we don't add an offset
-        controllerView.center = CGPointMake(controller_position.X * SCALE, controller_position.Y * SCALE);
-        [self.mapView addSubview:controllerView];
+        controllerView.frame = CGRectMake(controller_position.X * SCALE, controller_position.Y * SCALE, 137, 20);
+        
+        [self.controllersView addSubview:controllerView];
         [controllerView release];
     }
 }

@@ -18,8 +18,6 @@
 
 - (void)createEnvironment;
 
-- (ATCZone *)createZoneWithController:(BasicController *)controller isAirportController:(BOOL)airportController;
-- (AirportController *)createDestinationWithName:(NSString *)destinationName;
 - (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position;
 
 - (void)askForDisplayUpdate:(NSTimer *)theTimer;
@@ -27,6 +25,8 @@
 - (void)performAddAirplaneToMap:(Airplane *)newAirplane;
 - (void)performAddMultipleAirplanesToMap;
 - (void)performAirplane:(Airplane *)airplane;
+
+- (void)representStartingEnvironment;
 
 @end
 
@@ -51,13 +51,35 @@
 @synthesize displayUpdateTimer = _displayUpdateTimer;
 
 - (void)createEnvironment {
+    // creates the zone controllers
+    self.zoneControllers = [[NSMutableArray alloc] initWithCapacity:2];
+    [self.zoneControllers addObject:[[ZoneController alloc] init]];
+    [self.zoneControllers addObject:[[ZoneController alloc] init]];
+
+    // creates the airport controllers
+    self.airportControllers = [[NSMutableArray alloc] initWithCapacity:1];
+    [self.airportControllers addObject:[[AirportController alloc] initWithAirportName:@"KLAF" andLocation:[[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140]]];
+    
     // creates the different zones composing the map
-    self.zones = [NSArray arrayWithObject:[[ZoneController alloc] init]];
+    
+    NSArray *corners1 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:187], nil];
+    ATCZone *zone1 = [[ATCZone alloc] initWithCorners:corners1 withControllerName:[(BasicAgent *)[self.zoneControllers objectAtIndex:0] agentName] andIsAirport:NO];
+    
+    NSArray *corners2 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127], nil];
+    ATCZone *zone2 = [[ATCZone alloc] initWithCorners:corners2 withControllerName:[(BasicAgent *)[self.zoneControllers objectAtIndex:1] agentName] andIsAirport:NO];
+    
+    NSArray *corners3 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187], nil];
+    ATCZone *zone3 = [[ATCZone alloc] initWithCorners:corners3 withControllerName:[(BasicAgent *)[self.airportControllers objectAtIndex:0] agentName] andIsAirport:YES];
+
+    self.zones = [NSMutableArray arrayWithObjects:zone1, zone2, zone3, nil];
+    [zone1 release];
+    [zone2 release];
+    [zone3 release];
     
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *airplaneData = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:250 andCoordinateY:80]];
+    ATCAirplaneInformation *airplaneData = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:230 andCoordinateY:80]];
     airplaneData.course = 270;
     airplaneData.speed = 100;
     airplaneData.destination = @"KORD";
@@ -67,14 +89,8 @@
     
     [airplaneData release];
     
-    // displays the first airplanes on the interface    
-    [self performSelectorOnMainThread:@selector(performAddMultipleAirplanesToMap) withObject:nil waitUntilDone:NO];
-}
-
-- (ATCZone *)createZoneWithController:(BasicController *)controller isAirportController:(BOOL)airportController {
-    ATCZone *zone = [[ATCZone alloc] initWithCorners:nil withControllerName:controller.agentName andIsAirport:airportController];
-    
-    return [zone autorelease];
+    // display the initial interface
+    [self performSelectorOnMainThread:@selector(representStartingEnvironment) withObject:nil waitUntilDone:NO];
 }
 
 - (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position {
@@ -84,15 +100,7 @@
     return [newAirplane autorelease];
 }
 
-- (AirportController *)createDestinationWithName:(NSString *)destinationName {
-    AirportController *airport = [[AirportController alloc] initWithAgentName:destinationName];
-    
-    return [airport autorelease];
-}
-
-- (void)startSimulation {
-    // draws the borders of the zones on the interface
-    
+- (void)startSimulation {    
     // sends broadcast message so that the agents know the simulation started
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Environment", [NSNumber numberWithInt:NVMessageSimulationStarted], nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, nil]];
     
@@ -140,6 +148,22 @@
 
 - (void)performAirplane:(Airplane *)airplane {
     [self.displayDelegate landAirplane:airplane];
+}
+
+- (void)representStartingEnvironment {
+    [self.displayDelegate displayZones:self.zones];
+    
+    // creates a dictionary containing as key the name of the airport, and as value the position of the controller
+    NSMutableDictionary *airportsDictionary = [[NSMutableDictionary alloc] initWithCapacity:[self.zoneControllers count]];
+    for (AirportController *controller in self.airportControllers) {
+        [airportsDictionary setObject:controller.airportLocation forKey:controller.airportName];
+    }
+    
+    [self.displayDelegate displayAirportControllers:airportsDictionary];
+    
+    [airportsDictionary release];
+    
+    [self.displayDelegate addAirplanesToMap:self.airplanes];
 }
 
 # pragma mark - Artifacts delegation

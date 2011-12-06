@@ -34,6 +34,7 @@
 		824300A1148C7E1B00DDA901 /* crash.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009D148C7E1B00DDA901 /* crash.png */; };
 		824300A2148C7E1B00DDA901 /* runway.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009E148C7E1B00DDA901 /* runway.png */; };
 		824300A3148C7E1B00DDA901 /* small_airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009F148C7E1B00DDA901 /* small_airplane.png */; };
+		824300AB148D8E0100DDA901 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 824300AA148D8E0100DDA901 /* MapView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		8243009D148C7E1B00DDA901 /* crash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = crash.png; path = Pictures/crash.png; sourceTree = SOURCE_ROOT; };
 		8243009E148C7E1B00DDA901 /* runway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = runway.png; path = Pictures/runway.png; sourceTree = SOURCE_ROOT; };
 		8243009F148C7E1B00DDA901 /* small_airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = small_airplane.png; path = Pictures/small_airplane.png; sourceTree = SOURCE_ROOT; };
+		824300A9148D8E0100DDA901 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
+		824300AA148D8E0100DDA901 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 		82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtifactsDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +137,8 @@
 		8204C401148080C40029F349 /* ATCSimulation */ = {
 			isa = PBXGroup;
 			children = (
+				824300A9148D8E0100DDA901 /* MapView.h */,
+				824300AA148D8E0100DDA901 /* MapView.m */,
 				82183949148569C000EF4AFE /* MainInterfaceController.h */,
 				8218394A148569C000EF4AFE /* MainInterfaceController.m */,
 				8218394B148569C000EF4AFE /* MainInterfaceController.xib */,
@@ -320,6 +325,7 @@
 				82183957148569C000EF4AFE /* Constants.m in Sources */,
 				82183958148569C000EF4AFE /* ZoneController.m in Sources */,
 				82183959148569C000EF4AFE /* MainInterfaceController.m in Sources */,
+				824300AB148D8E0100DDA901 /* MapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

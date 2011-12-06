@@ -25,11 +25,11 @@
         _controllerName = controllerName;
         _airport = airport;
         
-        _corners = cornersArray;
+        self.corners = [NSArray arrayWithArray:cornersArray];
         // process the corners to add the necessary border segments
         
         int numberOfCorners = [cornersArray count];
-        _borders = [NSMutableArray arrayWithCapacity:numberOfCorners];
+        self.borders = [NSMutableArray arrayWithCapacity:numberOfCorners];
         int i, deltaX, deltaY;
         BOOL positive = YES;
         
@@ -67,8 +67,8 @@
             [self.borders addObject:[[ATCZoneBorderSegment alloc] initWithExtremity1:extremity1 andExtremity2:extremity2 withDirectionPositive:positive]];
         }
         // adds the last line to close the path
-        ATCPoint *extremity1 = [cornersArray objectAtIndex:i];
-        ATCPoint *extremity2 = [cornersArray objectAtIndex:(i + 1)];
+        ATCPoint *extremity1 = [cornersArray objectAtIndex:0];
+        ATCPoint *extremity2 = [cornersArray lastObject];
         
         // calculates the deltas of x and y
         deltaX = extremity2.X - extremity1.X;
@@ -143,6 +143,8 @@
 - (void)dealloc {
     self.borders = nil;
     self.adjacentZones = nil;
+    self.corners = nil;
+    [_controllerName release];
 
     [super dealloc];
 }
