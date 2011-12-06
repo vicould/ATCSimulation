@@ -17,7 +17,13 @@
  * them.
  */
 @interface ZoneController : BasicController<ControllerBehaviorDelegate> {
-    
+    @private
+    NSTimer *_positionUpdatePollingTimer;
 }
+
+/**
+ * The active radar mode, trying to recover information about the airplanes currently flying in the zone.
+ */
+- (void)detectAirplanesInZone;
 
 @end

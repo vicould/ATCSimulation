@@ -10,6 +10,8 @@
 
 @interface ZoneController ()
 
+@property (nonatomic, retain) NSTimer *positionUpdatePollingTimer;
+
 - (void)analyzePosition:(NSString *)positionString fromAirplaneName:(NSString *)tailNumber;
 
 @end
@@ -26,6 +28,37 @@
     return self;
 }
 
+@synthesize positionUpdatePollingTimer = _positionUpdatePollingTimer;
+
+- (void)dealloc {
+    
+    [self.positionUpdatePollingTimer invalidate];
+    [self.positionUpdatePollingTimer release];
+}
+
+- (void)startSimulation {
+    [self detectAirplanesInZone];
+    
+    // inits a timer to regulary poll new data from the airplanes
+    self.positionUpdatePollingTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(detectAirplanesInZone) userInfo:nil repeats:YES];
+}
+
+- (void)stopSimulation {
+    // stops position polling timer
+    [self.positionUpdatePollingTimer invalidate];
+}
+
+# pragma mark - Messages
+
+# pragma mark Emission
+- (void)detectAirplanesInZone {
+    // sends a broadcast message to all airplanes currently in zone
+    [self sendMessage:@"" fromType:NVMessageCurrentPosition toAgent:[BasicController messageIdentifierForZone:self.zoneID]];
+    
+    [self.artifactDelegate updateInterfaceWithInformations:[self.controlledAirplanes allValues]];
+}
+
+# pragma mark Analysis
 - (void)finishMessageAnalysis:(NSString *)messageContent withMessageCode:(NVMessageCode)code from:(NSString *)sender originallyTo:(NSString *)originalReceiver {
     
     if (code == NVMessageCurrentPosition) {
@@ -49,6 +82,7 @@
             // airplane is new, we should add it to the collection of controlled airplanes
             new = YES;
             information = [[ATCAirplaneInformation alloc] initWithZone:self.zoneID andPoint:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0]];
+            information.airplaneName = tailNumber;
         }
         
         information.destination = [positionElements objectAtIndex:0];

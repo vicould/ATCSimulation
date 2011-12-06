@@ -49,14 +49,28 @@
 @synthesize displayDelegate = _displayDelegate;
 
 - (void)createEnvironment {
+    BasicAgent *agent;
+    
     // creates the zone controllers
     self.zoneControllers = [[NSMutableArray alloc] initWithCapacity:2];
-    [self.zoneControllers addObject:[[ZoneController alloc] init]];
-    [self.zoneControllers addObject:[[ZoneController alloc] init]];
 
+    agent = [[ZoneController alloc] init];
+    agent.artifactDelegate = self;
+    [self.zoneControllers addObject:agent];
+    [agent release];
+    
+    agent = [[ZoneController alloc] init];
+    agent.artifactDelegate = self;
+    [self.zoneControllers addObject:agent];
+    [agent release];
+    
     // creates the airport controllers
     self.airportControllers = [[NSMutableArray alloc] initWithCapacity:1];
-    [self.airportControllers addObject:[[AirportController alloc] initWithAirportName:@"KLAF" andLocation:[[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140]]];
+    
+    agent = [[AirportController alloc] initWithAirportName:@"KLAF" andLocation:[[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140]];
+    agent.artifactDelegate = self;
+    [self.airportControllers addObject:agent];
+    [agent release];
     
     // creates the different zones composing the map
     
@@ -77,7 +91,7 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:230 andCoordinateY:80]];
+    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:2 andPoint:[[ATCPoint alloc] initWithCoordinateX:230 andCoordinateY:80]];
     airplaneData1.course = 270;
     airplaneData1.speed = 100;
     airplaneData1.destination = @"KLAF";
@@ -104,7 +118,7 @@
 - (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position {
     
     Airplane *newAirplane = [[Airplane alloc] initWithInitialData:position];
-    
+    newAirplane.artifactDelegate = self;
     return [newAirplane autorelease];
 }
 
@@ -143,12 +157,12 @@
     [self.displayDelegate displayAirportControllers:airportsDictionary];
     [airportsDictionary release];
     
-    NSMutableArray *detectedAirplanes = [NSMutableArray arrayWithCapacity:[self.airplanes count]];
+    NSMutableArray *initialAirplanes = [NSMutableArray arrayWithCapacity:[self.airplanes count]];
     for (Airplane *airplane in self.airplanes) {
-        [detectedAirplanes addObject:airplane.ownInformation];
+        [initialAirplanes addObject:airplane.ownInformation];
     }
     
-    [self.displayDelegate updateDetectedAirplanes:detectedAirplanes];
+    [self.displayDelegate displayInitialPlanesPositions:initialAirplanes];
 }
 
 # pragma mark - Artifacts delegation

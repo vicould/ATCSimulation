@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 #import "AgentBehaviorDelegate.h"
+#import "ArtifactsDelegate.h"
 
 /**
  * A basic class defining some ground behaviors for an agent, such as the messaging capabilities.
@@ -19,6 +20,7 @@
     @private
     NSString *_agentName;
     id<AgentBehaviorDelegate> _agentBehaviorDelegate;
+    id<ArtifactsDelegate> _artifactDelegate;
 }
 
 /**
@@ -36,6 +38,11 @@
  * A property used to set the object implementing the various methods of the AgentBehaviorDelegate.
  */
 @property (nonatomic, retain) id<AgentBehaviorDelegate> agentBehaviorDelegate;
+
+/**
+ * A property used to set the object implementing the artifacts that the agent can use.
+ */
+@property (nonatomic, retain) id<ArtifactsDelegate> artifactDelegate;
 
 # pragma mark - Messaging methods
 

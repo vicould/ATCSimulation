@@ -14,6 +14,9 @@
  */
 @protocol EnvironmentDisplayDelegate <NSObject>
 
+- (void)displayInitialPlanesPositions:(NSArray *)planes;
+
+
 # pragma mark - Methods for the airplanes.
 
 /**

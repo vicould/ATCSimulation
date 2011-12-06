@@ -16,11 +16,14 @@
 @property (nonatomic, retain) NSString *destination;
 @property (nonatomic, retain) NSString *currentController;
 @property (nonatomic, retain) NSDate *lastPositionCheck;
+@property (nonatomic, retain) NSTimer *positionUpdater;
 
 - (void)updatePosition;
 
 - (void)sendCurrentPosition;
 - (void)changeZoneWithNewController:(NSString *)controllerName;
+
+- (void)updatePositionInEnvironmemt:(NSTimer *)timer;
 
 @end
 
@@ -42,6 +45,7 @@
 }
 
 @synthesize ownInformation = _ownInformation;
+@synthesize positionUpdater = _positionUpdater;
 
 - (NSInteger)course {
     return self.ownInformation.course;
@@ -79,10 +83,12 @@
 - (void)startSimulation {
     // inits flight time
     self.lastPositionCheck = [NSDate date];
+    
+    self.positionUpdater = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePositionInEnvironmemt:) userInfo:nil repeats:YES];
 }
 
 - (void)stopSimulation {
-    // nothing special to do
+    [self.positionUpdater invalidate];
 }
 
 - (void)updatePosition {
@@ -113,6 +119,11 @@
     // sets a timer calling back this method to verify if we changed zone, based on the current
     // route and speed
      */
+}
+
+- (void)updatePositionInEnvironmemt:(NSTimer *)timer {
+    [self updatePosition];
+    [self.artifactDelegate updateAirplaneInformation:self.ownInformation];
 }
 
 # pragma mark - Messages
@@ -160,6 +171,9 @@
 }
 
 - (void)dealloc {
+    [self.positionUpdater invalidate];
+    self.positionUpdater = nil;
+    
     self.ownInformation = nil;
     self.destination = nil;
     self.ownInformation = nil;

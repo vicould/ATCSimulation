@@ -23,7 +23,6 @@
     NSMutableDictionary *_controlledAirplanes;
     int _zoneID;
     id<ControllerBehaviorDelegate> _controllerDelegate;
-    NSTimer *positionUpdatePollingTimer;
 }
 
 /**
@@ -41,11 +40,6 @@
  * The delegate implementing the various specialized behaviors of a controller.
  */
 @property (nonatomic, retain) id<ControllerBehaviorDelegate> controllerDelegate;
-
-/**
- * The active radar mode, trying to recover information about the airplanes currently flying in the zone.
- */
-- (void)detectAirplanesInZone;
 
 /**
  * An abstract method to create a unique ID for each class.

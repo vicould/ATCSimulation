@@ -32,36 +32,24 @@
     return self;
 }
 
-- (void)dealloc {
-    self.controlledAirplanes = nil;
-    self.controllerDelegate = nil;
-    [positionUpdatePollingTimer invalidate];
-    [positionUpdatePollingTimer release];
-}
-
 @synthesize controlledAirplanes = _controlledAirplanes;
 @synthesize zoneID = _zoneID;
 @synthesize controllerDelegate = _controllerDelegate;
 
+- (void)dealloc {
+    self.controlledAirplanes = nil;
+    self.controllerDelegate = nil;
+}
+
 - (void)startSimulation {
-    [self detectAirplanesInZone];
-    
-    // inits a timer to regulary poll new data from the airplanes
-    positionUpdatePollingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(detectAirplanesInZone) userInfo:nil repeats:YES];    
 }
 
 - (void)stopSimulation {
-    // stops position polling timer
-    [positionUpdatePollingTimer invalidate];
 }
 
 # pragma mark - Messages
 
 # pragma mark Emission
-- (void)detectAirplanesInZone {
-    // sends a broadcast message to all airplanes currently in zone
-    [self sendMessage:@"" fromType:NVMessageCurrentPosition toAgent:[BasicController messageIdentifierForZone:self.zoneID]];
-}
 
 # pragma mark Processing
 - (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator {

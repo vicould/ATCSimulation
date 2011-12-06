@@ -24,6 +24,7 @@
     ATCAirplaneInformation *_ownInformation;
     NSString *_currentController;
     NSDate *_lastPositionCheck;
+    NSTimer *_positionUpdater;
 }
 
 /**

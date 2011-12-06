@@ -32,6 +32,10 @@
     return self;
 }
 
+@synthesize agentName = _agentName;
+@synthesize agentBehaviorDelegate = _agentBehaviorDelegate;
+@synthesize artifactDelegate = _artifactDelegate;
+
 - (void)sendMessage:(NSString *)message fromType:(NVMessageCode)type toAgent:(NSString *)agentName {    
     // builds an info dictionary, specifying the originating agent, and some attributes
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.agentName, [NSNumber numberWithInt:type], message, nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, kNVKeyContent, nil]];
@@ -59,9 +63,6 @@
     // transmits the mesage for further analyze to the delegate
     [self.agentBehaviorDelegate analyzeMessage:messageContent withOriginalDestinator:[notification name]];
 }
-
-@synthesize agentName = _agentName;
-@synthesize agentBehaviorDelegate = _agentBehaviorDelegate;
 
 - (void)dealloc {
     self.agentName = nil;

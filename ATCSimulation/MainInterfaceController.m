@@ -216,6 +216,12 @@
 
 # pragma mark - Environment delegate methods
 
+- (void)displayInitialPlanesPositions:(NSArray *)planes {
+    for (ATCAirplaneInformation *currentAirplaneInfo in planes) {
+        [self performMarkerUpdateWithInfo:currentAirplaneInfo asControllerMarker:NO];
+    }
+}
+
 # pragma mark Methods for the airplane
 
 - (void)updateAirplanePositionWithInfo:(ATCAirplaneInformation *)correspondingInfo {
@@ -260,14 +266,9 @@
     }
 }
 
-- (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData {
-    // airplane marker
-    UIImageView *airplaneCrashingView = [self.airplanesTransmitted objectForKey:airplaneData.airplaneName];
-    [self.airplanesTransmitted removeObjectForKey:airplaneData.airplaneName];
-    [airplaneCrashingView removeFromSuperview];
-    
+- (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData {    
     // airplane as detected by the controller marker
-    airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData];
+    UIView *airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData];
     [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
     [airplaneCrashingView removeFromSuperview];
 }
