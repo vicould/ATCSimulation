@@ -12,11 +12,12 @@
 
 @property (nonatomic, assign) int simulationState;
 @property (nonatomic, retain) Environment *environment;
-@property (nonatomic, retain) NSMutableDictionary *airplanesDetected;
-@property (nonatomic, retain) NSMutableDictionary *airplanesTransmitted;
+@property (nonatomic, retain) NSMutableDictionary *detectedAirplanes;
+@property (nonatomic, retain) NSMutableDictionary *transmittedAirplanes;
 
 - (void)createViewsForInterface;
 - (void)performMarkerUpdateWithInfo:(ATCAirplaneInformation *)airplaneInfo asControllerMarker:(BOOL)infoIsController;
+- (void)resetInterface;
 
 @end
 
@@ -28,8 +29,8 @@
     if (self) {
         // Custom initialization
         _simulationState = -1;        
-        _airplanesDetected = [[NSMutableDictionary alloc] init];
-        _airplanesTransmitted = [[NSMutableDictionary alloc] init];
+        _detectedAirplanes = [[NSMutableDictionary alloc] init];
+        _transmittedAirplanes = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -37,8 +38,8 @@
 @synthesize startStopButton = _startStopButton;
 @synthesize simulationState = _simulationState;
 @synthesize environment = _environment;
-@synthesize airplanesDetected = _airplanesDetected;
-@synthesize airplanesTransmitted = _airplanesTransmitted;
+@synthesize detectedAirplanes = _detectedAirplanes;
+@synthesize transmittedAirplanes = _transmittedAirplanes;
 @synthesize mapView = _mapView;
 @synthesize controllersView = _controllersView;
 @synthesize airplanesView = _airplanesView;
@@ -129,26 +130,32 @@
             
         case SimulationStopped:
             [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
-            
-            // resets the simulation
-            [self.environment resetSimulation];
-            [self.mapView removeFromSuperview];
-            self.mapView = nil;
-            
-            [self.airplanesView removeFromSuperview];
-            self.airplanesView = nil;
-            
-            // as the views are stacks, and we want the button to be always on top of the stack, remove it
-            // from the superview to add it above the map layer
-            [self.startStopButton removeFromSuperview];
-            
-            [self createViewsForInterface];
+            [self resetInterface];
             self.simulationState = SimulationReady;
             break;
             
         default:
             break;
     }
+}
+
+- (void)resetInterface {
+    self.detectedAirplanes = [[NSMutableDictionary alloc] init];
+    self.transmittedAirplanes = [[NSMutableDictionary alloc] init];
+    
+    // resets the simulation
+    [self.environment resetSimulation];
+    [self.mapView removeFromSuperview];
+    self.mapView = nil;
+    
+    [self.airplanesView removeFromSuperview];
+    self.airplanesView = nil;
+    
+    // as the views are stacks, and we want the button to be always on top of the stack, remove it
+    // from the superview to add it above the map layer
+    [self.startStopButton removeFromSuperview];
+    
+    [self createViewsForInterface];
 }
 
 # pragma mark - Common methods for the interface
@@ -160,10 +167,10 @@
     NSMutableDictionary *airplanesCollection;
     
     if (infoIsController) {
-        airplanesCollection = self.airplanesDetected;
+        airplanesCollection = self.detectedAirplanes;
         imageName = @"airplane_blue";
     } else {
-        airplanesCollection = self.airplanesTransmitted;
+        airplanesCollection = self.transmittedAirplanes;
         imageName = @"airplane_green";
     }
     
@@ -230,13 +237,13 @@
 
 - (void)crashAirplane:(ATCAirplaneInformation *)airplaneData {
     // airplane marker
-    UIImageView *airplaneCrashingView = [self.airplanesTransmitted objectForKey:airplaneData.airplaneName];
-    [self.airplanesTransmitted removeObjectForKey:airplaneData.airplaneName];
+    UIImageView *airplaneCrashingView = [self.transmittedAirplanes objectForKey:airplaneData.airplaneName];
+    [self.transmittedAirplanes removeObjectForKey:airplaneData.airplaneName];
     [airplaneCrashingView removeFromSuperview];
     
     // airplane as detected by the controller marker
-    airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData.airplaneName];
-    [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
+    airplaneCrashingView = [self.detectedAirplanes objectForKey:airplaneData.airplaneName];
+    [self.detectedAirplanes removeObjectForKey:airplaneData.airplaneName];
     [airplaneCrashingView removeFromSuperview];
     
     // adds an explosion
@@ -248,13 +255,13 @@
 
 - (void)landAirplane:(ATCAirplaneInformation *)airplaneData {    
     // airplane marker
-    UIImageView *airplaneCrashingView = [self.airplanesTransmitted objectForKey:airplaneData.airplaneName];
-    [self.airplanesTransmitted removeObjectForKey:airplaneData.airplaneName];
+    UIImageView *airplaneCrashingView = [self.transmittedAirplanes objectForKey:airplaneData.airplaneName];
+    [self.transmittedAirplanes removeObjectForKey:airplaneData.airplaneName];
     [airplaneCrashingView removeFromSuperview];
     
     // airplane as detected by the controller marker
-    airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData];
-    [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
+    airplaneCrashingView = [self.detectedAirplanes objectForKey:airplaneData];
+    [self.detectedAirplanes removeObjectForKey:airplaneData.airplaneName];
     [airplaneCrashingView removeFromSuperview];
 }
 
@@ -268,8 +275,8 @@
 
 - (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData {    
     // airplane as detected by the controller marker
-    UIView *airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData];
-    [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
+    UIView *airplaneCrashingView = [self.detectedAirplanes objectForKey:airplaneData];
+    [self.detectedAirplanes removeObjectForKey:airplaneData.airplaneName];
     [airplaneCrashingView removeFromSuperview];
 }
 
