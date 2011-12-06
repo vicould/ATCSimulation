@@ -17,36 +17,37 @@
 # pragma mark - Methods for the airplanes.
 
 /**
- * Adds a list of airplanes to the map.
- * @param newAirplanes The airplanes to add to the interface.
+ * Update the position of one airplane. The information is received directly from the airplane, 
+ * as opposed to thee method \ref updateDetectedAirplanes:.
+ * @param correspondingInfo The info on the airplane needing an update
  */
-- (void)addAirplanesToMap:(NSArray *)newAirplanes;
-
-/**
- * Add a single airplane to the map.
- * @param newAirplane The airplane to add.
- */
-- (void)addAirplaneToMap:(Airplane *)newAirplane;
+- (void)updateAirplanePositionWithInfo:(ATCAirplaneInformation *)correspondingInfo;
 
 /**
  * Crashes an airplane, to inform the user a collision or an accident happened.
  * @param airplane
  */
-- (void)crashAirplane:(Airplane *)airplane;
+- (void)crashAirplane:(ATCAirplaneInformation *)airplaneData;
 
 /**
  * Lands an airplane once it has reached its destination.
  * @param airplane
  */
-- (void)landAirplane:(Airplane *)airplane;
-
-/**
- * Updates the location of the airplanes on the map.
- * @param newAirplanes
- */
-- (void)updateAirplanesPositions:(NSArray *)airplanes;
+- (void)landAirplane:(ATCAirplaneInformation *)airplaneData;
 
 # pragma mark - Methods for the zones and the controllers.
+
+/**
+ * Adds a list of airplanes to the map.
+ * @param airplanesInfo The airplanes to add to the interface.
+ */
+- (void)updateDetectedAirplanes:(NSArray *)airplanesInfo;
+
+/**
+ * Removes an airplane from the view when it is outside of the map.
+ * @param airplane The information about the airplane to remove.
+ */
+- (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData;
 
 /**
  * Prints the borders on the map.

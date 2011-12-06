@@ -14,19 +14,18 @@
 @property (nonatomic, retain) NSMutableArray *airportControllers;
 @property (nonatomic, retain) NSMutableArray *zoneControllers;
 @property (retain) NSMutableArray *airplanes;
-@property (nonatomic, retain) NSTimer *displayUpdateTimer;
 
 - (void)createEnvironment;
 
 - (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position;
 
-- (void)askForDisplayUpdate:(NSTimer *)theTimer;
-- (void)performDisplayUpdate;
-- (void)performAddAirplaneToMap:(Airplane *)newAirplane;
-- (void)performAddMultipleAirplanesToMap;
-- (void)performAirplane:(Airplane *)airplane;
-
 - (void)representStartingEnvironment;
+
+- (void)onMainThreadUpdateInterfaceWithInformations:(NSArray *)informations;
+- (void)onMainThreadUpdateAirplaneInformation:(ATCAirplaneInformation *)information;
+- (void)onMainThreadLandAirplane:(ATCAirplaneInformation *)airplane;
+- (void)onMainThreadCrashAirplane:(ATCAirplaneInformation *)airplane;
+- (void)onMainThreadRemoveAirplane:(ATCAirplaneInformation *)airplane;
 
 @end
 
@@ -48,7 +47,6 @@
 @synthesize zoneControllers = _zoneControllers;
 @synthesize airplanes = _airplanes;
 @synthesize displayDelegate = _displayDelegate;
-@synthesize displayUpdateTimer = _displayUpdateTimer;
 
 - (void)createEnvironment {
     // creates the zone controllers
@@ -93,7 +91,7 @@
     airplaneData2.course = 120;
     airplaneData2.speed = 100;
     airplaneData2.destination = @"KORD";
-    airplaneData2.airplaneName = @"N39862";
+    airplaneData2.airplaneName = @"N31862";
     
     [self.airplanes addObject:[self createAirplaneWithInitialInfo:airplaneData2]];
     
@@ -115,20 +113,13 @@
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Environment", [NSNumber numberWithInt:NVMessageSimulationStarted], nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, nil]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kNVBroadcastMessage object:nil userInfo:messageContent];
-    
-    // sets a timer so that the positions are refreshed
-    self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(askForDisplayUpdate:) userInfo:nil repeats:YES];
 }
 
 - (void)stopSimulation {
     // sends a message to the agents so that they stop playing with each other
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Environment", [NSNumber numberWithInt:NVMessageSimulationStopped], nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, nil]];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNVBroadcastMessage object:nil userInfo:messageContent];
-    
-    // stops the timer
-    [self.displayUpdateTimer invalidate];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNVBroadcastMessage object:nil userInfo:messageContent];    
 }
 
 - (void)resetSimulation {
@@ -138,26 +129,6 @@
     self.zoneControllers = nil;
     
     [self createEnvironment];
-}
-
-- (void)askForDisplayUpdate:(NSTimer *)theTimer {
-    [self performSelectorOnMainThread:@selector(performDisplayUpdate) withObject:nil waitUntilDone:NO];
-}
-
-- (void)performDisplayUpdate {
-    [self.displayDelegate updateAirplanesPositions:self.airplanes];
-}
-
-- (void)performAddAirplaneToMap:(Airplane *)newAirplane {
-    [self.displayDelegate addAirplaneToMap:newAirplane];
-}
-
-- (void)performAddMultipleAirplanesToMap {
-    [self.displayDelegate addAirplanesToMap:self.airplanes];
-}
-
-- (void)performAirplane:(Airplane *)airplane {
-    [self.displayDelegate landAirplane:airplane];
 }
 
 - (void)representStartingEnvironment {
@@ -170,24 +141,59 @@
     }
     
     [self.displayDelegate displayAirportControllers:airportsDictionary];
-    
     [airportsDictionary release];
     
-    [self.displayDelegate addAirplanesToMap:self.airplanes];
+    NSMutableArray *detectedAirplanes = [NSMutableArray arrayWithCapacity:[self.airplanes count]];
+    for (Airplane *airplane in self.airplanes) {
+        [detectedAirplanes addObject:airplane.ownInformation];
+    }
+    
+    [self.displayDelegate updateDetectedAirplanes:detectedAirplanes];
 }
 
 # pragma mark - Artifacts delegation
 
-- (void)updateInterfaceWithInformationsForZone:(NSArray *)informations {
-    
+
+- (void)updateInterfaceWithInformations:(NSArray *)informations {
+    [self performSelectorOnMainThread:@selector(onMainThreadUpdateInterfaceWithInformations:) withObject:informations waitUntilDone:NO];
+}
+
+- (void)updateAirplaneInformation:(ATCAirplaneInformation *)information {
+    [self performSelectorOnMainThread:@selector(onMainThreadUpdateAirplaneInformation:) withObject:information waitUntilDone:NO];
 }
 
 - (void)landAirplane:(ATCAirplaneInformation *)airplane {
-    
+    [self performSelectorOnMainThread:@selector(onMainThreadLandAirplane:) withObject:airplane waitUntilDone:NO];
 }
 
 - (void)crashAirplane:(ATCAirplaneInformation *)airplane {
-    
+    [self performSelectorOnMainThread:@selector(onMainThreadCrashAirplane:) withObject:airplane waitUntilDone:NO];
+}
+
+- (void)removeAirplane:(ATCAirplaneInformation *)airplane {
+    [self performSelectorOnMainThread:@selector(onMainThreadRemoveAirplane:) withObject:airplane waitUntilDone:NO];
+}
+
+# pragma mark Corresponding methods for the delegation on the main thread
+
+- (void)onMainThreadUpdateInterfaceWithInformations:(NSArray *)informations {
+    [self.displayDelegate updateDetectedAirplanes:informations];
+}
+
+- (void)onMainThreadUpdateAirplaneInformation:(ATCAirplaneInformation *)information {
+    [self.displayDelegate updateAirplanePositionWithInfo:information];
+}
+
+- (void)onMainThreadLandAirplane:(ATCAirplaneInformation *)airplane {
+    [self.displayDelegate landAirplane:airplane];
+}
+
+- (void)onMainThreadCrashAirplane:(ATCAirplaneInformation *)airplane {
+    [self.displayDelegate crashAirplane:airplane];
+}
+
+- (void)onMainThreadRemoveAirplane:(ATCAirplaneInformation *)airplane {
+    [self.displayDelegate removeAirplaneFromView:airplane];
 }
 
 @end

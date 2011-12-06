@@ -12,9 +12,11 @@
 
 @property (nonatomic, assign) int simulationState;
 @property (nonatomic, retain) Environment *environment;
-@property (nonatomic, retain) NSMutableDictionary *airplanesDictionary;
+@property (nonatomic, retain) NSMutableDictionary *airplanesDetected;
+@property (nonatomic, retain) NSMutableDictionary *airplanesTransmitted;
 
 - (void)createViewsForInterface;
+- (void)performMarkerUpdateWithInfo:(ATCAirplaneInformation *)airplaneInfo asControllerMarker:(BOOL)infoIsController;
 
 @end
 
@@ -26,7 +28,8 @@
     if (self) {
         // Custom initialization
         _simulationState = -1;        
-        _airplanesDictionary = [[NSMutableDictionary alloc] init];
+        _airplanesDetected = [[NSMutableDictionary alloc] init];
+        _airplanesTransmitted = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -34,7 +37,8 @@
 @synthesize startStopButton = _startStopButton;
 @synthesize simulationState = _simulationState;
 @synthesize environment = _environment;
-@synthesize airplanesDictionary = _airplanesDictionary;
+@synthesize airplanesDetected = _airplanesDetected;
+@synthesize airplanesTransmitted = _airplanesTransmitted;
 @synthesize mapView = _mapView;
 @synthesize controllersView = _controllersView;
 @synthesize airplanesView = _airplanesView;
@@ -147,59 +151,53 @@
     }
 }
 
-# pragma mark - environment delegate methods
+# pragma mark - Common methods for the interface
 
-- (void)addAirplanesToMap:(NSArray *)newAirplanes {
-    for (Airplane *airplane in newAirplanes) {
-        [self addAirplaneToMap:airplane];
+- (void)performMarkerUpdateWithInfo:(ATCAirplaneInformation *)airplaneInfo asControllerMarker:(BOOL)infoIsController {
+    // retrieves the view associated with the plane
+    NSMutableArray *airplaneInfosArray;
+    NSString *imageName;
+    NSMutableDictionary *airplanesCollection;
+    
+    if (infoIsController) {
+        airplanesCollection = self.airplanesDetected;
+        imageName = @"airplane_blue";
+    } else {
+        airplanesCollection = self.airplanesTransmitted;
+        imageName = @"airplane_green";
     }
-}
-
-- (void)addAirplaneToMap:(Airplane *)newAirplane {
-    UIImageView *newAirplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
-    [newAirplaneView setFrame:CGRectMake(newAirplane.ownInformation.coordinates.X * SCALE - 10, newAirplane.ownInformation.coordinates.Y * SCALE - 10, 20, 20)];
     
-    // sets the initial orientation for the aircraft
-    CATransform3D initialCourseRotation = CATransform3DMakeRotation(newAirplane.course * 2 * M_PI / 360.0, 0, 0, 1);
-    newAirplaneView.layer.transform = initialCourseRotation;
+    airplaneInfosArray = [airplanesCollection objectForKey:airplaneInfo.airplaneName];
+    UIImageView *airplaneView = nil;
     
-    [self.controllersView addSubview:newAirplaneView];
-    [newAirplaneView release];
-    
-    // the dict contains as key the name of the aircraft, and an array as object containing the view, the orientation and the position
-    [self.airplanesDictionary setObject:[NSMutableArray arrayWithObjects:newAirplaneView, [NSNumber numberWithInt:newAirplane.course], [ATCPoint pointFromExisting:newAirplane.ownInformation.coordinates], nil] forKey:newAirplane.ownInformation.airplaneName];
-}
-
-- (void)crashAirplane:(Airplane *)airplane {
-    UIImageView *airplaneExitingView = [self.airplanesDictionary objectForKey:airplane];
-    [self.airplanesDictionary removeObjectForKey:airplane];
-    
-    [airplaneExitingView removeFromSuperview];    
-}
-
-- (void)landAirplane:(Airplane *)airplane {    
-    UIImageView *airplaneExitingView = [(NSArray *)[self.airplanesDictionary objectForKey:airplane] objectAtIndex:0];
-    [self.airplanesDictionary removeObjectForKey:airplane];
-    
-    [airplaneExitingView removeFromSuperview];
-}
-
-- (void)updateAirplanesPositions:(NSArray *)airplanes {
-    for (Airplane *currentAirplane in airplanes) {
-        NSMutableArray *currentAirplaneData = [self.airplanesDictionary objectForKey:currentAirplane.ownInformation.airplaneName];
-        UIImageView *airplaneView = [currentAirplaneData objectAtIndex:0];
-        NSNumber *previousCourse = [currentAirplaneData objectAtIndex:1];
-        ATCPoint *previousPosition = [currentAirplaneData objectAtIndex:2];
+    if (airplaneInfosArray == nil) {
+        // new airplane
+        airplaneView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+        [airplaneView setFrame:CGRectMake(airplaneInfo.coordinates.X * SCALE - 10, airplaneInfo.coordinates.Y * SCALE - 10, 20, 20)];
+        
+        // sets the initial orientation for the aircraft
+        CATransform3D initialCourseRotation = CATransform3DMakeRotation(airplaneInfo.course * 2 * M_PI / 360.0, 0, 0, 1);
+        airplaneView.layer.transform = initialCourseRotation;
+        
+        [self.controllersView addSubview:airplaneView];
+        
+        [airplanesCollection setObject:[NSMutableArray arrayWithObjects:airplaneView, [NSNumber numberWithInt:airplaneInfo.course], [ATCPoint pointFromExisting:airplaneInfo.coordinates], nil] forKey:airplaneInfo.airplaneName];
+        
+        [airplaneView release];
+    } else {
+        UIImageView *airplaneView = [airplaneInfosArray objectAtIndex:0];
+        NSNumber *previousCourse = [airplaneInfosArray objectAtIndex:1];
+        ATCPoint *previousPosition = [airplaneInfosArray objectAtIndex:2];
         
         if (airplaneView == nil) {
-            continue;
+            return;
         }
-                                                                                                                                                                          
+        
         // prepares the transformation of the view, with the necessary translation and rotation
-        CATransform3D translation = CATransform3DMakeTranslation((currentAirplane.ownInformation.coordinates.X - previousPosition.X) * SCALE, (currentAirplane.ownInformation.coordinates.Y - previousPosition.Y) * SCALE, 0);
+        CATransform3D translation = CATransform3DMakeTranslation((airplaneInfo.coordinates.X - previousPosition.X) * SCALE, (airplaneInfo.coordinates.Y - previousPosition.Y) * SCALE, 0);
         // the translation should be made according to what has been previously translated
         
-        CATransform3D rotation = CATransform3DMakeRotation((currentAirplane.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
+        CATransform3D rotation = CATransform3DMakeRotation((airplaneInfo.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
         
         // concats the previous transformation applied to the view with the new ones
         CATransform3D transformResult = CATransform3DConcat(airplaneView.layer.transform, translation);
@@ -209,13 +207,70 @@
         airplaneView.layer.transform = transformResult;
         [airplaneView setNeedsDisplay];
         
-        [currentAirplaneData replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:currentAirplane.course]];
+        [airplaneInfosArray replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:airplaneInfo.course]];
         // previous position seems to be indeed changed, but next iteration it is the initial value
-        previousPosition.X = currentAirplane.ownInformation.coordinates.X;
-        previousPosition.Y = currentAirplane.ownInformation.coordinates.Y;
+        previousPosition.X = airplaneInfo.coordinates.X;
+        previousPosition.Y = airplaneInfo.coordinates.Y;
     }
 }
 
+# pragma mark - Environment delegate methods
+
+# pragma mark Methods for the airplane
+
+- (void)updateAirplanePositionWithInfo:(ATCAirplaneInformation *)correspondingInfo {
+    [self performMarkerUpdateWithInfo:correspondingInfo asControllerMarker:NO];
+}
+
+- (void)crashAirplane:(ATCAirplaneInformation *)airplaneData {
+    // airplane marker
+    UIImageView *airplaneCrashingView = [self.airplanesTransmitted objectForKey:airplaneData.airplaneName];
+    [self.airplanesTransmitted removeObjectForKey:airplaneData.airplaneName];
+    [airplaneCrashingView removeFromSuperview];
+    
+    // airplane as detected by the controller marker
+    airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData.airplaneName];
+    [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
+    [airplaneCrashingView removeFromSuperview];
+    
+    // adds an explosion
+    UIImageView *explosionView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"crash"]];
+    explosionView.frame = CGRectMake(airplaneData.coordinates.X * SCALE - 10, airplaneData.coordinates.Y * SCALE - 10, 20, 20);
+    [self.controllersView addSubview:explosionView];
+    [explosionView release];
+}
+
+- (void)landAirplane:(ATCAirplaneInformation *)airplaneData {    
+    // airplane marker
+    UIImageView *airplaneCrashingView = [self.airplanesTransmitted objectForKey:airplaneData.airplaneName];
+    [self.airplanesTransmitted removeObjectForKey:airplaneData.airplaneName];
+    [airplaneCrashingView removeFromSuperview];
+    
+    // airplane as detected by the controller marker
+    airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData];
+    [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
+    [airplaneCrashingView removeFromSuperview];
+}
+
+# pragma mark Methods for the controller
+
+- (void)updateDetectedAirplanes:(NSArray *)airplanesInfo {
+    for (ATCAirplaneInformation *currentAirplaneInfo in airplanesInfo) {
+        [self performMarkerUpdateWithInfo:currentAirplaneInfo asControllerMarker:YES];
+    }
+}
+
+- (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData {
+    // airplane marker
+    UIImageView *airplaneCrashingView = [self.airplanesTransmitted objectForKey:airplaneData.airplaneName];
+    [self.airplanesTransmitted removeObjectForKey:airplaneData.airplaneName];
+    [airplaneCrashingView removeFromSuperview];
+    
+    // airplane as detected by the controller marker
+    airplaneCrashingView = [self.airplanesDetected objectForKey:airplaneData];
+    [self.airplanesDetected removeObjectForKey:airplaneData.airplaneName];
+    [airplaneCrashingView removeFromSuperview];
+}
 
 - (void)displayZones:(NSArray *)zones {
     self.mapView.zonesAndTheirBorders = zones;

@@ -16,11 +16,21 @@
  */
 @protocol ArtifactsDelegate <NSObject>
 
+# pragma mark - Methods for the controllers.
+
 /**
  * Asks the environment to display on the map the informations retrieved by the controllers.
  * @param informations An array containing ATCAirplaneInformation objects, as created by the caller.
  */
-- (void)updateInterfaceWithInformationsForZone:(NSArray *)informations;
+- (void)updateInterfaceWithInformations:(NSArray *)informations;
+
+# pragma mark - Methods for the airplane.
+
+/**
+ * Asks the environment to display on the map one object. This methods is typically invoked from the airplane.
+ * @param information The information to display on the map.
+ */
+- (void)updateAirplaneInformation:(ATCAirplaneInformation *)information;
 
 /**
  * Asks the environment to hide the specified airplane, as it has reached its destination.
@@ -34,5 +44,11 @@
  * @param airplane The informations about the airplane that just had an accident.
  */
 - (void)crashAirplane:(ATCAirplaneInformation *)airplane;
+
+/**
+ * Method used by the controllers to remove an airplane from the simulation when it exited the map.
+ * @param airplane The airplane to remove from the simulation.
+ */
+- (void)removeAirplane:(ATCAirplaneInformation *)airplane;
 
 @end

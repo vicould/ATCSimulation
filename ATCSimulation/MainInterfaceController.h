@@ -31,7 +31,8 @@
     
     int _simulationState;
     Environment *_environment;
-    NSMutableDictionary *_airplanesDictionary;
+    NSMutableDictionary *_airplanesTransmitted;
+    NSMutableDictionary *_airplanesDetected;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *startStopButton;

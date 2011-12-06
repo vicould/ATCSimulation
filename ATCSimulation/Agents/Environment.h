@@ -41,7 +41,6 @@
     NSMutableArray *_zoneControllers;
     NSMutableArray *_airplanes;
     id<EnvironmentDisplayDelegate> _displayDelegate;
-    NSTimer *_displayUpdateTimer;
 }
 
 /**
