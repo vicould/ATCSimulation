@@ -35,6 +35,10 @@
 		824300A2148C7E1B00DDA901 /* runway.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009E148C7E1B00DDA901 /* runway.png */; };
 		824300A3148C7E1B00DDA901 /* small_airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 8243009F148C7E1B00DDA901 /* small_airplane.png */; };
 		824300AB148D8E0100DDA901 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 824300AA148D8E0100DDA901 /* MapView.m */; };
+		824300B4148EAB8600DDA901 /* airplane_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B0148EAB8600DDA901 /* airplane_blue.png */; };
+		824300B5148EAB8600DDA901 /* airplane_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B1148EAB8600DDA901 /* airplane_green.png */; };
+		824300B6148EAB8600DDA901 /* small_airplane blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B2148EAB8600DDA901 /* small_airplane blue.png */; };
+		824300B7148EAB8600DDA901 /* small_airplane_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B3148EAB8600DDA901 /* small_airplane_green.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +90,10 @@
 		8243009F148C7E1B00DDA901 /* small_airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = small_airplane.png; path = Pictures/small_airplane.png; sourceTree = SOURCE_ROOT; };
 		824300A9148D8E0100DDA901 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		824300AA148D8E0100DDA901 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
+		824300B0148EAB8600DDA901 /* airplane_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane_blue.png; path = Pictures/airplane_blue.png; sourceTree = SOURCE_ROOT; };
+		824300B1148EAB8600DDA901 /* airplane_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane_green.png; path = Pictures/airplane_green.png; sourceTree = SOURCE_ROOT; };
+		824300B2148EAB8600DDA901 /* small_airplane blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small_airplane blue.png"; path = "Pictures/small_airplane blue.png"; sourceTree = SOURCE_ROOT; };
+		824300B3148EAB8600DDA901 /* small_airplane_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = small_airplane_green.png; path = Pictures/small_airplane_green.png; sourceTree = SOURCE_ROOT; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 		82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtifactsDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +162,10 @@
 		8204C402148080C40029F349 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				824300B0148EAB8600DDA901 /* airplane_blue.png */,
+				824300B1148EAB8600DDA901 /* airplane_green.png */,
+				824300B2148EAB8600DDA901 /* small_airplane blue.png */,
+				824300B3148EAB8600DDA901 /* small_airplane_green.png */,
 				8243009C148C7E1B00DDA901 /* controller.png */,
 				8243009D148C7E1B00DDA901 /* crash.png */,
 				8243009E148C7E1B00DDA901 /* runway.png */,
@@ -300,6 +312,10 @@
 				824300A1148C7E1B00DDA901 /* crash.png in Resources */,
 				824300A2148C7E1B00DDA901 /* runway.png in Resources */,
 				824300A3148C7E1B00DDA901 /* small_airplane.png in Resources */,
+				824300B4148EAB8600DDA901 /* airplane_blue.png in Resources */,
+				824300B5148EAB8600DDA901 /* airplane_green.png in Resources */,
+				824300B6148EAB8600DDA901 /* small_airplane blue.png in Resources */,
+				824300B7148EAB8600DDA901 /* small_airplane_green.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
