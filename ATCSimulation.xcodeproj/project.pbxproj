@@ -39,6 +39,7 @@
 		824300B5148EAB8600DDA901 /* airplane_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B1148EAB8600DDA901 /* airplane_green.png */; };
 		824300B6148EAB8600DDA901 /* small_airplane blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B2148EAB8600DDA901 /* small_airplane blue.png */; };
 		824300B7148EAB8600DDA901 /* small_airplane_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B3148EAB8600DDA901 /* small_airplane_green.png */; };
+		824300BB148ED7DB00DDA901 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300BA148ED7DB00DDA901 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		824300B1148EAB8600DDA901 /* airplane_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = airplane_green.png; path = Pictures/airplane_green.png; sourceTree = SOURCE_ROOT; };
 		824300B2148EAB8600DDA901 /* small_airplane blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small_airplane blue.png"; path = "Pictures/small_airplane blue.png"; sourceTree = SOURCE_ROOT; };
 		824300B3148EAB8600DDA901 /* small_airplane_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = small_airplane_green.png; path = Pictures/small_airplane_green.png; sourceTree = SOURCE_ROOT; };
+		824300BA148ED7DB00DDA901 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Pictures/icon.png; sourceTree = SOURCE_ROOT; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 		82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtifactsDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +164,7 @@
 		8204C402148080C40029F349 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				824300BA148ED7DB00DDA901 /* icon.png */,
 				824300B0148EAB8600DDA901 /* airplane_blue.png */,
 				824300B1148EAB8600DDA901 /* airplane_green.png */,
 				824300B2148EAB8600DDA901 /* small_airplane blue.png */,
@@ -316,6 +319,7 @@
 				824300B5148EAB8600DDA901 /* airplane_green.png in Resources */,
 				824300B6148EAB8600DDA901 /* small_airplane blue.png in Resources */,
 				824300B7148EAB8600DDA901 /* small_airplane_green.png in Resources */,
+				824300BB148ED7DB00DDA901 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
