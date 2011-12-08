@@ -66,17 +66,17 @@
 // All code under test must be linked into the Unit Test bundle
 
 - (void)testGeneratedCoefficients {
-    STAssertEquals(segment1.aLine, -25.0f, @"Wrong a? %f", segment1.aLine);
-    STAssertEquals(segment1.bLine, 10.0f, @"Wrong b?%f", segment1.bLine);
-    STAssertEquals(segment1.cLine, 200.0f, @"Wrong c?%f", segment1.cLine);
+    STAssertEquals(segment1.a, -25.0f, @"Wrong a? %f", segment1.a);
+    STAssertEquals(segment1.b, 10.0f, @"Wrong b?%f", segment1.b);
+    STAssertEquals(segment1.c, 200.0f, @"Wrong c?%f", segment1.c);
     
-    STAssertEquals(segment1.aOrthogonalLine1, 10.0f, @"Wrong a? %f", segment1.aOrthogonalLine1);
-    STAssertEquals(segment1.bOrthogonalLine1, 25.0f, @"Wrong b?%f", segment1.bOrthogonalLine1);
-    STAssertEquals(segment1.cOrthogonalLine1, -950.0f, @"Wrong c?%f", segment1.cOrthogonalLine1);
+    STAssertEquals(segment1.orthA, 10.0f, @"Wrong a? %f", segment1.orthA);
+    STAssertEquals(segment1.orthB, 25.0f, @"Wrong b?%f", segment1.orthB);
+    STAssertEquals(segment1.orth1C, -950.0f, @"Wrong c?%f", segment1.orth1C);
     
-    STAssertEquals(segment1.aOrthogonalLine2, 10.0f, @"Wrong a? %f", segment1.aOrthogonalLine2);
-    STAssertEquals(segment1.bOrthogonalLine2, 25.0f, @"Wrong b?%f", segment1.bOrthogonalLine2);
-    STAssertEquals(segment1.cOrthogonalLine2, -225.0f, @"Wrong c?%f", segment1.cOrthogonalLine2);
+    STAssertEquals(segment1.orthA, 10.0f, @"Wrong a? %f", segment1.orthA);
+    STAssertEquals(segment1.orthB, 25.0f, @"Wrong b?%f", segment1.orthB);
+    STAssertEquals(segment1.orth2C, -225.0f, @"Wrong c?%f", segment1.orth2C);
 }
 
 - (void)testSpaceBelonging1 {
