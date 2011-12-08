@@ -19,7 +19,6 @@
 		8218394F148569C000EF4AFE /* BasicAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183934148569C000EF4AFE /* BasicAgent.m */; };
 		82183950148569C000EF4AFE /* BasicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183936148569C000EF4AFE /* BasicController.m */; };
 		82183951148569C000EF4AFE /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183938148569C000EF4AFE /* Environment.m */; };
-		82183952148569C000EF4AFE /* Artifacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218393C148569C000EF4AFE /* Artifacts.m */; };
 		82183953148569C000EF4AFE /* ATCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218393E148569C000EF4AFE /* ATCPoint.m */; };
 		82183954148569C000EF4AFE /* ATCAirplaneInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183940148569C000EF4AFE /* ATCAirplaneInformation.m */; };
 		82183955148569C000EF4AFE /* ATCZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183942148569C000EF4AFE /* ATCZone.m */; };
@@ -40,7 +39,36 @@
 		824300B6148EAB8600DDA901 /* small_airplane blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B2148EAB8600DDA901 /* small_airplane blue.png */; };
 		824300B7148EAB8600DDA901 /* small_airplane_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300B3148EAB8600DDA901 /* small_airplane_green.png */; };
 		824300BB148ED7DB00DDA901 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824300BA148ED7DB00DDA901 /* icon.png */; };
+		824300C4148FBFD900DDA901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8204C3FB148080C40029F349 /* UIKit.framework */; };
+		824300C5148FBFD900DDA901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8204C3FD148080C40029F349 /* Foundation.framework */; };
+		824300CB148FBFDA00DDA901 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 824300C9148FBFDA00DDA901 /* InfoPlist.strings */; };
+		824300CE148FBFDA00DDA901 /* ATCSimulationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 824300CD148FBFDA00DDA901 /* ATCSimulationTest.m */; };
+		824300DD148FC27E00DDA901 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824300DC148FC27E00DDA901 /* SenTestingKit.framework */; };
+		824300DE148FC2D100DDA901 /* ATCZoneBorderSegmentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 824300DA148FC24D00DDA901 /* ATCZoneBorderSegmentTest.m */; };
+		824300DF148FC9BE00DDA901 /* ATCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218393E148569C000EF4AFE /* ATCPoint.m */; };
+		824300E0148FC9C200DDA901 /* ATCZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183942148569C000EF4AFE /* ATCZone.m */; };
+		824300E1148FC9D100DDA901 /* ATCZoneBorderSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183944148569C000EF4AFE /* ATCZoneBorderSegment.m */; };
+		826DF37114901945000FA537 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183938148569C000EF4AFE /* Environment.m */; };
+		826DF37214901F59000FA537 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183946148569C000EF4AFE /* Constants.m */; };
+		826DF37314901F5C000FA537 /* Airplane.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183930148569C000EF4AFE /* Airplane.m */; };
+		826DF37414901F5F000FA537 /* BasicAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183934148569C000EF4AFE /* BasicAgent.m */; };
+		826DF37514901F62000FA537 /* AirportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183932148569C000EF4AFE /* AirportController.m */; };
+		826DF37614901F64000FA537 /* ZoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183948148569C000EF4AFE /* ZoneController.m */; };
+		826DF37714901F67000FA537 /* BasicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183936148569C000EF4AFE /* BasicController.m */; };
+		826DF37814901F6B000FA537 /* ATCAirplaneInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82183940148569C000EF4AFE /* ATCAirplaneInformation.m */; };
+		826DF37A14903C71000FA537 /* ATCArtifactsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DF37914903C71000FA537 /* ATCArtifactsTest.m */; };
+		828DE41F149005BA005F2EF0 /* ATCZoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DE41E149005BA005F2EF0 /* ATCZoneTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		824300D7148FC0A100DDA901 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8204C3EE148080C30029F349 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8204C3F6148080C40029F349;
+			remoteInfo = ATCSimulation;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8204C3F7148080C40029F349 /* ATCSimulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATCSimulation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,8 +94,6 @@
 		82183937148569C000EF4AFE /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Environment.h; path = ATCSimulation/Agents/Environment.h; sourceTree = "<group>"; };
 		82183938148569C000EF4AFE /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Environment.m; path = ATCSimulation/Agents/Environment.m; sourceTree = "<group>"; };
 		82183939148569C000EF4AFE /* AgentBehaviorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgentBehaviorDelegate.h; path = ATCSimulation/Agents/AgentBehaviorDelegate.h; sourceTree = "<group>"; };
-		8218393B148569C000EF4AFE /* Artifacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artifacts.h; sourceTree = "<group>"; };
-		8218393C148569C000EF4AFE /* Artifacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artifacts.m; sourceTree = "<group>"; };
 		8218393D148569C000EF4AFE /* ATCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPoint.h; path = ATCSimulation/Agents/Utils/ATCPoint.h; sourceTree = "<group>"; };
 		8218393E148569C000EF4AFE /* ATCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPoint.m; path = ATCSimulation/Agents/Utils/ATCPoint.m; sourceTree = "<group>"; };
 		8218393F148569C000EF4AFE /* ATCAirplaneInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCAirplaneInformation.h; path = ATCSimulation/Agents/Utils/ATCAirplaneInformation.h; sourceTree = "<group>"; };
@@ -96,6 +122,19 @@
 		824300B2148EAB8600DDA901 /* small_airplane blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small_airplane blue.png"; path = "Pictures/small_airplane blue.png"; sourceTree = SOURCE_ROOT; };
 		824300B3148EAB8600DDA901 /* small_airplane_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = small_airplane_green.png; path = Pictures/small_airplane_green.png; sourceTree = SOURCE_ROOT; };
 		824300BA148ED7DB00DDA901 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Pictures/icon.png; sourceTree = SOURCE_ROOT; };
+		824300C1148FBFD900DDA901 /* ATCSimulationTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ATCSimulationTest.octest; path = ATCSimulationLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		824300C8148FBFDA00DDA901 /* ATCSimulationTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ATCSimulationTest-Info.plist"; sourceTree = "<group>"; };
+		824300CA148FBFDA00DDA901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		824300CC148FBFDA00DDA901 /* ATCSimulationTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATCSimulationTest.h; sourceTree = "<group>"; };
+		824300CD148FBFDA00DDA901 /* ATCSimulationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATCSimulationTest.m; sourceTree = "<group>"; };
+		824300CF148FBFDA00DDA901 /* ATCSimulationTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ATCSimulationTest-Prefix.pch"; sourceTree = "<group>"; };
+		824300D9148FC24D00DDA901 /* ATCZoneBorderSegmentTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCZoneBorderSegmentTest.h; sourceTree = "<group>"; };
+		824300DA148FC24D00DDA901 /* ATCZoneBorderSegmentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZoneBorderSegmentTest.m; sourceTree = "<group>"; };
+		824300DC148FC27E00DDA901 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		826DF37914903C71000FA537 /* ATCArtifactsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCArtifactsTest.m; sourceTree = "<group>"; };
+		828DE41D149005BA005F2EF0 /* ATCZoneTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCZoneTests.h; sourceTree = "<group>"; };
+		828DE41E149005BA005F2EF0 /* ATCZoneTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCZoneTests.m; sourceTree = "<group>"; };
+		82BDA4921490043100AC8C8F /* ATCArtifactsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCArtifactsTest.h; sourceTree = "<group>"; };
 		82EBC2C714852B90009D87FE /* EnvironmentDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentDisplayDelegate.h; sourceTree = "<group>"; };
 		82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtifactsDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +151,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		824300BD148FBFD900DDA901 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824300DD148FC27E00DDA901 /* SenTestingKit.framework in Frameworks */,
+				824300C4148FBFD900DDA901 /* UIKit.framework in Frameworks */,
+				824300C5148FBFD900DDA901 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,6 +169,7 @@
 			children = (
 				8204C43514809EEE0029F349 /* Simulation */,
 				8204C401148080C40029F349 /* ATCSimulation */,
+				824300C6148FBFD900DDA901 /* ATCSimulationTest */,
 				8204C3FA148080C40029F349 /* Frameworks */,
 				8204C3F8148080C40029F349 /* Products */,
 			);
@@ -129,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				8204C3F7148080C40029F349 /* ATCSimulation.app */,
+				824300C1148FBFD900DDA901 /* ATCSimulationTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +187,7 @@
 		8204C3FA148080C40029F349 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				824300DC148FC27E00DDA901 /* SenTestingKit.framework */,
 				8214C5CD1486A83F00B9CDB1 /* QuartzCore.framework */,
 				8204C3FB148080C40029F349 /* UIKit.framework */,
 				8204C3FD148080C40029F349 /* Foundation.framework */,
@@ -233,8 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				82EC1B65148AFA7500129EE3 /* ArtifactsDelegate.h */,
-				8218393B148569C000EF4AFE /* Artifacts.h */,
-				8218393C148569C000EF4AFE /* Artifacts.m */,
 				82183945148569C000EF4AFE /* Constants.h */,
 				82183946148569C000EF4AFE /* Constants.m */,
 			);
@@ -257,6 +307,32 @@
 			name = Zone;
 			sourceTree = "<group>";
 		};
+		824300C6148FBFD900DDA901 /* ATCSimulationTest */ = {
+			isa = PBXGroup;
+			children = (
+				824300CC148FBFDA00DDA901 /* ATCSimulationTest.h */,
+				824300CD148FBFDA00DDA901 /* ATCSimulationTest.m */,
+				824300D9148FC24D00DDA901 /* ATCZoneBorderSegmentTest.h */,
+				824300DA148FC24D00DDA901 /* ATCZoneBorderSegmentTest.m */,
+				82BDA4921490043100AC8C8F /* ATCArtifactsTest.h */,
+				826DF37914903C71000FA537 /* ATCArtifactsTest.m */,
+				828DE41D149005BA005F2EF0 /* ATCZoneTests.h */,
+				828DE41E149005BA005F2EF0 /* ATCZoneTests.m */,
+				824300C7148FBFDA00DDA901 /* Supporting Files */,
+			);
+			path = ATCSimulationTest;
+			sourceTree = "<group>";
+		};
+		824300C7148FBFDA00DDA901 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				824300C8148FBFDA00DDA901 /* ATCSimulationTest-Info.plist */,
+				824300C9148FBFDA00DDA901 /* InfoPlist.strings */,
+				824300CF148FBFDA00DDA901 /* ATCSimulationTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,6 +352,25 @@
 			productName = ATCSimulation;
 			productReference = 8204C3F7148080C40029F349 /* ATCSimulation.app */;
 			productType = "com.apple.product-type.application";
+		};
+		824300C0148FBFD900DDA901 /* ATCSimulationLogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824300D0148FBFDA00DDA901 /* Build configuration list for PBXNativeTarget "ATCSimulationLogicTests" */;
+			buildPhases = (
+				824300BC148FBFD900DDA901 /* Sources */,
+				824300BD148FBFD900DDA901 /* Frameworks */,
+				824300BE148FBFD900DDA901 /* Resources */,
+				824300BF148FBFD900DDA901 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				824300D8148FC0A100DDA901 /* PBXTargetDependency */,
+			);
+			name = ATCSimulationLogicTests;
+			productName = ATCSimulationTest;
+			productReference = 824300C1148FBFD900DDA901 /* ATCSimulationTest.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -298,6 +393,7 @@
 			projectRoot = "";
 			targets = (
 				8204C3F6148080C40029F349 /* ATCSimulation */,
+				824300C0148FBFD900DDA901 /* ATCSimulationLogicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -323,7 +419,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		824300BE148FBFD900DDA901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824300CB148FBFDA00DDA901 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		824300BF148FBFD900DDA901 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8204C3F3148080C40029F349 /* Sources */ = {
@@ -337,7 +457,6 @@
 				8218394F148569C000EF4AFE /* BasicAgent.m in Sources */,
 				82183950148569C000EF4AFE /* BasicController.m in Sources */,
 				82183951148569C000EF4AFE /* Environment.m in Sources */,
-				82183952148569C000EF4AFE /* Artifacts.m in Sources */,
 				82183953148569C000EF4AFE /* ATCPoint.m in Sources */,
 				82183954148569C000EF4AFE /* ATCAirplaneInformation.m in Sources */,
 				82183955148569C000EF4AFE /* ATCZone.m in Sources */,
@@ -349,13 +468,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		824300BC148FBFD900DDA901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824300CE148FBFDA00DDA901 /* ATCSimulationTest.m in Sources */,
+				824300DE148FC2D100DDA901 /* ATCZoneBorderSegmentTest.m in Sources */,
+				824300DF148FC9BE00DDA901 /* ATCPoint.m in Sources */,
+				824300E0148FC9C200DDA901 /* ATCZone.m in Sources */,
+				824300E1148FC9D100DDA901 /* ATCZoneBorderSegment.m in Sources */,
+				828DE41F149005BA005F2EF0 /* ATCZoneTests.m in Sources */,
+				826DF37114901945000FA537 /* Environment.m in Sources */,
+				826DF37214901F59000FA537 /* Constants.m in Sources */,
+				826DF37314901F5C000FA537 /* Airplane.m in Sources */,
+				826DF37414901F5F000FA537 /* BasicAgent.m in Sources */,
+				826DF37514901F62000FA537 /* AirportController.m in Sources */,
+				826DF37614901F64000FA537 /* ZoneController.m in Sources */,
+				826DF37714901F67000FA537 /* BasicController.m in Sources */,
+				826DF37814901F6B000FA537 /* ATCAirplaneInformation.m in Sources */,
+				826DF37A14903C71000FA537 /* ATCArtifactsTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		824300D8148FC0A100DDA901 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8204C3F6148080C40029F349 /* ATCSimulation */;
+			targetProxy = 824300D7148FC0A100DDA901 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8204C404148080C40029F349 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8204C405148080C40029F349 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		824300C9148FBFDA00DDA901 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				824300CA148FBFDA00DDA901 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -430,6 +587,36 @@
 			};
 			name = Release;
 		};
+		824300D1148FBFDA00DDA901 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ATCSimulationTest/ATCSimulationTest-Prefix.pch";
+				INFOPLIST_FILE = "ATCSimulationTest/ATCSimulationTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		824300D2148FBFDA00DDA901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ATCSimulationTest/ATCSimulationTest-Prefix.pch";
+				INFOPLIST_FILE = "ATCSimulationTest/ATCSimulationTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -447,6 +634,15 @@
 			buildConfigurations = (
 				8204C410148080C40029F349 /* Debug */,
 				8204C411148080C40029F349 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		824300D0148FBFDA00DDA901 /* Build configuration list for PBXNativeTarget "ATCSimulationLogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824300D1148FBFDA00DDA901 /* Debug */,
+				824300D2148FBFDA00DDA901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
