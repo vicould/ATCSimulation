@@ -25,7 +25,7 @@
  * @param airportName The name of the airport, used by the airplanes to track their destination.
  * @param airportLocation The position of the runway.
  */
-- (id)initWithAirportName:(NSString *)airportName andLocation:(ATCPoint *)airportLocation;
+- (id)initWithAirportName:(NSString *)airportName location:(ATCPoint *)airportLocation andID:(int)ID;
 
 /**
  * Gets the name of the airport.

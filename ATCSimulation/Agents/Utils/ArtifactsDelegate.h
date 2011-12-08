@@ -16,6 +16,38 @@
  */
 @protocol ArtifactsDelegate <NSObject>
 
+
+/**
+ * Returns the id of the current zone where the plane is located.
+ * @param location The position of the airplane.
+ * @return The ID of the zone where the plane is at.
+ */
+- (NSInteger)calculateCurrentZoneFromPoint:(ATCPoint *)location;
+
+/**
+ * Calculates the distance to the next zone with the route and the initial position.
+ * @param position The point where the airplane currently is located.
+ * @param route The azimut it follows.
+ * @return The distance to the next zone on a straight line.
+ */
+- (float)distanceFromNextZone:(ATCPoint *)position onRoute:(NSInteger *)route;
+
+/**
+ * Convenient method to calculate the new point reached by the airplane after flying for a certain time,
+ * with the parameters of the flight given in the other parameter.
+ * @param currentPosition The information about the current airplane, such as the route, the speed, and the initial position.
+ * @param interval The length of the flight.
+ * @return Returns the new location of the airplane.
+ */
+- (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval;
+
+/**
+ * Get the name of the controller for the specified zone ID.
+ * @param zoneID The id of the zone where the controller's name is desired.
+ * @return The name of the controller managing the zone.
+ */
+- (NSString *)controllerNameForZoneID:(int)zoneID;
+
 # pragma mark - Methods for the controllers.
 
 /**
@@ -50,5 +82,11 @@
  * @param airplane The airplane to remove from the simulation.
  */
 - (void)removeAirplane:(ATCAirplaneInformation *)airplane;
+
+/**
+ * A method to create a unique ID for each class.
+ * @return Returns an unique id that can be used to identify the zones.
+ */
+- (int)createZoneID;
 
 @end

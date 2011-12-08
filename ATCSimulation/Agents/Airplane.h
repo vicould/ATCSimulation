@@ -9,7 +9,6 @@
 #import "BasicAgent.h"
 #import "ATCAirplaneInformation.h"
 #import "AgentBehaviorDelegate.h"
-#import "Artifacts.h"
 #import "BasicController.h"
 
 @class ATCAirplaneInformation;

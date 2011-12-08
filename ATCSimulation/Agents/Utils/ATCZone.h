@@ -26,6 +26,7 @@
     NSMutableArray *_borders;
     NSString *_controllerName;
     BOOL _airport;
+    int _zoneID;
 }
 
 /**
@@ -36,7 +37,7 @@
  * @param airport A boolean telling if the current zone has an airway or not, setting the type of controller which
  * is inside the zone.
  */
-- (id)initWithCorners:(NSArray *)cornersArray withControllerName:(NSString *)controllerName andIsAirport:(BOOL)airport;
+- (id)initWithCorners:(NSArray *)cornersArray withControllerName:(NSString *)controllerName zoneID:(int)currentZone andIsAirport:(BOOL)airport;
 
 /**
  * Gets the zones next to this one.
@@ -63,6 +64,10 @@
  */
 @property (nonatomic, retain, readonly) NSString *controllerName;
 
+/**
+ * The ID of the current zone
+ */
+@property (nonatomic, assign, readonly) int zoneID;
 
 /**
  * Method to add a neighbour to the zone.

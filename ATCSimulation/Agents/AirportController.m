@@ -18,8 +18,8 @@
 @implementation AirportController
 
 
-- (id)initWithAirportName:(NSString *)airportName andLocation:(ATCPoint *)airportLocation {
-    self = [super init];
+- (id)initWithAirportName:(NSString *)airportName location:(ATCPoint *)airportLocation andID:(int)ID {
+    self = [super initWithID:ID];
     
     if (self) {
         self.controllerDelegate = self;

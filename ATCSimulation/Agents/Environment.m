@@ -14,6 +14,8 @@
 @property (nonatomic, retain) NSMutableArray *airportControllers;
 @property (nonatomic, retain) NSMutableArray *zoneControllers;
 @property (retain) NSMutableArray *airplanes;
+@property (nonatomic, retain) NSMutableDictionary *zoneWhitePages;
+@property (nonatomic, assign) int lastID;
 
 - (void)createEnvironment;
 
@@ -47,41 +49,54 @@
 @synthesize zoneControllers = _zoneControllers;
 @synthesize airplanes = _airplanes;
 @synthesize displayDelegate = _displayDelegate;
+@synthesize zoneWhitePages = _zoneWhitePages;
+@synthesize lastID = _lastID;
 
 - (void)createEnvironment {
-    BasicAgent *agent;
+    self.lastID = 0;
+    
+    // maps the id of the zone to the name of the controller handling it
+    self.zoneWhitePages = [[NSMutableDictionary alloc] initWithCapacity:3];
+    
+    BasicController *controller;
     
     // creates the zone controllers
     self.zoneControllers = [[NSMutableArray alloc] initWithCapacity:2];
 
-    agent = [[ZoneController alloc] init];
-    agent.artifactDelegate = self;
-    [self.zoneControllers addObject:agent];
-    [agent release];
+    controller = [[ZoneController alloc] initWithID:[self createZoneID]];
+    controller.artifactDelegate = self;
+    [self.zoneControllers addObject:controller];
+    [self.zoneWhitePages setObject:controller.agentName forKey:[NSNumber numberWithInt:controller.zoneID]];
+    [controller release];
     
-    agent = [[ZoneController alloc] init];
-    agent.artifactDelegate = self;
-    [self.zoneControllers addObject:agent];
-    [agent release];
+    controller = [[ZoneController alloc] initWithID:[self createZoneID]];
+    controller.artifactDelegate = self;
+    [self.zoneControllers addObject:controller];
+    [self.zoneWhitePages setObject:controller.agentName forKey:[NSNumber numberWithInt:controller.zoneID]];
+    [controller release];
     
     // creates the airport controllers
     self.airportControllers = [[NSMutableArray alloc] initWithCapacity:1];
     
-    agent = [[AirportController alloc] initWithAirportName:@"KLAF" andLocation:[[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140]];
-    agent.artifactDelegate = self;
-    [self.airportControllers addObject:agent];
-    [agent release];
+    controller = [[AirportController alloc] initWithAirportName:@"KLAF" location:[[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140] andID:[self createZoneID]];
+    controller.artifactDelegate = self;
+    [self.airportControllers addObject:controller];
+    [self.zoneWhitePages setObject:controller.agentName forKey:[NSNumber numberWithInt:controller.zoneID]];
+    [controller release];
     
     // creates the different zones composing the map
     
     NSArray *corners1 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:187], nil];
-    ATCZone *zone1 = [[ATCZone alloc] initWithCorners:corners1 withControllerName:[(BasicAgent *)[self.zoneControllers objectAtIndex:0] agentName] andIsAirport:NO];
+    controller = [self.zoneControllers objectAtIndex:0];
+    ATCZone *zone1 = [[ATCZone alloc] initWithCorners:corners1 withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:NO];
     
     NSArray *corners2 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127], nil];
-    ATCZone *zone2 = [[ATCZone alloc] initWithCorners:corners2 withControllerName:[(BasicAgent *)[self.zoneControllers objectAtIndex:1] agentName] andIsAirport:NO];
+    controller = [self.zoneControllers objectAtIndex:1];
+    ATCZone *zone2 = [[ATCZone alloc] initWithCorners:corners2 withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:NO];
     
     NSArray *corners3 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187], nil];
-    ATCZone *zone3 = [[ATCZone alloc] initWithCorners:corners3 withControllerName:[(BasicAgent *)[self.airportControllers objectAtIndex:0] agentName] andIsAirport:YES];
+    controller = [self.airportControllers objectAtIndex:0];
+    ATCZone *zone3 = [[ATCZone alloc] initWithCorners:corners3 withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:YES];
 
     self.zones = [NSMutableArray arrayWithObjects:zone1, zone2, zone3, nil];
     [zone1 release];
@@ -91,7 +106,7 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:2 andPoint:[[ATCPoint alloc] initWithCoordinateX:230 andCoordinateY:80]];
+    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:2 andPoint:[[ATCPoint alloc] initWithCoordinateX:140 andCoordinateY:80]];
     airplaneData1.course = 270;
     airplaneData1.speed = 100;
     airplaneData1.destination = @"KLAF";
@@ -167,10 +182,45 @@
 
 # pragma mark - Artifacts delegation
 
+# pragma mark Position artifacts
 
-- (void)updateInterfaceWithInformations:(NSArray *)informations {
-    [self performSelectorOnMainThread:@selector(onMainThreadUpdateInterfaceWithInformations:) withObject:informations waitUntilDone:NO];
+- (NSInteger)calculateCurrentZoneFromPoint:(ATCPoint *)location {
+    for (ATCZone *zone in self.zones) {
+        if ([zone pointBelongsToZone:location]) {
+            return zone.zoneID;
+        }
+    }
+    return 0;
 }
+
+- (float)distanceFromNextZone:(ATCPoint *)position onRoute:(NSInteger *)route {
+    // TODO
+    return 0;
+}
+
+- (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval {
+    ATCPoint *newPoint = [ATCPoint pointFromExisting:currentPosition.coordinates];
+    float distance = interval * 10 * currentPosition.speed / 3600.0;
+    
+    newPoint.X = currentPosition.coordinates.X + (distance * sinf(currentPosition.course * 2 * M_PI / 360.0));
+    newPoint.Y = currentPosition.coordinates.Y - (distance * cosf(currentPosition.course * 2 * M_PI / 360.0));
+    
+    return newPoint;
+}
+
+- (NSString *)controllerNameForZoneID:(int)zoneID {
+    NSString *controllerName = [self.zoneWhitePages objectForKey:[NSNumber numberWithInt:zoneID]];
+    return controllerName;
+}
+
+# pragma mark Zone artifacts
+
+- (int)createZoneID {
+    self.lastID++;
+    return self.lastID;
+}
+
+# pragma mark Airplanes display artifacts
 
 - (void)updateAirplaneInformation:(ATCAirplaneInformation *)information {
     [self performSelectorOnMainThread:@selector(onMainThreadUpdateAirplaneInformation:) withObject:information waitUntilDone:NO];
@@ -188,7 +238,13 @@
     [self performSelectorOnMainThread:@selector(onMainThreadRemoveAirplane:) withObject:airplane waitUntilDone:NO];
 }
 
-# pragma mark Corresponding methods for the delegation on the main thread
+# pragma mark Controllers display artifacts
+
+- (void)updateInterfaceWithInformations:(NSArray *)informations {
+    [self performSelectorOnMainThread:@selector(onMainThreadUpdateInterfaceWithInformations:) withObject:informations waitUntilDone:NO];
+}
+
+# pragma mark Corresponding methods for the delegation of the interface on the main thread
 
 - (void)onMainThreadUpdateInterfaceWithInformations:(NSArray *)informations {
     [self.displayDelegate updateDetectedAirplanes:informations];

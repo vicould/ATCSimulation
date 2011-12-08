@@ -42,12 +42,12 @@
         self.bLine = self.extremity1.X - self.extremity2.X;
         self.cLine = - self.bLine * self.extremity1.Y - self.aLine * self.extremity1.X;
         
-        self.aOrthogonalLine1 = - self.bLine;
-        self.bOrthogonalLine1 = self.aLine;
+        self.aOrthogonalLine1 = self.bLine;
+        self.bOrthogonalLine1 = - self.aLine;
         self.cOrthogonalLine1 = - self.bOrthogonalLine1 * self.extremity1.Y - self.aOrthogonalLine1 * self.extremity1.X;
         
-        self.aOrthogonalLine2 = - self.bLine;
-        self.bOrthogonalLine2 = self.aLine;
+        self.aOrthogonalLine2 = self.bLine;
+        self.bOrthogonalLine2 = - self.aLine;
         self.cOrthogonalLine2 = - self.bOrthogonalLine2 * self.extremity2.Y - self.aOrthogonalLine2 * self.extremity2.X;
     }
     
@@ -103,9 +103,31 @@
     float inequationResult = a * testedPoint.X + b * testedPoint.Y + c;
     
     if (positive) {
-        return inequationResult >= 0;
+        if (b > 0) {
+            return inequationResult >= 0;
+        } else if (b < 0) {
+            return inequationResult <= 0;
+        } else {
+            if (a > 0) {
+                return inequationResult >= 0;
+            } else {
+                return inequationResult <= 0;
+            }
+        }
     } else {
-        return inequationResult <= 0;
+        if (b > 0) {
+            return inequationResult <= 0;
+        } else if (b < 0) {
+            return inequationResult >= 0;
+        } else {
+            if (a > 0) {
+                return inequationResult <= 0;
+            } else {
+                return inequationResult >= 0;
+            }
+        }
+
+        
     }
 }
 

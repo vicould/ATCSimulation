@@ -17,8 +17,7 @@
 
 @implementation BasicController
 
-- (id)init {
-    int ID = [BasicController createZoneID];
+- (id)initWithID:(int)ID {
     self = [super initWithAgentName:[BasicController zoneIdentifierAsStringWithID:ID]];
     
     if (self) {
@@ -26,7 +25,6 @@
         _controlledAirplanes = [[NSMutableDictionary alloc] init];
         
         self.agentBehaviorDelegate = self;
-        
     }
     
     return self;

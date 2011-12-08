@@ -18,14 +18,15 @@
 
 @implementation ATCZone
 
-- (id)initWithCorners:(NSArray *)cornersArray withControllerName:(NSString *)controllerName andIsAirport:(BOOL)airport {
+- (id)initWithCorners:(NSArray *)cornersArray withControllerName:(NSString *)controllerName zoneID:(int)currentZone andIsAirport:(BOOL)airport {
     self = [super init];
     
     if (self) {
         _controllerName = controllerName;
         _airport = airport;
+        _zoneID = currentZone;
         
-        self.corners = [NSArray arrayWithArray:cornersArray];
+        self.corners = cornersArray;
         // process the corners to add the necessary border segments
         
         int numberOfCorners = [cornersArray count];
@@ -33,9 +34,11 @@
         int i, deltaX, deltaY;
         BOOL positive = YES;
         
+        ATCPoint *extremity1, *extremity2;
+        
         for (i = 0; i < numberOfCorners - 1; i++) {
-            ATCPoint *extremity1 = [cornersArray objectAtIndex:i];
-            ATCPoint *extremity2 = [cornersArray objectAtIndex:(i + 1)];
+            extremity1 = [cornersArray objectAtIndex:i];
+            extremity2 = [cornersArray objectAtIndex:(i + 1)];
             
             // calculates the deltas of x and y
             deltaX = extremity2.X - extremity1.X;
@@ -66,9 +69,10 @@
             
             [self.borders addObject:[[ATCZoneBorderSegment alloc] initWithExtremity1:extremity1 andExtremity2:extremity2 withDirectionPositive:positive]];
         }
-        // adds the last line to close the path
-        ATCPoint *extremity1 = [cornersArray objectAtIndex:0];
-        ATCPoint *extremity2 = [cornersArray lastObject];
+        // adds the last line to close the 
+        extremity1 = [cornersArray lastObject];
+        extremity2 = [cornersArray objectAtIndex:0];
+
         
         // calculates the deltas of x and y
         deltaX = extremity2.X - extremity1.X;
@@ -108,6 +112,7 @@
 @synthesize borders = _borders;
 @synthesize airport = _airport;
 @synthesize controllerName = _controllerName;
+@synthesize zoneID = _zoneID;
 
 - (void)addAdjacentZone:(ATCZone *)zone {
     [self.adjacentZones addObject:zone];

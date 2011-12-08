@@ -41,6 +41,8 @@
     NSMutableArray *_zoneControllers;
     NSMutableArray *_airplanes;
     id<EnvironmentDisplayDelegate> _displayDelegate;
+    NSMutableDictionary *_zoneWhitePages;
+    int _lastID;
 }
 
 /**

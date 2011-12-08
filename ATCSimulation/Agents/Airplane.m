@@ -95,30 +95,24 @@
     // calculates current position since last check, and updates the attribute
     NSTimeInterval lastCheckInterval = - [self.lastPositionCheck timeIntervalSinceNow];
     
-    self.ownInformation.coordinates = [Artifacts calculateNewPositionFromCurrent:self.ownInformation afterInterval:lastCheckInterval];
+    self.ownInformation.coordinates = [self.artifactDelegate calculateNewPositionFromCurrent:self.ownInformation afterInterval:lastCheckInterval];
     
     // updates the timestamp since last check
     self.lastPositionCheck = [NSDate date];
     
-    /*
     // verifies if we changed zone
-    NSInteger newZone = [Artifacts calculateCurrentZonefromX:self.currentPosition.coordinates.coordinateX andY:self.currentPosition.coordinates.coordinateY];
+    int newZone = [self.artifactDelegate calculateCurrentZoneFromPoint:self.ownInformation.coordinates];
     
-    if (newZone != self.currentPosition.zone) {
+    if (newZone != self.ownInformation.currentZoneID) {
         // aha, we are leaving a zone
         
         // unregisters from the previous' zone messages, and registers for the new zone
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:[NSString stringWithFormat:@"Zone %d", self.currentPosition.zone] object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID] object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[NSString stringWithFormat:@"Zone %d", newZone] object:nil];
+        self.ownInformation.currentZoneID = newZone;
         
-        // calls the current zone controller to inform we are leaving his control, and would like the
-        // new controller's name for the next zone
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID] object:nil];
     }
-    
-    // sets a timer calling back this method to verify if we changed zone, based on the current
-    // route and speed
-     */
 }
 
 - (void)updatePositionInEnvironmemt:(NSTimer *)timer {
@@ -137,7 +131,7 @@
     if ([destinator isEqualToString:kNVBroadcastMessage]) {
         // generic broadcast messages
     } else if ([destinator isEqualToString:zoneIdentifier]) {
-        // zone broadcast messages        
+        // zone broadcast messages
         if ([messageCode intValue] == NVMessageCurrentPosition) {
             [self sendCurrentPosition];
         }

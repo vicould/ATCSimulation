@@ -25,6 +25,8 @@
     id<ControllerBehaviorDelegate> _controllerDelegate;
 }
 
+- (id)initWithID:(int)ID;
+
 /**
  * A dictionary referencing the different airplanes controlled by this controller, containing the name of the agent as key
  * and the information about the airplane as value.
