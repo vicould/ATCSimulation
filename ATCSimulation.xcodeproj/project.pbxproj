@@ -264,7 +264,6 @@
 		8204C43514809EEE0029F349 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
-				8218393A148569C000EF4AFE /* Utils */,
 				8204C412148086E00029F349 /* Agents */,
 				8204C43614809F400029F349 /* Environment */,
 			);
@@ -276,6 +275,7 @@
 			children = (
 				82183937148569C000EF4AFE /* Environment.h */,
 				82183938148569C000EF4AFE /* Environment.m */,
+				8218393A148569C000EF4AFE /* Utils */,
 				8221703D1483239600BAADCC /* Zone */,
 			);
 			name = Environment;

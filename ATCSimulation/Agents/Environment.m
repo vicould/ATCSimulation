@@ -16,6 +16,7 @@
 @property (retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) NSMutableDictionary *zoneWhitePages;
 @property (nonatomic, assign) int lastID;
+@property (nonatomic, retain) NSDictionary *airportsWhitePages;
 
 - (void)createEnvironment;
 
@@ -51,12 +52,14 @@
 @synthesize displayDelegate = _displayDelegate;
 @synthesize zoneWhitePages = _zoneWhitePages;
 @synthesize lastID = _lastID;
+@synthesize airportsWhitePages = _airportsWhitePages;
 
 - (void)createEnvironment {
     self.lastID = 0;
     
     // maps the id of the zone to the name of the controller handling it
     self.zoneWhitePages = [[NSMutableDictionary alloc] initWithCapacity:3];
+    self.airportsWhitePages = [[NSMutableDictionary alloc] initWithCapacity:1];
     
     BasicController *controller;
     
@@ -78,10 +81,14 @@
     // creates the airport controllers
     self.airportControllers = [[NSMutableArray alloc] initWithCapacity:1];
     
-    controller = [[AirportController alloc] initWithAirportName:@"KLAF" location:[[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140] andID:[self createZoneID]];
+    ATCPoint *airportLocation = [[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140];
+    controller = [[AirportController alloc] initWithAirportName:@"KLAF" location:airportLocation andID:[self createZoneID]];
     controller.artifactDelegate = self;
     [self.airportControllers addObject:controller];
     [self.zoneWhitePages setObject:controller.agentName forKey:[NSNumber numberWithInt:controller.zoneID]];
+    [self.airportsWhitePages setValue:airportLocation forKey:@"KLAF"];
+
+    [airportLocation release];
     [controller release];
     
     // creates the different zones composing the map
@@ -156,6 +163,8 @@
     self.airplanes = nil;
     self.airportControllers = nil;
     self.zoneControllers = nil;
+    self.zoneWhitePages = nil;
+    self.airportsWhitePages = nil;
     
     [self createEnvironment];
 }
@@ -211,6 +220,26 @@
 - (NSString *)controllerNameForZoneID:(int)zoneID {
     NSString *controllerName = [self.zoneWhitePages objectForKey:[NSNumber numberWithInt:zoneID]];
     return controllerName;
+}
+
+- (float)calculateAzimutToDestination:(NSString *)destination fromPoint:(ATCPoint *)currentLocation {
+    ATCPoint *airportOriginalLocation = [self.airportsWhitePages objectForKey:destination];
+    ATCPoint *airportLocation = [ATCPoint pointFromExisting:airportOriginalLocation];
+    
+    // let's switch to the referential of the airplane
+    airportLocation.X = airportLocation.X - currentLocation.X;
+    airportLocation.Y = airportLocation.Y - currentLocation.Y;
+    
+    if (airportLocation.X == 0) {
+        return airportLocation.Y >= 0 ? 180 : 0;
+    }
+    
+    float theta = atanf(airportLocation.Y / airportLocation.X);
+    
+    theta = airportLocation.X < 0 ? theta + M_PI : theta;
+    
+    // theta is in radians, and corresponds to π/2 + azimut
+    return (M_PI_2 + theta) * 180 / M_PI;
 }
 
 # pragma mark Zone artifacts
