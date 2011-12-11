@@ -253,16 +253,16 @@
     [explosionView release];
 }
 
-- (void)landAirplane:(ATCAirplaneInformation *)airplaneData {    
+- (void)landAirplane:(NSString *)airplaneName {    
     // airplane marker
-    UIImageView *airplaneCrashingView = [self.transmittedAirplanes objectForKey:airplaneData.airplaneName];
-    [self.transmittedAirplanes removeObjectForKey:airplaneData.airplaneName];
-    [airplaneCrashingView removeFromSuperview];
+    UIImageView *airplaneLandingView = [self.transmittedAirplanes objectForKey:airplaneName];
+    [self.transmittedAirplanes removeObjectForKey:airplaneName];
+    [airplaneLandingView removeFromSuperview];
     
     // airplane as detected by the controller marker
-    airplaneCrashingView = [self.detectedAirplanes objectForKey:airplaneData];
-    [self.detectedAirplanes removeObjectForKey:airplaneData.airplaneName];
-    [airplaneCrashingView removeFromSuperview];
+    airplaneLandingView = [(NSArray *)[self.detectedAirplanes objectForKey:airplaneName] objectAtIndex:0];
+    [self.detectedAirplanes removeObjectForKey:airplaneName];
+    [airplaneLandingView removeFromSuperview];
 }
 
 # pragma mark Methods for the controller
@@ -273,11 +273,11 @@
     }
 }
 
-- (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData {    
+- (void)removeAirplaneFromView:(NSString *)airplaneName {    
     // airplane as detected by the controller marker
-    UIView *airplaneCrashingView = [self.detectedAirplanes objectForKey:airplaneData];
-    [self.detectedAirplanes removeObjectForKey:airplaneData.airplaneName];
-    [airplaneCrashingView removeFromSuperview];
+    UIView *airplaneExitingView = [(NSArray *)[self.detectedAirplanes objectForKey:airplaneName] objectAtIndex:0];
+    [self.detectedAirplanes removeObjectForKey:airplaneName];
+    [airplaneExitingView removeFromSuperview];
 }
 
 - (void)displayZones:(NSArray *)zones {

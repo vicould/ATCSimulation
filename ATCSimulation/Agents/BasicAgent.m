@@ -40,6 +40,8 @@
     // builds an info dictionary, specifying the originating agent, and some attributes
     NSDictionary *messageContent = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.agentName, [NSNumber numberWithInt:type], message, nil] forKeys:[NSArray arrayWithObjects:kNVKeyOrigin, kNVKeyCode, kNVKeyContent, nil]];
     
+    NSLog(@"%@ %@ %d %@", self.agentName, agentName, type, message);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:agentName object:self userInfo:messageContent];
 }
 

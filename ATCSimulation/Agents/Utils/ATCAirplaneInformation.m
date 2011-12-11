@@ -28,6 +28,7 @@
 @synthesize course = _course;
 @synthesize destination = _destination;
 @synthesize airplaneName = _airplaneName;
+@synthesize informationValidity = _informationValidity;
 
 - (void)dealloc {
     self.coordinates = nil;

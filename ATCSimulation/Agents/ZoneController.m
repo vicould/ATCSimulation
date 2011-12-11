@@ -13,13 +13,15 @@
 @property (nonatomic, retain) NSTimer *positionUpdatePollingTimer;
 
 - (void)analyzePosition:(NSString *)positionString fromAirplaneName:(NSString *)tailNumber;
+- (void)sendNewFlightCourse:(float)course toPlane:(NSString *)plane;
+- (void)stopFollowingAirplane:(NSString *)airplaneName;
 
 @end
 
 @implementation ZoneController
 
-- (id)init {
-    self = [super init];
+- (id)initWithID:(int)ID {
+    self = [super initWithID:ID];
     
     if (self) {
         self.controllerDelegate = self;
@@ -37,6 +39,7 @@
 }
 
 - (void)startSimulation {
+    [super startSimulation];
     [self detectAirplanesInZone];
     
     // inits a timer to regulary poll new data from the airplanes
@@ -54,15 +57,20 @@
 - (void)detectAirplanesInZone {
     // sends a broadcast message to all airplanes currently in zone
     [self sendMessage:@"" fromType:NVMessageCurrentPosition toAgent:[BasicController messageIdentifierForZone:self.zoneID]];
-    
     [self.artifactDelegate updateInterfaceWithInformations:[self.controlledAirplanes allValues]];
+}
+
+- (void)sendNewFlightCourse:(float)course toPlane:(NSString *)plane {
+    [self sendMessage:[NSString stringWithFormat:@"%f", course] fromType:NVMessageNewRouteInstruction toAgent:plane];
 }
 
 # pragma mark Analysis
 - (void)finishMessageAnalysis:(NSString *)messageContent withMessageCode:(NVMessageCode)code from:(NSString *)sender originallyTo:(NSString *)originalReceiver {
     
     if (code == NVMessageCurrentPosition) {
-        [self analyzePosition:messageContent fromAirplaneName:originalReceiver];
+        [self analyzePosition:messageContent fromAirplaneName:sender];
+    } if (code == NVMessageLeavingZone) {
+        [self stopFollowingAirplane:sender];
     }
 }
 
@@ -76,13 +84,14 @@
     } else  {
         BOOL new = NO;
         
-        ATCAirplaneInformation *information = [self.controlledAirplanes objectForKey:[positionElements objectAtIndex:0]];
+        ATCAirplaneInformation *information = [self.controlledAirplanes objectForKey:tailNumber];
         
         if (information == nil) {
             // airplane is new, we should add it to the collection of controlled airplanes
             new = YES;
             information = [[ATCAirplaneInformation alloc] initWithZone:self.zoneID andPoint:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0]];
             information.airplaneName = tailNumber;
+            NSLog(@"new airplane %@, in %@", tailNumber, self.agentName);
         }
         
         information.destination = [positionElements objectAtIndex:0];
@@ -90,12 +99,22 @@
         information.coordinates.Y = [(NSString *)[positionElements objectAtIndex:2] floatValue];
         information.course = [(NSString *)[positionElements objectAtIndex:3] intValue];
         information.speed = [(NSString *)[positionElements objectAtIndex:4] intValue];
-        
+        information.informationValidity = [NSDate date];
+
         if (new) {
             [self.controlledAirplanes setValue:information forKey:tailNumber];
         }
     }
     
+}
+
+- (void)preventCollisions {
+    
+}
+
+- (void)stopFollowingAirplane:(NSString *)airplaneName {
+    [self.controlledAirplanes removeObjectForKey:airplaneName];
+    [self.artifactDelegate removeAirplane:airplaneName];
 }
 
 

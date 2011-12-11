@@ -78,7 +78,14 @@
 }
 
 @synthesize currentController = _currentController;
-@synthesize lastPositionCheck = _lastPositionCheck;
+
+- (NSDate *)lastPositionCheck {
+    return self.ownInformation.informationValidity;
+}
+
+- (void)setLastPositionCheck:(NSDate *)lastPositionCheck {
+    self.ownInformation.informationValidity = lastPositionCheck;
+}
 
 - (void)startSimulation {
     // inits flight time
@@ -106,12 +113,15 @@
     if (newZone != self.ownInformation.currentZoneID) {
         // aha, we are leaving a zone
         
+        // tells the controller
+        [self sendMessage:@"" fromType:NVMessageLeavingZone toAgent:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID]];
+        
         // unregisters from the previous' zone messages, and registers for the new zone
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID] object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:[BasicController messageIdentifierForZone:self.ownInformation.currentZoneID] object:nil];
         
         self.ownInformation.currentZoneID = newZone;
         
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController zoneIdentifierAsStringWithID:self.ownInformation.currentZoneID] object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:[BasicController messageIdentifierForZone:self.ownInformation.currentZoneID] object:nil];
     }
 }
 

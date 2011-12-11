@@ -10,6 +10,8 @@
 
 #define SCALE 4
 
+#define TIME_FACTOR 100
+
 extern NSString * const kNVBroadcastMessage;
 
 extern NSString * const kNVKeyOrigin;
@@ -42,7 +44,7 @@ enum {
     NVMessageIncident = 1207,
     NVMessageLandingIntentionZone = 1208,
 
-//Airplane to airpvort controller
+//Airplane to airport controller
     NVMessageLandingIntentionAirport = 1301,
     NVMessagePlaneLanded = 1302,
     NVMessageDistanceFromAirport = 1303,

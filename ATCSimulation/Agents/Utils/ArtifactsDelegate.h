@@ -30,6 +30,10 @@
  */
 - (int)createZoneID;
 
+# pragma mark Routes decisions
+
+- (ATCPoint *)calculatePlanesIntersectionWithPlane1Infos:(ATCAirplaneInformation *)plane1 andPlane2Infos:(ATCAirplaneInformation *)plane2;
+
 # pragma mark - Methods for the airplane.
 
 # pragma mark Display
@@ -56,7 +60,7 @@
  * Method used by the controllers to remove an airplane from the simulation when it exited the map.
  * @param airplane The airplane to remove from the simulation.
  */
-- (void)removeAirplane:(ATCAirplaneInformation *)airplane;
+- (void)removeAirplane:(NSString *)airplaneName;
 
 # pragma mark position
 
@@ -98,5 +102,7 @@
  * @return The course, in degrees, to follow to reach the airport.
  */
 - (float)calculateAzimutToDestination:(NSString *)destination fromPoint:(ATCPoint *)currentLocation;
+
+- (void)lineEquationFromPoint:(ATCPoint *)initialPoint andCourse:(float)course WithA:(float *)a b:(float *)b andC:(float *)c;
 
 @end

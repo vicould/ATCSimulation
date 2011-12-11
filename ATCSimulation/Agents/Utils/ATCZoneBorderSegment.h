@@ -70,8 +70,4 @@
  */
 - (float)calculateDistanceToSegment:(ATCAirplaneInformation *)testedPosition;
 
-
-- (BOOL)checkIfProjectionIsInsideSegmentWithPoint:(ATCPoint *)testedPoint;
-- (ATCPoint *)calculateLinesIntersectionWithPoint:(ATCPoint *)testedPoint;
-
 @end

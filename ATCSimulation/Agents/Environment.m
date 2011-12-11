@@ -19,16 +19,14 @@
 @property (nonatomic, retain) NSDictionary *airportsWhitePages;
 
 - (void)createEnvironment;
-
 - (Airplane *)createAirplaneWithInitialInfo:(ATCAirplaneInformation *)position;
-
 - (void)representStartingEnvironment;
 
 - (void)onMainThreadUpdateInterfaceWithInformations:(NSArray *)informations;
 - (void)onMainThreadUpdateAirplaneInformation:(ATCAirplaneInformation *)information;
-- (void)onMainThreadLandAirplane:(ATCAirplaneInformation *)airplane;
+- (void)onMainThreadLandAirplane:(NSString *)airplaneName;
 - (void)onMainThreadCrashAirplane:(ATCAirplaneInformation *)airplane;
-- (void)onMainThreadRemoveAirplane:(ATCAirplaneInformation *)airplane;
+- (void)onMainThreadRemoveAirplane:(NSString *)airplaneName;
 
 @end
 
@@ -209,7 +207,7 @@
 
 - (ATCPoint *)calculateNewPositionFromCurrent:(ATCAirplaneInformation *)currentPosition afterInterval:(NSTimeInterval)interval {
     ATCPoint *newPoint = [ATCPoint pointFromExisting:currentPosition.coordinates];
-    float distance = interval * 10 * currentPosition.speed / 3600.0;
+    float distance = interval * TIME_FACTOR * currentPosition.speed / 3600.0;
     
     newPoint.X = currentPosition.coordinates.X + (distance * sinf(currentPosition.course * 2 * M_PI / 360.0));
     newPoint.Y = currentPosition.coordinates.Y - (distance * cosf(currentPosition.course * 2 * M_PI / 360.0));
@@ -249,6 +247,137 @@
     return self.lastID;
 }
 
+- (ATCPoint *)calculatePlanesIntersectionWithPlane1Infos:(ATCAirplaneInformation *)plane1 andPlane2Infos:(ATCAirplaneInformation *)plane2 {
+    // calculates equations from point and route
+    float a1, b1, c1, a2, b2, c2;
+    float x, y;
+    
+    [self lineEquationFromPoint:plane1.coordinates andCourse:plane1.course WithA:&a1 b:&b1 andC:&c1];
+    [self lineEquationFromPoint:plane2.coordinates andCourse:plane2.course WithA:&a2 b:&b2 andC:&c2];
+    
+    // resolves equation
+    if (a1 == 0) {
+        if (a2 == 0) {
+            if (c1 == 0 || c2 == 0) {
+                if (b1 == b2 || b1 == - b2) {
+                    x = 0;
+                    y = 0;
+                } else {
+                    x = MAXFLOAT;
+                    y = MAXFLOAT;
+                }
+            } else {
+                if (b1 / c1 == b2 / c2) {
+                    x = plane1.coordinates.X < plane2.coordinates.X ? plane1.coordinates.X + plane1.speed * abs(plane1.coordinates.X - plane2.coordinates.X) / (plane1.speed + plane2.speed) : plane2.coordinates.X + plane2.speed * abs(plane1.coordinates.X - plane2.coordinates.X) / (plane1.speed + plane2.speed);
+                    y = c1 / b1;
+                } else {
+                    x = MAXFLOAT;
+                    y = MAXFLOAT;
+                }
+            }
+        } else {
+            x = - (c2 - b2 * c1 / b1) / a2;
+            y = - c1 / b1;
+        }
+    } else if (b1 == 0) {
+        if (b2 == 0) {
+            // parallel paths, no way
+            if (c1 == 0 || c2 == 0) {
+                if (a1 == a2 || a1 == -a2) {
+                    x = 0;
+                    y = 0;
+                } else {
+                    x = MAXFLOAT;
+                    y = MAXFLOAT;
+                }
+            } else {
+                if (c1 / a1 == c2 / a2) {
+                    x = - c1 / a1;
+                    y = plane1.coordinates.Y < plane2.coordinates.Y ? plane1.coordinates.Y + plane1.speed * abs(plane1.coordinates.Y - plane2.coordinates.Y) / (plane1.speed + plane2.speed) : plane2.coordinates.Y + plane2.speed * abs(plane1.coordinates.Y - plane2.coordinates.Y) / (plane1.speed + plane2.speed);
+                } else {
+                    x = MAXFLOAT;
+                    y = MAXFLOAT;
+                }
+            }
+        } else {
+            x = - c1 / a1;
+            y = - (c2 - a2 * c1 / a1) / b2;
+        }
+    } else {
+        if (a2 == 0) {
+            x = - (c1 - b1 * c2 / b2) / a1;
+            y = - c2 / b2;
+        } else if (b2 == 0) {
+            x = - c2 / a2;
+            y = - (c1 - a1 * c2 / a2) / b1;
+        } else {
+            // tests if we have parallel paths
+            if (a1 / a2 == b1 / b2) {
+                if (c2 == 0) {
+                    if (c1 == 0) {
+                        x = plane1.coordinates.X < plane2.coordinates.X ? plane1.coordinates.X + plane1.speed * abs(plane1.coordinates.X - plane2.coordinates.X) / (plane1.speed + plane2.speed) : plane2.coordinates.X + plane2.speed * abs(plane1.coordinates.X - plane2.coordinates.X) / (plane1.speed + plane2.speed);
+                        y = (- a1 * x - c1) / b1;
+                    } else {
+                        x = MAXFLOAT;
+                        y = MAXFLOAT;
+                    }
+                } else if (c1 / c2 == a1 / a2) {
+                    // same equation, same line
+                    x = plane1.coordinates.X < plane2.coordinates.X ? plane1.coordinates.X + plane1.speed * abs(plane1.coordinates.X - plane2.coordinates.X) / (plane1.speed + plane2.speed) : plane2.coordinates.X + plane2.speed * abs(plane1.coordinates.X - plane2.coordinates.X) / (plane1.speed + plane2.speed);
+                    y = (- a1 * x - c1) / b1;
+                } else {
+                    // colinear vectors
+                    x = MAXFLOAT;
+                    y = MAXFLOAT;
+                }
+            } else {
+                x = - (c1 + (a2 * c1 - c2 * a1) / (a1 * b2 - a2 * b1)) / a1;
+                y = (a2 * c1 - c2 * a1) / (a1 * b2 - a2 * b1);
+            }
+        }
+    }
+    
+    return [[[ATCPoint alloc] initWithCoordinateX:x andCoordinateY:y] autorelease];
+}
+
+- (void)lineEquationFromPoint:(ATCPoint *)initialPoint andCourse:(float)course WithA:(float *)a b:(float *)b andC:(float *)c {
+    
+    // simplifies coefficients in case of particular angle values
+    if (course == 0) {
+        *a = -4;
+        *b = 0;
+    } else if (course == 45) {
+        *a = -4;
+        *b = -4;
+    } else if (course == 90) {
+        *a = 0;
+        *b = -4;
+    } else if (course == 135) {
+        *a = 4;
+        *b = -4;
+    } else if (course == 180) {
+        *a = 4;
+        *b = 0;
+    } else if (course == 225) {
+        *a = 4;
+        *b = 4;
+    } else if (course == 270) {
+        *a = 0;
+        *b = 4;
+    } else if (course == 315) {
+        *a = -4;
+        *b = 4;
+    } else {
+        // gets the equation in the referential of the airplane
+        float theta = 3 * M_PI_2 + course * M_PI / 180;
+        
+        *a = - 4 * cosf(theta); // why 4? why not?
+        *b = 4 * sinf(theta);
+    }
+    
+    *c = - *b * initialPoint.Y - *a * initialPoint.X;
+}
+
 # pragma mark Airplanes display artifacts
 
 - (void)updateAirplaneInformation:(ATCAirplaneInformation *)information {
@@ -263,8 +392,8 @@
     [self performSelectorOnMainThread:@selector(onMainThreadCrashAirplane:) withObject:airplane waitUntilDone:NO];
 }
 
-- (void)removeAirplane:(ATCAirplaneInformation *)airplane {
-    [self performSelectorOnMainThread:@selector(onMainThreadRemoveAirplane:) withObject:airplane waitUntilDone:NO];
+- (void)removeAirplane:(NSString *)airplaneName {
+    [self performSelectorOnMainThread:@selector(onMainThreadRemoveAirplane:) withObject:airplaneName waitUntilDone:NO];
 }
 
 # pragma mark Controllers display artifacts
@@ -283,16 +412,16 @@
     [self.displayDelegate updateAirplanePositionWithInfo:information];
 }
 
-- (void)onMainThreadLandAirplane:(ATCAirplaneInformation *)airplane {
-    [self.displayDelegate landAirplane:airplane];
+- (void)onMainThreadLandAirplane:(NSString *)airplaneName {
+    [self.displayDelegate landAirplane:airplaneName];
 }
 
 - (void)onMainThreadCrashAirplane:(ATCAirplaneInformation *)airplane {
     [self.displayDelegate crashAirplane:airplane];
 }
 
-- (void)onMainThreadRemoveAirplane:(ATCAirplaneInformation *)airplane {
-    [self.displayDelegate removeAirplaneFromView:airplane];
+- (void)onMainThreadRemoveAirplane:(NSString *)airplaneName {
+    [self.displayDelegate removeAirplaneFromView:airplaneName];
 }
 
 @end

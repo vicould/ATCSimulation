@@ -23,6 +23,7 @@
     NSInteger _course;
     NSString *_destination;
     NSString *_airplaneName;
+    NSDate *_informationValidity;
 }
 
 /**
@@ -61,6 +62,8 @@
  * The name of the airplane, which is unique.
  */
 @property (nonatomic, retain) NSString *airplaneName;
+
+@property (nonatomic, retain) NSDate *informationValidity;
 
 /**
  * Duplicates one object.

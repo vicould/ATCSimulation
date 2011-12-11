@@ -36,7 +36,7 @@
  * Lands an airplane once it has reached its destination.
  * @param airplane
  */
-- (void)landAirplane:(ATCAirplaneInformation *)airplaneData;
+- (void)landAirplane:(NSString *)airplaneName;
 
 # pragma mark - Methods for the zones and the controllers.
 
@@ -50,7 +50,7 @@
  * Removes an airplane from the view when it is outside of the map.
  * @param airplane The information about the airplane to remove.
  */
-- (void)removeAirplaneFromView:(ATCAirplaneInformation *)airplaneData;
+- (void)removeAirplaneFromView:(NSString *)airplaneName;
 
 /**
  * Prints the borders on the map.
