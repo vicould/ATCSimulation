@@ -10,7 +10,14 @@
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "ZoneController.h"
+#import "ZoneController+Collision.h"
+#import "Environment.h"
 
-@interface ZoneControllerTests : SenTestCase
+@interface ZoneControllerTest : SenTestCase {
+    @private
+    Environment *environment;
+    ZoneController *controller1;
+}
 
 @end

@@ -11,6 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "ATCZoneBorderSegment.h"
+#import "ATCZoneBorderSegment+SpaceMethods.h"
 
 @interface ATCZoneBorderSegmentTest : SenTestCase {
     ATCZoneBorderSegment *segment1;
