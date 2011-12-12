@@ -24,9 +24,9 @@
     // use a polar referential, with the origin being the intersection
     
     // airplanes have probably moved since we got their message
-    float r1 = sqrtf(powf(airplane1.coordinates.X - intersection.X, 2) + powf(airplane1.coordinates.Y - intersection.Y, 2)) - [airplane1.informationValidity timeIntervalSinceNow] * airplane1.speed;
+    float r1 = sqrtf(powf(airplane1.coordinates.X - intersection.X, 2) + powf(airplane1.coordinates.Y - intersection.Y, 2)) + [airplane1.informationValidity timeIntervalSinceNow] * airplane1.speed;
     
-    float r2 = sqrtf(powf(airplane2.coordinates.X - intersection.X, 2) + powf(airplane2.coordinates.Y - intersection.Y, 2)) - [airplane2.informationValidity timeIntervalSinceNow] * airplane2.speed;
+    float r2 = sqrtf(powf(airplane2.coordinates.X - intersection.X, 2) + powf(airplane2.coordinates.Y - intersection.Y, 2)) + [airplane2.informationValidity timeIntervalSinceNow] * airplane2.speed;
     
     float entryTime1, exitTime1;
     float entryTime2, exitTime2;

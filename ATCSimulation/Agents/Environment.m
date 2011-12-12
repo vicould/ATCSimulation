@@ -226,8 +226,8 @@
     ATCPoint *newPoint = [ATCPoint pointFromExisting:currentPosition.coordinates];
     float distance = interval * TIME_FACTOR * currentPosition.speed / 3600.0;
     
-    newPoint.X = currentPosition.coordinates.X + (distance * sinf(currentPosition.course * 2 * M_PI / 360.0));
-    newPoint.Y = currentPosition.coordinates.Y - (distance * cosf(currentPosition.course * 2 * M_PI / 360.0));
+    newPoint.X = currentPosition.coordinates.X + (distance * cosf(currentPosition.course * M_PI / 180.0f - M_PI_2));
+    newPoint.Y = currentPosition.coordinates.Y + (distance * sinf(currentPosition.course * M_PI / 180.0f - M_PI_2));
     
     return newPoint;
 }
