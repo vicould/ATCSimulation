@@ -53,8 +53,6 @@
         [self addSubview:zoneIDLabel];
         [zoneIDLabel release];
     }
-    
-    [color release];
 }
 
 @end

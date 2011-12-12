@@ -11,7 +11,6 @@
 #import "AgentBehaviorDelegate.h"
 #import "ArtifactsDelegate.h"
 
-#import "clips.h"
 
 /**
  * A basic class defining some ground behaviors for an agent, such as the messaging capabilities.

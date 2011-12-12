@@ -55,7 +55,7 @@
 #pragma mark - View lifecycle
 
 - (void)loadView {
-    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    self.view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)] autorelease];
     
     // creates button
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -71,7 +71,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.environment = [[Environment alloc] initWithDisplayDelegate:self];
+    self.environment = [[[Environment alloc] initWithDisplayDelegate:self] autorelease];
     self.simulationState = SimulationReady;
 }
 
@@ -95,15 +95,15 @@
 
 - (void)createViewsForInterface {
     // creates map view:
-    self.mapView = [[MapView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    self.mapView = [[[MapView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)] autorelease];
     [self.mapView setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
     [self.view addSubview:self.mapView];
 
-    self.controllersView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    self.controllersView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)] autorelease];
     [self.controllersView setBackgroundColor:[UIColor colorWithWhite:1 alpha:0]];
     [self.view addSubview:self.controllersView];
     
-    self.airplanesView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
+    self.airplanesView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)] autorelease];
     [self.airplanesView setBackgroundColor:[UIColor colorWithWhite:1 alpha:0]];
     [self.view addSubview:self.airplanesView];
     
@@ -140,8 +140,8 @@
 }
 
 - (void)resetInterface {
-    self.detectedAirplanes = [[NSMutableDictionary alloc] init];
-    self.transmittedAirplanes = [[NSMutableDictionary alloc] init];
+    self.detectedAirplanes = [[[NSMutableDictionary alloc] init] autorelease];
+    self.transmittedAirplanes = [[[NSMutableDictionary alloc] init] autorelease];
     
     // resets the simulation
     [self.environment resetSimulation];
@@ -183,10 +183,10 @@
         [airplaneView setFrame:CGRectMake(airplaneInfo.coordinates.X * SCALE - 10, airplaneInfo.coordinates.Y * SCALE - 10, 20, 20)];
         
         // sets the initial orientation for the aircraft
-        CATransform3D initialCourseRotation = CATransform3DMakeRotation(airplaneInfo.course * 2 * M_PI / 360.0, 0, 0, 1);
+        CATransform3D initialCourseRotation = CATransform3DMakeRotation(airplaneInfo.course * M_PI / 180.0f, 0, 0, 1);
         airplaneView.layer.transform = initialCourseRotation;
         
-        [self.controllersView addSubview:airplaneView];
+        [self.airplanesView addSubview:airplaneView];
         
         [airplanesCollection setObject:[NSMutableArray arrayWithObjects:airplaneView, [NSNumber numberWithInt:airplaneInfo.course], [ATCPoint pointFromExisting:airplaneInfo.coordinates], nil] forKey:airplaneInfo.airplaneName];
         
@@ -204,7 +204,7 @@
         CATransform3D translation = CATransform3DMakeTranslation((airplaneInfo.coordinates.X - previousPosition.X) * SCALE, (airplaneInfo.coordinates.Y - previousPosition.Y) * SCALE, 0);
         // the translation should be made according to what has been previously translated
         
-        CATransform3D rotation = CATransform3DMakeRotation((airplaneInfo.course - [previousCourse intValue]) * 2 * M_PI / 360.0 , 0, 0, 1);
+        CATransform3D rotation = CATransform3DMakeRotation((airplaneInfo.course - [previousCourse intValue]) * M_PI / 180.0f , 0, 0, 1);
         
         // concats the previous transformation applied to the view with the new ones
         CATransform3D transformResult = CATransform3DConcat(airplaneView.layer.transform, translation);
@@ -212,7 +212,7 @@
         
         // sets the new transform to the layer
         airplaneView.layer.transform = transformResult;
-        [airplaneView setNeedsDisplay];
+//        [airplaneView setNeedsDisplay];
         
         [airplaneInfosArray replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:airplaneInfo.course]];
         // previous position seems to be indeed changed, but next iteration it is the initial value
@@ -235,34 +235,40 @@
     [self performMarkerUpdateWithInfo:correspondingInfo asControllerMarker:NO];
 }
 
-- (void)crashAirplane:(ATCAirplaneInformation *)airplaneData {
+- (void)crashAirplane:(ATCAirplaneInformation *)airplaneInfo {
     // airplane marker
-    UIImageView *airplaneCrashingView = [self.transmittedAirplanes objectForKey:airplaneData.airplaneName];
-    [self.transmittedAirplanes removeObjectForKey:airplaneData.airplaneName];
+    UIView *airplaneCrashingView = [self.transmittedAirplanes objectForKey:airplaneInfo.airplaneName];
+    [self.transmittedAirplanes removeObjectForKey:airplaneInfo.airplaneName];
     [airplaneCrashingView removeFromSuperview];
     
     // airplane as detected by the controller marker
-    airplaneCrashingView = [self.detectedAirplanes objectForKey:airplaneData.airplaneName];
-    [self.detectedAirplanes removeObjectForKey:airplaneData.airplaneName];
-    [airplaneCrashingView removeFromSuperview];
+    NSArray *airplaneLandingData = [self.detectedAirplanes objectForKey:airplaneInfo.airplaneName];
+    if (airplaneLandingData != nil) {
+        [self.detectedAirplanes removeObjectForKey:airplaneInfo.airplaneName];
+        [[airplaneLandingData objectAtIndex:0] removeFromSuperview];
+    }
     
     // adds an explosion
-    UIImageView *explosionView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"crash"]];
-    explosionView.frame = CGRectMake(airplaneData.coordinates.X * SCALE - 10, airplaneData.coordinates.Y * SCALE - 10, 20, 20);
+    UIView *explosionView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"crash"]];
+    explosionView.frame = CGRectMake(airplaneInfo.coordinates.X * SCALE - 10, airplaneInfo.coordinates.Y * SCALE - 10, 20, 20);
     [self.controllersView addSubview:explosionView];
     [explosionView release];
 }
 
 - (void)landAirplane:(NSString *)airplaneName {    
     // airplane marker
-    UIImageView *airplaneLandingView = [self.transmittedAirplanes objectForKey:airplaneName];
-    [self.transmittedAirplanes removeObjectForKey:airplaneName];
+    UIView *airplaneLandingView = [(NSArray *)[self.transmittedAirplanes objectForKey:airplaneName] objectAtIndex:0];
     [airplaneLandingView removeFromSuperview];
+    [self.transmittedAirplanes removeObjectForKey:airplaneName];
     
     // airplane as detected by the controller marker
-    airplaneLandingView = [(NSArray *)[self.detectedAirplanes objectForKey:airplaneName] objectAtIndex:0];
-    [self.detectedAirplanes removeObjectForKey:airplaneName];
-    [airplaneLandingView removeFromSuperview];
+    NSArray *airplaneLandingData = [self.detectedAirplanes objectForKey:airplaneName];
+    if (airplaneLandingData != nil) {
+        [self.detectedAirplanes removeObjectForKey:airplaneName];
+        airplaneLandingView = [airplaneLandingData objectAtIndex:0];
+        [airplaneLandingView removeFromSuperview];
+        [self.transmittedAirplanes removeObjectForKey:airplaneName];
+    }
 }
 
 # pragma mark Methods for the controller
@@ -276,8 +282,8 @@
 - (void)removeAirplaneFromView:(NSString *)airplaneName {    
     // airplane as detected by the controller marker
     UIView *airplaneExitingView = [(NSArray *)[self.detectedAirplanes objectForKey:airplaneName] objectAtIndex:0];
-    [self.detectedAirplanes removeObjectForKey:airplaneName];
     [airplaneExitingView removeFromSuperview];
+    [self.detectedAirplanes removeObjectForKey:airplaneName];
 }
 
 - (void)displayZones:(NSArray *)zones {
@@ -301,8 +307,7 @@
     for (NSString *name in airportsControllers.keyEnumerator) {
         UIImageView *controllerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"runway"]];
         ATCPoint *controller_position = [airportsControllers objectForKey:name];
-        // the position of runway needs to be accurate, that's why we don't add an offset
-        controllerView.frame = CGRectMake(controller_position.X * SCALE, controller_position.Y * SCALE, 137, 20);
+        controllerView.frame = CGRectMake(controller_position.X * SCALE - 65, controller_position.Y * SCALE - 10, 137, 20);
         
         [self.controllersView addSubview:controllerView];
         [controllerView release];

@@ -67,7 +67,7 @@
                 }
             }
             
-            [self.borders addObject:[[ATCZoneBorderSegment alloc] initWithExtremity1:extremity1 andExtremity2:extremity2 withDirectionPositive:positive]];
+            [self.borders addObject:[[[ATCZoneBorderSegment alloc] initWithExtremity1:extremity1 andExtremity2:extremity2 withDirectionPositive:positive] autorelease]];
         }
         // adds the last line to close the 
         extremity1 = [cornersArray lastObject];
@@ -101,7 +101,7 @@
             }
         }
         
-        [self.borders addObject:[[ATCZoneBorderSegment alloc] initWithExtremity1:extremity1 andExtremity2:extremity2 withDirectionPositive:positive]];
+        [self.borders addObject:[[[ATCZoneBorderSegment alloc] initWithExtremity1:extremity1 andExtremity2:extremity2 withDirectionPositive:positive] autorelease]];
     }
 
     return self;

@@ -57,6 +57,7 @@ enum {
     NVMessageContactAirport = 2303,
     NVMessageRefuseContactAirport = 2304,
     NVMessageNewRouteInstruction = 2305,
+    NVMessageResumeInitialDestination = 2306,
     
     
 //Zone controller to zone controller

@@ -47,14 +47,14 @@
  * Asks the environment to hide the specified airplane, as it has reached its destination.
  * @param airplane The informations about the airplane that should land.
  */
-- (void)landAirplane:(ATCAirplaneInformation *)airplane;
+- (void)landAirplane:(NSString *)airplaneName;
 
 /**
  * Asks the environment to hide the specified airplane, as it crashed (after running out of fuel or
  * colliding with another airplane).
  * @param airplane The informations about the airplane that just had an accident.
  */
-- (void)crashAirplane:(ATCAirplaneInformation *)airplane;
+- (void)crashAirplane:(ATCAirplaneInformation *)airplaneInfo;
 
 /**
  * Method used by the controllers to remove an airplane from the simulation when it exited the map.
@@ -104,5 +104,7 @@
 - (float)calculateAzimutToDestination:(NSString *)destination fromPoint:(ATCPoint *)currentLocation;
 
 - (void)lineEquationFromPoint:(ATCPoint *)initialPoint andCourse:(float)course WithA:(float *)a b:(float *)b andC:(float *)c;
+
+- (BOOL)checkIfPointIsOnRunway:(ATCPoint *)point fromZone:(int)zoneID;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ZoneController.h"
+#import "ZoneController+Collision.h"
 
 @interface ZoneController ()
 
@@ -15,6 +16,7 @@
 - (void)analyzePosition:(NSString *)positionString fromAirplaneName:(NSString *)tailNumber;
 - (void)sendNewFlightCourse:(float)course toPlane:(NSString *)plane;
 - (void)stopFollowingAirplane:(NSString *)airplaneName;
+- (void)tellAirplaneToResumeCourse:(NSString *)airplaneName;
 
 @end
 
@@ -35,7 +37,7 @@
 - (void)dealloc {
     
     [self.positionUpdatePollingTimer invalidate];
-    [self.positionUpdatePollingTimer release];
+    self.positionUpdatePollingTimer = nil;
 }
 
 - (void)startSimulation {
@@ -64,6 +66,10 @@
     [self sendMessage:[NSString stringWithFormat:@"%f", course] fromType:NVMessageNewRouteInstruction toAgent:plane];
 }
 
+- (void)tellAirplaneToResumeCourse:(NSString *)airplaneName {
+    [self sendMessage:@"" fromType:NVMessageResumeInitialDestination toAgent:airplaneName];
+}
+
 # pragma mark Analysis
 - (void)finishMessageAnalysis:(NSString *)messageContent withMessageCode:(NVMessageCode)code from:(NSString *)sender originallyTo:(NSString *)originalReceiver {
     
@@ -82,16 +88,16 @@
     if ([positionElements count] != 5) {
         // invalid message ...
     } else  {
-        BOOL new = NO;
         
         ATCAirplaneInformation *information = [self.controlledAirplanes objectForKey:tailNumber];
         
         if (information == nil) {
             // airplane is new, we should add it to the collection of controlled airplanes
-            new = YES;
-            information = [[ATCAirplaneInformation alloc] initWithZone:self.zoneID andPoint:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0]];
+            information = [[ATCAirplaneInformation alloc] initWithZone:self.zoneID andPoint:[[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0] autorelease]];
             information.airplaneName = tailNumber;
             NSLog(@"new airplane %@, in %@", tailNumber, self.agentName);
+            [self.controlledAirplanes setValue:information forKey:tailNumber];
+            [information release];
         }
         
         information.destination = [positionElements objectAtIndex:0];
@@ -100,16 +106,25 @@
         information.course = [(NSString *)[positionElements objectAtIndex:3] intValue];
         information.speed = [(NSString *)[positionElements objectAtIndex:4] intValue];
         information.informationValidity = [NSDate date];
-
-        if (new) {
-            [self.controlledAirplanes setValue:information forKey:tailNumber];
-        }
     }
     
 }
 
 - (void)preventCollisions {
-    
+    // tests all the airplanes in the zone by pairs
+    for (NSString *airplane1Name in [self.controlledAirplanes keyEnumerator]) {
+        for (NSString *airplane2Name in [self.controlledAirplanes keyEnumerator]) {
+            if ([airplane1Name isEqualToString:airplane2Name]) {
+                continue;
+            }
+            ATCAirplaneInformation *airplane1 = [self.controlledAirplanes objectForKey:airplane1Name];
+            ATCAirplaneInformation *airplane2 = [self.controlledAirplanes objectForKey:airplane2Name];
+            if ([self evaluateRiskBetweenAirplane1:airplane1 andAirplane2:airplane2]) {
+                [self sendNewFlightCourse:(airplane2.course < 315 ? airplane2.course + 45 : 315 - airplane2.course) toPlane:airplane2Name];
+                [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(tellAirplaneToResumeCourse:) userInfo:airplane2Name repeats:NO];
+            }
+        }
+    }
 }
 
 - (void)stopFollowingAirplane:(NSString *)airplaneName {

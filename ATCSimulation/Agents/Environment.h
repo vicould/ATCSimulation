@@ -45,6 +45,8 @@
     NSMutableDictionary *_zoneWhitePages;
     NSDictionary *_airportsWhitePages;
     int _lastID;
+    
+    NSAutoreleasePool *environmentPool;
 }
 
 /**
@@ -73,7 +75,7 @@
 /**
  * Gets the airplanes running in the simulation.
  */
-@property (readonly, retain) NSMutableArray *airplanes;
+@property (nonatomic, readonly, retain) NSMutableArray *airplanes;
 
 /**
  * Property permitting an access to the interface delegate.

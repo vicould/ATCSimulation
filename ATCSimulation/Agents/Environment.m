@@ -13,7 +13,7 @@
 @property (nonatomic, retain) NSMutableArray *zones;
 @property (nonatomic, retain) NSMutableArray *airportControllers;
 @property (nonatomic, retain) NSMutableArray *zoneControllers;
-@property (retain) NSMutableArray *airplanes;
+@property (nonatomic, retain) NSMutableArray *airplanes;
 @property (nonatomic, retain) NSMutableDictionary *zoneWhitePages;
 @property (nonatomic, assign) int lastID;
 @property (nonatomic, retain) NSDictionary *airportsWhitePages;
@@ -36,11 +36,25 @@
     self = [super init];
     
     if (self) {
+//        environmentPool = [[NSAutoreleasePool alloc] init];
         _displayDelegate = object;
         [self createEnvironment];
     }
     
     return self;
+}
+
+- (void)dealloc {
+    self.zones = nil;
+    self.airplanes = nil;
+    self.airportControllers = nil;
+    self.zoneControllers = nil;
+    self.zoneWhitePages = nil;
+    self.airportsWhitePages = nil;
+    
+//    [environmentPool release];
+    
+    [super dealloc];
 }
 
 @synthesize zones = _zones;
@@ -56,13 +70,13 @@
     self.lastID = 0;
     
     // maps the id of the zone to the name of the controller handling it
-    self.zoneWhitePages = [[NSMutableDictionary alloc] initWithCapacity:3];
-    self.airportsWhitePages = [[NSMutableDictionary alloc] initWithCapacity:1];
+    self.zoneWhitePages = [NSMutableDictionary dictionaryWithCapacity:3];
+    self.airportsWhitePages = [NSMutableDictionary dictionaryWithCapacity:1];
     
     BasicController *controller;
     
     // creates the zone controllers
-    self.zoneControllers = [[NSMutableArray alloc] initWithCapacity:2];
+    self.zoneControllers = [NSMutableArray arrayWithCapacity:2];
 
     controller = [[ZoneController alloc] initWithID:[self createZoneID]];
     controller.artifactDelegate = self;
@@ -77,9 +91,9 @@
     [controller release];
     
     // creates the airport controllers
-    self.airportControllers = [[NSMutableArray alloc] initWithCapacity:1];
+    self.airportControllers = [NSMutableArray arrayWithCapacity:1];
     
-    ATCPoint *airportLocation = [[ATCPoint alloc] initWithCoordinateX:135 andCoordinateY:140];
+    ATCPoint *airportLocation = [[ATCPoint alloc] initWithCoordinateX:165 andCoordinateY:142];
     controller = [[AirportController alloc] initWithAirportName:@"KLAF" location:airportLocation andID:[self createZoneID]];
     controller.artifactDelegate = self;
     [self.airportControllers addObject:controller];
@@ -91,17 +105,17 @@
     
     // creates the different zones composing the map
     
-    NSArray *corners1 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:187], nil];
+    NSArray *corners = [NSArray arrayWithObjects:[[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:0] autorelease], [[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0] autorelease], [[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187] autorelease], [[[ATCPoint alloc] initWithCoordinateX:0 andCoordinateY:187] autorelease], nil];
     controller = [self.zoneControllers objectAtIndex:0];
-    ATCZone *zone1 = [[ATCZone alloc] initWithCorners:corners1 withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:NO];
+    ATCZone *zone1 = [[ATCZone alloc] initWithCorners:corners withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:NO];
     
-    NSArray *corners2 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:0], [[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127], nil];
+    corners = [NSArray arrayWithObjects:[[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:0] autorelease], [[[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:0] autorelease], [[[ATCPoint alloc] initWithCoordinateX:256 andCoordinateY:187] autorelease], [[[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187] autorelease], [[[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127] autorelease], [[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127] autorelease], nil];
     controller = [self.zoneControllers objectAtIndex:1];
-    ATCZone *zone2 = [[ATCZone alloc] initWithCorners:corners2 withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:NO];
+    ATCZone *zone2 = [[ATCZone alloc] initWithCorners:corners withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:NO];
     
-    NSArray *corners3 = [NSArray arrayWithObjects:[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127], [[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187], [[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187], nil];
+    corners = [NSArray arrayWithObjects:[[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:127] autorelease], [[[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:127] autorelease], [[[ATCPoint alloc] initWithCoordinateX:192 andCoordinateY:187] autorelease], [[[ATCPoint alloc] initWithCoordinateX:128 andCoordinateY:187] autorelease], nil];
     controller = [self.airportControllers objectAtIndex:0];
-    ATCZone *zone3 = [[ATCZone alloc] initWithCorners:corners3 withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:YES];
+    ATCZone *zone3 = [[ATCZone alloc] initWithCorners:corners withControllerName:controller.agentName zoneID:controller.zoneID andIsAirport:YES];
 
     self.zones = [NSMutableArray arrayWithObjects:zone1, zone2, zone3, nil];
     [zone1 release];
@@ -111,7 +125,7 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:2 andPoint:[[ATCPoint alloc] initWithCoordinateX:140 andCoordinateY:80]];
+    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:2 andPoint:[[[ATCPoint alloc] initWithCoordinateX:140 andCoordinateY:80] autorelease]];
     airplaneData1.course = 270;
     airplaneData1.speed = 100;
     airplaneData1.destination = @"KLAF";
@@ -121,10 +135,10 @@
     
     [airplaneData1 release];
     
-    ATCAirplaneInformation *airplaneData2 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[ATCPoint alloc] initWithCoordinateX:30 andCoordinateY:20]];
+    ATCAirplaneInformation *airplaneData2 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[[ATCPoint alloc] initWithCoordinateX:30 andCoordinateY:20] autorelease]];
     airplaneData2.course = 120;
     airplaneData2.speed = 100;
-    airplaneData2.destination = @"KORD";
+    airplaneData2.destination = @"KLAF";
     airplaneData2.airplaneName = @"N31862";
     
     [self.airplanes addObject:[self createAirplaneWithInitialInfo:airplaneData2]];
@@ -163,6 +177,9 @@
     self.zoneControllers = nil;
     self.zoneWhitePages = nil;
     self.airportsWhitePages = nil;
+    
+//    [environmentPool drain];
+//    environmentPool = [[NSAutoreleasePool alloc] init];
     
     [self createEnvironment];
 }
@@ -238,6 +255,18 @@
     
     // theta is in radians, and corresponds to π/2 + azimut
     return (M_PI_2 + theta) * 180 / M_PI;
+}
+
+- (BOOL)checkIfPointIsOnRunway:(ATCPoint *)point fromZone:(int)zoneID {
+    for (AirportController *controller in self.airportControllers) {
+        if (controller.zoneID == zoneID) {
+            if (point.X >= controller.airportLocation.X - 17 && point.X <= controller.airportLocation.X + 17 && point.Y >= controller.airportLocation.Y - 2.5 && point.Y <= controller.airportLocation.Y + 2.5) {
+                return YES;
+            }
+            return NO;
+        }
+    }
+    return NO;
 }
 
 # pragma mark Zone artifacts
@@ -384,8 +413,8 @@
     [self performSelectorOnMainThread:@selector(onMainThreadUpdateAirplaneInformation:) withObject:information waitUntilDone:NO];
 }
 
-- (void)landAirplane:(ATCAirplaneInformation *)airplane {
-    [self performSelectorOnMainThread:@selector(onMainThreadLandAirplane:) withObject:airplane waitUntilDone:NO];
+- (void)landAirplane:(NSString *)airplaneName {
+    [self performSelectorOnMainThread:@selector(onMainThreadLandAirplane:) withObject:airplaneName waitUntilDone:NO];
 }
 
 - (void)crashAirplane:(ATCAirplaneInformation *)airplane {

@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString *currentController;
 @property (nonatomic, retain) NSDate *lastPositionCheck;
 @property (nonatomic, retain) NSTimer *positionUpdater;
+@property (nonatomic, assign) int deviated;
 
 - (void)updatePosition;
 
@@ -87,14 +88,21 @@
     self.ownInformation.informationValidity = lastPositionCheck;
 }
 
+@synthesize deviated;
+
 - (void)startSimulation {
+    self.deviated = 0;
     // inits flight time
     self.lastPositionCheck = [NSDate date];
     
-    self.positionUpdater = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePositionInEnvironmemt:) userInfo:nil repeats:YES];
+    self.course = [self.artifactDelegate calculateAzimutToDestination:self.destination fromPoint:self.ownInformation.coordinates];
+    
+    self.positionUpdater = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updatePositionInEnvironmemt:) userInfo:nil repeats:YES];
 }
 
 - (void)stopSimulation {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:[BasicController messageIdentifierForZone:self.ownInformation.currentZoneID] object:nil];
+    
     [self.positionUpdater invalidate];
 }
 
@@ -106,6 +114,14 @@
     
     // updates the timestamp since last check
     self.lastPositionCheck = [NSDate date];
+    
+    // verifies if we are on the runway
+    if ([self.artifactDelegate checkIfPointIsOnRunway:self.ownInformation.coordinates fromZone:self.ownInformation.currentZoneID]) {
+        // we are on the runway
+        [self stopSimulation];
+        [self.artifactDelegate landAirplane:self.ownInformation.airplaneName];
+        NSLog(@"Arrived");
+    }
     
     // verifies if we changed zone
     int newZone = [self.artifactDelegate calculateCurrentZoneFromPoint:self.ownInformation.coordinates];
@@ -126,7 +142,13 @@
 }
 
 - (void)updatePositionInEnvironmemt:(NSTimer *)timer {
+    if (self.deviated == 0) {
+        // we follow our self course
+        self.course = [self.artifactDelegate calculateAzimutToDestination:self.destination fromPoint:self.ownInformation.coordinates];
+    }
+
     [self updatePosition];
+    
     [self.artifactDelegate updateAirplaneInformation:self.ownInformation];
 }
 
@@ -134,7 +156,7 @@
 
 - (void)analyzeMessage:(NSDictionary *)messageContent withOriginalDestinator:(NSString *)destinator{
     // depending on the type of the message, activates the corresponding method
-    NSNumber *messageCode = (NSNumber *)[messageContent objectForKey:kNVKeyCode];
+    int messageCode = [(NSNumber *)[messageContent objectForKey:kNVKeyCode] intValue];
     
     NSString *zoneIdentifier = [BasicController messageIdentifierForZone:self.ownInformation.currentZoneID];
     
@@ -142,13 +164,21 @@
         // generic broadcast messages
     } else if ([destinator isEqualToString:zoneIdentifier]) {
         // zone broadcast messages
-        if ([messageCode intValue] == NVMessageCurrentPosition) {
+        if (messageCode == NVMessageCurrentPosition) {
             [self sendCurrentPosition];
         }
     } else if ([destinator isEqualToString:self.agentName]) {
         // specific messages
-        if ([messageCode intValue] == NVMessageCurrentPosition) {
+        if (messageCode == NVMessageCurrentPosition) {
             [self sendCurrentPosition];
+        } else if (messageCode == NVMessageNewRouteInstruction) {
+            self.deviated++;
+            // parses the message to get the new course
+            int newCourse = [(NSString *)[messageContent objectForKey:kNVKeyContent] intValue];
+            self.course = newCourse;
+        } else if (messageCode == NVMessageResumeInitialDestination) {
+            self.deviated--;
+            self.course = [self.artifactDelegate calculateAzimutToDestination:self.destination fromPoint:self.ownInformation.coordinates];
         }
     }
     
@@ -175,7 +205,6 @@
 }
 
 - (void)dealloc {
-    [self.positionUpdater invalidate];
     self.positionUpdater = nil;
     
     self.ownInformation = nil;

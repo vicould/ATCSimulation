@@ -57,6 +57,10 @@
             [self.agentBehaviorDelegate startSimulation];
             return;
         } else if (code == NVMessageSimulationStopped) {
+            // unregisters the notifications observers
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:self.agentName object:nil];
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:kNVBroadcastMessage object:nil];
+            
             [self.agentBehaviorDelegate stopSimulation];
             return;
         }
@@ -69,10 +73,6 @@
 - (void)dealloc {
     self.agentName = nil;
     self.agentBehaviorDelegate = nil;
-    
-    // unregisters the notifications observers
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:self.agentName object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNVBroadcastMessage object:nil];
     
     [super dealloc];
 }
