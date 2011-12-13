@@ -19,6 +19,7 @@
 @interface ZoneController : BasicController<ControllerBehaviorDelegate> {
     @private
     NSTimer *_positionUpdatePollingTimer;
+    NSMutableSet *_modifiedAirplanes;
 }
 
 /**

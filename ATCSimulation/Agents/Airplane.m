@@ -55,6 +55,7 @@
 - (void)setCourse:(NSInteger)course {
     // updates the current position each time a change is made in the route
     [self updatePosition];
+    [self.artifactDelegate updateAirplaneInformation:self.ownInformation];
     
     self.ownInformation.course = course;
 }
@@ -66,6 +67,7 @@
 - (void)setSpeed:(NSInteger)speed {
     // updates the current position each time a change is made in the route
     [self updatePosition];
+    [self.artifactDelegate updateAirplaneInformation:self.ownInformation];
     
     self.ownInformation.speed = speed;
 }
@@ -171,14 +173,20 @@
         // specific messages
         if (messageCode == NVMessageCurrentPosition) {
             [self sendCurrentPosition];
-        } else if (messageCode == NVMessageNewRouteInstruction) {
+        } else if (messageCode == NVMessageNewSpeedInstruction) {
+            if (self.deviated == 0) {
+                oldSpeed = self.speed;
+            }
             self.deviated++;
             // parses the message to get the new course
-            int newCourse = [(NSString *)[messageContent objectForKey:kNVKeyContent] intValue];
-            self.course = newCourse;
+            float speed = [(NSString *)[messageContent objectForKey:kNVKeyContent] floatValue];
+            NSLog(@"%f", speed);
+            self.speed = speed;
         } else if (messageCode == NVMessageResumeInitialDestination) {
             self.deviated--;
-            self.course = [self.artifactDelegate calculateAzimutToDestination:self.destination fromPoint:self.ownInformation.coordinates];
+            if (self.deviated == 0) {
+                self.speed = oldSpeed;
+            }
         }
     }
     

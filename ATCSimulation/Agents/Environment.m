@@ -125,8 +125,8 @@
     // creates the collection of airplanes
     self.airplanes = [NSMutableArray array];
     
-    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:2 andPoint:[[[ATCPoint alloc] initWithCoordinateX:140 andCoordinateY:80] autorelease]];
-    airplaneData1.course = 270;
+    ATCAirplaneInformation *airplaneData1 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[[ATCPoint alloc] initWithCoordinateX:20 andCoordinateY:20] autorelease]];
+    airplaneData1.course = 180;
     airplaneData1.speed = 100;
     airplaneData1.destination = @"KLAF";
     airplaneData1.airplaneName = @"N38394";
@@ -135,8 +135,8 @@
     
     [airplaneData1 release];
     
-    ATCAirplaneInformation *airplaneData2 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[[ATCPoint alloc] initWithCoordinateX:30 andCoordinateY:20] autorelease]];
-    airplaneData2.course = 120;
+    ATCAirplaneInformation *airplaneData2 = [[ATCAirplaneInformation alloc] initWithZone:1 andPoint:[[[ATCPoint alloc] initWithCoordinateX:80 andCoordinateY:80] autorelease]];
+    airplaneData2.course = 270;
     airplaneData2.speed = 100;
     airplaneData2.destination = @"KLAF";
     airplaneData2.airplaneName = @"N31862";

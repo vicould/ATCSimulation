@@ -24,6 +24,7 @@
     NSString *_currentController;
     NSTimer *_positionUpdater;
     int deviated;
+    float oldSpeed;
 }
 
 /**

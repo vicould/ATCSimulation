@@ -56,7 +56,7 @@ enum {
     NVMessageEnteringNewZoneRefusal = 2302,    
     NVMessageContactAirport = 2303,
     NVMessageRefuseContactAirport = 2304,
-    NVMessageNewRouteInstruction = 2305,
+    NVMessageNewSpeedInstruction = 2305,
     NVMessageResumeInitialDestination = 2306,
     
     
