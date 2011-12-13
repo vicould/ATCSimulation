@@ -1,0 +1,156 @@
+\hypertarget{class_zone_controller}{
+\section{\-Zone\-Controller \-Class \-Reference}
+\label{class_zone_controller}\index{\-Zone\-Controller@{\-Zone\-Controller}}
+}
+
+
+{\ttfamily \#import $<$\-Zone\-Controller.\-h$>$}
+
+\-Inheritance diagram for \-Zone\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.931937cm]{class_zone_controller}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{class_zone_controller_a077014b47ef9c0be714e1d27af527441}{detect\-Airplanes\-In\-Zone}
+\item 
+\hypertarget{class_zone_controller_a3b8fc62c0b3442bc9a4a67f1eabdeeac}{
+(id) -\/ {\bfseries init\-With\-I\-D\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_a3b8fc62c0b3442bc9a4a67f1eabdeeac}
+
+\item 
+\hypertarget{class_zone_controller_af05aeffa738f4b1cdd761dab69cbd475}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_af05aeffa738f4b1cdd761dab69cbd475}
+
+\item 
+(void) -\/ \hyperlink{class_zone_controller_a06708c84f0edc0169eb5688af2995477}{start\-Simulation}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{class_zone_controller_ae7f6a5d43d659e35c0acc11ea7cc894a}{stop\-Simulation}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{class_zone_controller_aaee71e51737c671990bd2c5594344fba}{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+\hypertarget{class_zone_controller_a1c9723834624a1a788f37da19bf95bfa}{
+(\-B\-O\-O\-L) -\/ {\bfseries evaluate\-Risk\-Between\-Airplane1\-:and\-Airplane2\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_a1c9723834624a1a788f37da19bf95bfa}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_zone_controller_a650f6ae4f4342c891d7031d942b5fb5f}{
+\-N\-S\-Timer $\ast$ {\bfseries position\-Update\-Polling\-Timer}}
+\label{class_zone_controller_a650f6ae4f4342c891d7031d942b5fb5f}
+
+\item 
+\hypertarget{class_zone_controller_a1dbc7af756068d82dbca8478fa99aa21}{
+\-N\-S\-Mutable\-Set $\ast$ {\bfseries modified\-Airplanes}}
+\label{class_zone_controller_a1dbc7af756068d82dbca8478fa99aa21}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_zone_controller_a92ba61e4c98a97aa3d2d7f9114a269f1}{
+(void) -\/ {\bfseries analyze\-Position\-:from\-Airplane\-Name\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_a92ba61e4c98a97aa3d2d7f9114a269f1}
+
+\item 
+\hypertarget{class_zone_controller_ae00cdc269ca0a2be7ef638d1f7e1c068}{
+(void) -\/ {\bfseries send\-New\-Flight\-Speed\-:to\-Plane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_ae00cdc269ca0a2be7ef638d1f7e1c068}
+
+\item 
+\hypertarget{class_zone_controller_a23522f80b13401cef68f341f5462a604}{
+(void) -\/ {\bfseries stop\-Following\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_a23522f80b13401cef68f341f5462a604}
+
+\item 
+\hypertarget{class_zone_controller_af82b81965122d5251df5246f8f13f653}{
+(void) -\/ {\bfseries tell\-Airplane\-To\-Resume\-Course\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_af82b81965122d5251df5246f8f13f653}
+
+\item 
+\hypertarget{class_zone_controller_a4adf397ee3e43b0cb7d0f82d698e9830}{
+(void) -\/ {\bfseries prevent\-Collisions}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{class_zone_controller_a4adf397ee3e43b0cb7d0f82d698e9830}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-One of the two specialized agent playing the role of a controller. \-It can track the airplanes, and communicate with them. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_zone_controller_a077014b47ef9c0be714e1d27af527441}{
+\index{\-Zone\-Controller@{\-Zone\-Controller}!detect\-Airplanes\-In\-Zone@{detect\-Airplanes\-In\-Zone}}
+\index{detect\-Airplanes\-In\-Zone@{detect\-Airplanes\-In\-Zone}!ZoneController@{\-Zone\-Controller}}
+\subsubsection[{detect\-Airplanes\-In\-Zone}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) detect\-Airplanes\-In\-Zone 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{class_zone_controller_a077014b47ef9c0be714e1d27af527441}
+\-The active radar mode, trying to recover information about the airplanes currently flying in the zone. \hypertarget{class_zone_controller_aaee71e51737c671990bd2c5594344fba}{
+\index{\-Zone\-Controller@{\-Zone\-Controller}!finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}}
+\index{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}!ZoneController@{\-Zone\-Controller}}
+\subsubsection[{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) finish\-Message\-Analysis\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{message\-Content}
+\item[{withMessageCode:(\-N\-V\-Message\-Code)}]{code}
+\item[{from:(\-N\-S\-String $\ast$)}]{sender}
+\item[{originallyTo:(\-N\-S\-String $\ast$)}]{original\-Receiver}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{class_zone_controller_aaee71e51737c671990bd2c5594344fba}
+\-This method is usually called if the \hyperlink{interface_basic_controller}{\-Basic\-Controller} was not able to use the message received. \-It transmits the message calling maybe more specific methods of the controller, with the content of the initial message. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-The content of the message, containing formatted information. \\
+\hline
+{\em code} & \-The code of the message. \\
+\hline
+{\em sender} & \-The initial sender of the message. \\
+\hline
+{\em original\-Receiver} & \-The destination of the message, which can this agent, or all the agents etc. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_controller_behavior_delegate-p_a472f0aba04d2caffc0035e0356b2f85c}{$<$\-Controller\-Behavior\-Delegate$>$}.
+
+\hypertarget{class_zone_controller_a06708c84f0edc0169eb5688af2995477}{
+\index{\-Zone\-Controller@{\-Zone\-Controller}!start\-Simulation@{start\-Simulation}}
+\index{start\-Simulation@{start\-Simulation}!ZoneController@{\-Zone\-Controller}}
+\subsubsection[{start\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) start\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{class_zone_controller_a06708c84f0edc0169eb5688af2995477}
+\-Asks the agent to begin to run, processing the inputs and trying to reach its goal. 
+
+\-Reimplemented from \hyperlink{interface_basic_controller_a6fb09a381fa1044c1a133d3aeb0b02e6}{\-Basic\-Controller}.
+
+\hypertarget{class_zone_controller_ae7f6a5d43d659e35c0acc11ea7cc894a}{
+\index{\-Zone\-Controller@{\-Zone\-Controller}!stop\-Simulation@{stop\-Simulation}}
+\index{stop\-Simulation@{stop\-Simulation}!ZoneController@{\-Zone\-Controller}}
+\subsubsection[{stop\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) stop\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{class_zone_controller_ae7f6a5d43d659e35c0acc11ea7cc894a}
+\-Asks the agent to stop all the activities. 
+
+\-Reimplemented from \hyperlink{interface_basic_controller_a2a7181ab5a5de771efb559fd110b63b0}{\-Basic\-Controller}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Zone\-Controller+\-Collision.\-m\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Zone\-Controller.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Zone\-Controller.\-m\end{DoxyCompactItemize}

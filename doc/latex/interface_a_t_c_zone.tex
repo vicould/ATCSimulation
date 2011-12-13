@@ -1,0 +1,153 @@
+\hypertarget{interface_a_t_c_zone}{
+\section{\-A\-T\-C\-Zone \-Class \-Reference}
+\label{interface_a_t_c_zone}\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}}
+}
+
+
+{\ttfamily \#import $<$\-A\-T\-C\-Zone.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_a_t_c_zone_a1d028e1312f3a7a99e513c9d3e0ce4c2}{init\-With\-Corners\-:with\-Controller\-Name\-:zone\-I\-D\-:and\-Is\-Airport\-:}
+\item 
+(void) -\/ \hyperlink{interface_a_t_c_zone_aa061671cf1d34607f64dcffb1572a1cd}{add\-Adjacent\-Zone\-:}
+\item 
+(float) -\/ \hyperlink{interface_a_t_c_zone_a3464ed5384a6dfaa3605f5dea3dda105}{calculate\-Distance\-To\-Zone\-Border\-With\-Position\-:}
+\item 
+(\-B\-O\-O\-L) -\/ \hyperlink{interface_a_t_c_zone_a2520f08b4835b6c189370186bab68dd7}{point\-Belongs\-To\-Zone\-:}
+\item 
+\hypertarget{interface_a_t_c_zone_a2c593adaba524441e1ba5cfa71993425}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_a_t_c_zone_a2c593adaba524441e1ba5cfa71993425}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_a_t_c_zone_a05bb671c054d56d893055a229a715d3c}{airport}
+\item 
+\-N\-S\-String $\ast$ \hyperlink{interface_a_t_c_zone_a3fe3adaf6c79042c465b8be59970316f}{controller\-Name}
+\item 
+int \hyperlink{interface_a_t_c_zone_a907a2654ed924fd1dc9b7bb2ffa96d9f}{zone\-I\-D}
+\item 
+\-N\-S\-Mutable\-Set $\ast$ \hyperlink{interface_a_t_c_zone_a983cb960ce7e66488a30c4f680d03992}{adjacent\-Zones}
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_a_t_c_zone_a2ad0db8ddad83c4c3dfc27b1ec8f6247}{corners}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_a_t_c_zone_af14626c068a359ac9e10fd743d92a570}{borders}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A class representing a zone in the environment. \-A zone if composed of borders, which are segments instance of the class \-Zone\-Border\-Segment. \-Each zone has a controller, which is either an \hyperlink{interface_airport_controller}{\-Airport\-Controller} or a \hyperlink{class_zone_controller}{\-Zone\-Controller}. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_a_t_c_zone_aa061671cf1d34607f64dcffb1572a1cd}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!add\-Adjacent\-Zone\-:@{add\-Adjacent\-Zone\-:}}
+\index{add\-Adjacent\-Zone\-:@{add\-Adjacent\-Zone\-:}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{add\-Adjacent\-Zone\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) add\-Adjacent\-Zone\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Zone} $\ast$)}]{zone}
+\end{DoxyParamCaption}
+}}
+\label{interface_a_t_c_zone_aa061671cf1d34607f64dcffb1572a1cd}
+\-Method to add a neighbour to the zone. 
+\begin{DoxyParams}{\-Parameters}
+{\em zone} & \-The zone which shares a border with the current one. \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_a_t_c_zone_a3464ed5384a6dfaa3605f5dea3dda105}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!calculate\-Distance\-To\-Zone\-Border\-With\-Position\-:@{calculate\-Distance\-To\-Zone\-Border\-With\-Position\-:}}
+\index{calculate\-Distance\-To\-Zone\-Border\-With\-Position\-:@{calculate\-Distance\-To\-Zone\-Border\-With\-Position\-:}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{calculate\-Distance\-To\-Zone\-Border\-With\-Position\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (float) calculate\-Distance\-To\-Zone\-Border\-With\-Position\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{position}
+\end{DoxyParamCaption}
+}}
+\label{interface_a_t_c_zone_a3464ed5384a6dfaa3605f5dea3dda105}
+\-A method to know the distance from the airplane to the nearest frontier of the zone. 
+\begin{DoxyParams}{\-Parameters}
+{\em position} & \-The information about the airplane, with useful data such as the current position and the course of the airplane. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Returns the shortest (straight) distance to the zone, depending on the course of the airplane. 
+\end{DoxyReturn}
+\hypertarget{interface_a_t_c_zone_a1d028e1312f3a7a99e513c9d3e0ce4c2}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!init\-With\-Corners\-:with\-Controller\-Name\-:zone\-I\-D\-:and\-Is\-Airport\-:@{init\-With\-Corners\-:with\-Controller\-Name\-:zone\-I\-D\-:and\-Is\-Airport\-:}}
+\index{init\-With\-Corners\-:with\-Controller\-Name\-:zone\-I\-D\-:and\-Is\-Airport\-:@{init\-With\-Corners\-:with\-Controller\-Name\-:zone\-I\-D\-:and\-Is\-Airport\-:}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{init\-With\-Corners\-:with\-Controller\-Name\-:zone\-I\-D\-:and\-Is\-Airport\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) init\-With\-Corners\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Array $\ast$)}]{corners\-Array}
+\item[{withControllerName:(\-N\-S\-String $\ast$)}]{controller\-Name}
+\item[{zoneID:(int)}]{current\-Zone}
+\item[{andIsAirport:(\-B\-O\-O\-L)}]{airport}
+\end{DoxyParamCaption}
+}}
+\label{interface_a_t_c_zone_a1d028e1312f3a7a99e513c9d3e0ce4c2}
+\-Creates an instance of the zone, with the specified corners, and the name of the controller hosted inside. 
+\begin{DoxyParams}{\-Parameters}
+{\em corners\-Array} & \-An array of all the extremities forming the polygone. \-These corners are then analyzed by the instance to create the corresponding frontiers. \\
+\hline
+{\em controller\-Name} & \-The name of the controller hosted inside the zone. \\
+\hline
+{\em airport} & \-A boolean telling if the current zone has an airway or not, setting the type of controller which is inside the zone. \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_a_t_c_zone_a2520f08b4835b6c189370186bab68dd7}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!point\-Belongs\-To\-Zone\-:@{point\-Belongs\-To\-Zone\-:}}
+\index{point\-Belongs\-To\-Zone\-:@{point\-Belongs\-To\-Zone\-:}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{point\-Belongs\-To\-Zone\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-B\-O\-O\-L) point\-Belongs\-To\-Zone\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Point} $\ast$)}]{point}
+\end{DoxyParamCaption}
+}}
+\label{interface_a_t_c_zone_a2520f08b4835b6c189370186bab68dd7}
+\-Tests if a point is inside the zone. 
+\begin{DoxyParams}{\-Parameters}
+{\em point} & \-The point to test. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Returns \-Y\-E\-S if the point is inside the zone. 
+\end{DoxyReturn}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_a_t_c_zone_a983cb960ce7e66488a30c4f680d03992}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!adjacent\-Zones@{adjacent\-Zones}}
+\index{adjacent\-Zones@{adjacent\-Zones}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{adjacent\-Zones}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Set$\ast$) adjacent\-Zones\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_a_t_c_zone_a983cb960ce7e66488a30c4f680d03992}
+\-Gets the zones next to this one. \hypertarget{interface_a_t_c_zone_a05bb671c054d56d893055a229a715d3c}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!airport@{airport}}
+\index{airport@{airport}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{airport}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-B\-O\-O\-L) airport\hspace{0.3cm}{\ttfamily  \mbox{[}read, assign\mbox{]}}}}
+\label{interface_a_t_c_zone_a05bb671c054d56d893055a229a715d3c}
+\-Gets the type of controller inside the zone. \hypertarget{interface_a_t_c_zone_af14626c068a359ac9e10fd743d92a570}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!borders@{borders}}
+\index{borders@{borders}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{borders}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Array$\ast$) borders\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_a_t_c_zone_af14626c068a359ac9e10fd743d92a570}
+\-Gets the borders of the zone. \hypertarget{interface_a_t_c_zone_a3fe3adaf6c79042c465b8be59970316f}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!controller\-Name@{controller\-Name}}
+\index{controller\-Name@{controller\-Name}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{controller\-Name}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String$\ast$) controller\-Name\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_a_t_c_zone_a3fe3adaf6c79042c465b8be59970316f}
+\-Gets the name of the controller. \hypertarget{interface_a_t_c_zone_a2ad0db8ddad83c4c3dfc27b1ec8f6247}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!corners@{corners}}
+\index{corners@{corners}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{corners}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Array$\ast$) corners\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_a_t_c_zone_a2ad0db8ddad83c4c3dfc27b1ec8f6247}
+\-Gets the corners of the zone. \hypertarget{interface_a_t_c_zone_a907a2654ed924fd1dc9b7bb2ffa96d9f}{
+\index{\-A\-T\-C\-Zone@{\-A\-T\-C\-Zone}!zone\-I\-D@{zone\-I\-D}}
+\index{zone\-I\-D@{zone\-I\-D}!ATCZone@{\-A\-T\-C\-Zone}}
+\subsubsection[{zone\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (int) zone\-I\-D\hspace{0.3cm}{\ttfamily  \mbox{[}read, assign\mbox{]}}}}
+\label{interface_a_t_c_zone_a907a2654ed924fd1dc9b7bb2ffa96d9f}
+\-The \-I\-D of the current zone 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Utils/\-A\-T\-C\-Zone.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Utils/\-A\-T\-C\-Zone.\-m\end{DoxyCompactItemize}

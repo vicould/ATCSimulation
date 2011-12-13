@@ -1,0 +1,193 @@
+\hypertarget{protocol_environment_display_delegate-p}{
+\section{$<$\-Environment\-Display\-Delegate$>$ \-Protocol \-Reference}
+\label{protocol_environment_display_delegate-p}\index{$<$\-Environment\-Display\-Delegate$>$@{$<$\-Environment\-Display\-Delegate$>$}}
+}
+
+
+{\ttfamily \#import $<$\-Environment\-Display\-Delegate.\-h$>$}
+
+\-Inheritance diagram for $<$\-Environment\-Display\-Delegate$>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{protocol_environment_display_delegate-p}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{protocol_environment_display_delegate-p_a327e6b4140949f5be71c424110a5a33b}{
+(void) -\/ {\bfseries display\-Initial\-Planes\-Positions\-:}}
+\label{protocol_environment_display_delegate-p_a327e6b4140949f5be71c424110a5a33b}
+
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_a1559bebd382b8e2f92cd208ed2df7257}{update\-Airplane\-Position\-With\-Info\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_abbd874ce2805ceb3adef3c4adff829e2}{crash\-Airplane\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_a9e3181804078c0c560e9b687575c1573}{land\-Airplane\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_aee15f5cb6ec0982ef420038d8204346d}{update\-Detected\-Airplanes\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_a643b1c2a84a7922054b5f60261798939}{remove\-Airplane\-From\-View\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_a935e669095c4a629e13bf988e8fbec8a}{display\-Zones\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_a08acc906c82c57c0b90c5657252bc094}{display\-Zones\-Controllers\-:}
+\item 
+(void) -\/ \hyperlink{protocol_environment_display_delegate-p_a1a33acac7b147781d25964a642dba4e8}{display\-Airport\-Controllers\-:}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Defines a protocol a view controller needs to respond to in order for the environment to create a representation of the simulation. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{protocol_environment_display_delegate-p_abbd874ce2805ceb3adef3c4adff829e2}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!crash\-Airplane\-:@{crash\-Airplane\-:}}
+\index{crash\-Airplane\-:@{crash\-Airplane\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{crash\-Airplane\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) crash\-Airplane\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{airplane\-Data}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_abbd874ce2805ceb3adef3c4adff829e2}
+\-Crashes an airplane, to inform the user a collision or an accident happened. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_addd298361074e8a3207a0bddc49761a7}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_a1a33acac7b147781d25964a642dba4e8}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!display\-Airport\-Controllers\-:@{display\-Airport\-Controllers\-:}}
+\index{display\-Airport\-Controllers\-:@{display\-Airport\-Controllers\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{display\-Airport\-Controllers\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) display\-Airport\-Controllers\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Dictionary $\ast$)}]{airports\-Controllers}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_a1a33acac7b147781d25964a642dba4e8}
+\-Displays the runway on the map. 
+\begin{DoxyParams}{\-Parameters}
+{\em airports\-Controllers} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_ac8775a5e51cb7e092c2d740c8a450b8c}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_a935e669095c4a629e13bf988e8fbec8a}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!display\-Zones\-:@{display\-Zones\-:}}
+\index{display\-Zones\-:@{display\-Zones\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{display\-Zones\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) display\-Zones\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Array $\ast$)}]{zones}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_a935e669095c4a629e13bf988e8fbec8a}
+\-Prints the borders on the map. 
+\begin{DoxyParams}{\-Parameters}
+{\em zones} & \-An array containing all the zones, each one referencing its segments. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_ae14023cc7de445df3cf7eb4896bd0ebb}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_a08acc906c82c57c0b90c5657252bc094}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!display\-Zones\-Controllers\-:@{display\-Zones\-Controllers\-:}}
+\index{display\-Zones\-Controllers\-:@{display\-Zones\-Controllers\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{display\-Zones\-Controllers\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) display\-Zones\-Controllers\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Dictionary $\ast$)}]{zones\-Controllers}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_a08acc906c82c57c0b90c5657252bc094}
+\-Displays the zone controllers on the map. 
+\begin{DoxyParams}{\-Parameters}
+{\em zones\-Controllers} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_ae220e22c13557f58e6f6227264ac629f}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_a9e3181804078c0c560e9b687575c1573}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!land\-Airplane\-:@{land\-Airplane\-:}}
+\index{land\-Airplane\-:@{land\-Airplane\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{land\-Airplane\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) land\-Airplane\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{airplane\-Name}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_a9e3181804078c0c560e9b687575c1573}
+\-Lands an airplane once it has reached its destination. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_af64c767f0f772be18d81f0acdc89eee4}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_a643b1c2a84a7922054b5f60261798939}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!remove\-Airplane\-From\-View\-:@{remove\-Airplane\-From\-View\-:}}
+\index{remove\-Airplane\-From\-View\-:@{remove\-Airplane\-From\-View\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{remove\-Airplane\-From\-View\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) remove\-Airplane\-From\-View\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{airplane\-Name}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_a643b1c2a84a7922054b5f60261798939}
+\-Removes an airplane from the view when it is outside of the map. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane} & \-The information about the airplane to remove. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_aa7777383a451c23cfa33ee5e37e91748}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_a1559bebd382b8e2f92cd208ed2df7257}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!update\-Airplane\-Position\-With\-Info\-:@{update\-Airplane\-Position\-With\-Info\-:}}
+\index{update\-Airplane\-Position\-With\-Info\-:@{update\-Airplane\-Position\-With\-Info\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{update\-Airplane\-Position\-With\-Info\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) update\-Airplane\-Position\-With\-Info\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{corresponding\-Info}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_a1559bebd382b8e2f92cd208ed2df7257}
+\-Update the position of one airplane. \-The information is received directly from the airplane, as opposed to thee method \hyperlink{protocol_environment_display_delegate-p_aee15f5cb6ec0982ef420038d8204346d}{update\-Detected\-Airplanes\-:}. 
+\begin{DoxyParams}{\-Parameters}
+{\em corresponding\-Info} & \-The info on the airplane needing an update \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_a5042fa0b3900c0bfc1675c7e4c2f543c}{\-Main\-Interface\-Controller}.
+
+\hypertarget{protocol_environment_display_delegate-p_aee15f5cb6ec0982ef420038d8204346d}{
+\index{\-Environment\-Display\-Delegate-\/p@{\-Environment\-Display\-Delegate-\/p}!update\-Detected\-Airplanes\-:@{update\-Detected\-Airplanes\-:}}
+\index{update\-Detected\-Airplanes\-:@{update\-Detected\-Airplanes\-:}!EnvironmentDisplayDelegate-p@{\-Environment\-Display\-Delegate-\/p}}
+\subsubsection[{update\-Detected\-Airplanes\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) update\-Detected\-Airplanes\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Array $\ast$)}]{airplanes\-Info}
+\end{DoxyParamCaption}
+}}
+\label{protocol_environment_display_delegate-p_aee15f5cb6ec0982ef420038d8204346d}
+\-Adds a list of airplanes to the map. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplanes\-Info} & \-The airplanes to add to the interface. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_main_interface_controller_af31c85000f2413e42fe7dd7d00496145}{\-Main\-Interface\-Controller}.
+
+
+
+\-The documentation for this protocol was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Environment\-Display\-Delegate.\-h\end{DoxyCompactItemize}

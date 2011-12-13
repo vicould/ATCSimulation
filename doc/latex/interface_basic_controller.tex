@@ -1,0 +1,171 @@
+\hypertarget{interface_basic_controller}{
+\section{\-Basic\-Controller \-Class \-Reference}
+\label{interface_basic_controller}\index{\-Basic\-Controller@{\-Basic\-Controller}}
+}
+
+
+{\ttfamily \#import $<$\-Basic\-Controller.\-h$>$}
+
+\-Inheritance diagram for \-Basic\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_basic_controller}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_basic_controller_a566d7c40b54e999e418e177828975e4f}{
+(id) -\/ {\bfseries init\-With\-I\-D\-:}}
+\label{interface_basic_controller_a566d7c40b54e999e418e177828975e4f}
+
+\item 
+\hypertarget{interface_basic_controller_a0f6206fcb9b1a1fbad2575b335c237b5}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_basic_controller_a0f6206fcb9b1a1fbad2575b335c237b5}
+
+\item 
+(void) -\/ \hyperlink{interface_basic_controller_a6fb09a381fa1044c1a133d3aeb0b02e6}{start\-Simulation}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_basic_controller_a2a7181ab5a5de771efb559fd110b63b0}{stop\-Simulation}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_basic_controller_aa08efe5b2a6835efe6cdbd60084c7888}{analyze\-Message\-:with\-Original\-Destinator\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(int) + \hyperlink{interface_basic_controller_a632e9254a58cac373fd3d3487fea2378}{create\-Zone\-I\-D}
+\item 
+(\-N\-S\-String $\ast$) + \hyperlink{interface_basic_controller_aab42498e1e5013b83f086e2f33e73dec}{zone\-Identifier\-As\-String\-With\-I\-D\-:}
+\item 
+(\-N\-S\-String $\ast$) + \hyperlink{interface_basic_controller_a0cf74a74692c77d73ba701788f6551bf}{message\-Identifier\-For\-Zone\-:}
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+id$<$ \hyperlink{protocol_controller_behavior_delegate-p}{\-Controller\-Behavior\-Delegate} $>$ \hyperlink{interface_basic_controller_ac46747a2a5c535b5fd787a72d035cfc8}{controller\-Delegate}
+\item 
+\-N\-S\-Mutable\-Dictionary $\ast$ \hyperlink{interface_basic_controller_aa5144e6cc47e8988e9d14272a9c41e0d}{controlled\-Airplanes}
+\item 
+int \hyperlink{interface_basic_controller_a4a00fc7e962440447df674c6dea7077c}{zone\-I\-D}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A class defining the common behaviors of the specialized controllers. \-It also uses another delegate to finish handling messages, start and stop the simulation, etc. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_basic_controller_aa08efe5b2a6835efe6cdbd60084c7888}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!analyze\-Message\-:with\-Original\-Destinator\-:@{analyze\-Message\-:with\-Original\-Destinator\-:}}
+\index{analyze\-Message\-:with\-Original\-Destinator\-:@{analyze\-Message\-:with\-Original\-Destinator\-:}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{analyze\-Message\-:with\-Original\-Destinator\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) analyze\-Message\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Dictionary $\ast$)}]{message\-Content}
+\item[{withOriginalDestinator:(\-N\-S\-String $\ast$)}]{destinator}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_basic_controller_aa08efe5b2a6835efe6cdbd60084c7888}
+\-Finish processing the message, as kindly cut by the \hyperlink{interface_basic_agent}{\-Basic\-Agent}. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-A dictionary containing the different characteristics of the message, such as its type, its content, etc. \\
+\hline
+{\em destinator} & \-The original destinator of this message (the particular agent, broadcast methods, etc.). \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_agent_behavior_delegate-p_ac4e1d47826a7916c7a454ca1b7aa2e79}{$<$\-Agent\-Behavior\-Delegate$>$}.
+
+\hypertarget{interface_basic_controller_a632e9254a58cac373fd3d3487fea2378}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!create\-Zone\-I\-D@{create\-Zone\-I\-D}}
+\index{create\-Zone\-I\-D@{create\-Zone\-I\-D}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{create\-Zone\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}+ (int) create\-Zone\-I\-D 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{interface_basic_controller_a632e9254a58cac373fd3d3487fea2378}
+\-An abstract method to create a unique \-I\-D for each class. \begin{DoxyReturn}{\-Returns}
+\-Returns an unique id that can be used to identify the zones. 
+\end{DoxyReturn}
+\hypertarget{interface_basic_controller_a0cf74a74692c77d73ba701788f6551bf}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!message\-Identifier\-For\-Zone\-:@{message\-Identifier\-For\-Zone\-:}}
+\index{message\-Identifier\-For\-Zone\-:@{message\-Identifier\-For\-Zone\-:}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{message\-Identifier\-For\-Zone\-:}]{\setlength{\rightskip}{0pt plus 5cm}+ (\-N\-S\-String $\ast$) message\-Identifier\-For\-Zone\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(int)}]{zone\-I\-D}
+\end{DoxyParamCaption}
+}}
+\label{interface_basic_controller_a0cf74a74692c77d73ba701788f6551bf}
+\-Another convenient method to create the the identifier the zone is listening to for incoming messages. \hypertarget{interface_basic_controller_a6fb09a381fa1044c1a133d3aeb0b02e6}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!start\-Simulation@{start\-Simulation}}
+\index{start\-Simulation@{start\-Simulation}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{start\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) start\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_basic_controller_a6fb09a381fa1044c1a133d3aeb0b02e6}
+\-Asks the agent to begin to run, processing the inputs and trying to reach its goal. 
+
+\-Reimplemented from \hyperlink{protocol_agent_behavior_delegate-p_ae65ac71cad3f34ea837b363f3eb53966}{$<$\-Agent\-Behavior\-Delegate$>$}.
+
+
+
+\-Reimplemented in \hyperlink{class_zone_controller_a06708c84f0edc0169eb5688af2995477}{\-Zone\-Controller}.
+
+\hypertarget{interface_basic_controller_a2a7181ab5a5de771efb559fd110b63b0}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!stop\-Simulation@{stop\-Simulation}}
+\index{stop\-Simulation@{stop\-Simulation}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{stop\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) stop\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_basic_controller_a2a7181ab5a5de771efb559fd110b63b0}
+\-Asks the agent to stop all the activities. 
+
+\-Reimplemented from \hyperlink{protocol_agent_behavior_delegate-p_a9177a82f871c00aa7513cbf5d0cb8ca5}{$<$\-Agent\-Behavior\-Delegate$>$}.
+
+
+
+\-Reimplemented in \hyperlink{class_zone_controller_ae7f6a5d43d659e35c0acc11ea7cc894a}{\-Zone\-Controller}.
+
+\hypertarget{interface_basic_controller_aab42498e1e5013b83f086e2f33e73dec}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!zone\-Identifier\-As\-String\-With\-I\-D\-:@{zone\-Identifier\-As\-String\-With\-I\-D\-:}}
+\index{zone\-Identifier\-As\-String\-With\-I\-D\-:@{zone\-Identifier\-As\-String\-With\-I\-D\-:}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{zone\-Identifier\-As\-String\-With\-I\-D\-:}]{\setlength{\rightskip}{0pt plus 5cm}+ (\-N\-S\-String $\ast$) zone\-Identifier\-As\-String\-With\-I\-D\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(int)}]{\-I\-D}
+\end{DoxyParamCaption}
+}}
+\label{interface_basic_controller_aab42498e1e5013b83f086e2f33e73dec}
+\-Convenient method to represent the zone \-I\-D, used as agent name. 
+\begin{DoxyParams}{\-Parameters}
+{\em id} & \-The id of the zone where a representation is needed. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_basic_controller_aa5144e6cc47e8988e9d14272a9c41e0d}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!controlled\-Airplanes@{controlled\-Airplanes}}
+\index{controlled\-Airplanes@{controlled\-Airplanes}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{controlled\-Airplanes}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Dictionary$\ast$) controlled\-Airplanes\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_basic_controller_aa5144e6cc47e8988e9d14272a9c41e0d}
+\-A dictionary referencing the different airplanes controlled by this controller, containing the name of the agent as key and the information about the airplane as value. \hypertarget{interface_basic_controller_ac46747a2a5c535b5fd787a72d035cfc8}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!controller\-Delegate@{controller\-Delegate}}
+\index{controller\-Delegate@{controller\-Delegate}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{controller\-Delegate}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id$<${\bf \-Controller\-Behavior\-Delegate}$>$) controller\-Delegate\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_basic_controller_ac46747a2a5c535b5fd787a72d035cfc8}
+\-The delegate implementing the various specialized behaviors of a controller. \hypertarget{interface_basic_controller_a4a00fc7e962440447df674c6dea7077c}{
+\index{\-Basic\-Controller@{\-Basic\-Controller}!zone\-I\-D@{zone\-I\-D}}
+\index{zone\-I\-D@{zone\-I\-D}!BasicController@{\-Basic\-Controller}}
+\subsubsection[{zone\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (int) zone\-I\-D\hspace{0.3cm}{\ttfamily  \mbox{[}read, assign\mbox{]}}}}
+\label{interface_basic_controller_a4a00fc7e962440447df674c6dea7077c}
+\-The zone the controller is belonging to. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Basic\-Controller.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Basic\-Controller.\-m\end{DoxyCompactItemize}

@@ -1,0 +1,98 @@
+\hypertarget{interface_airport_controller}{
+\section{\-Airport\-Controller \-Class \-Reference}
+\label{interface_airport_controller}\index{\-Airport\-Controller@{\-Airport\-Controller}}
+}
+
+
+{\ttfamily \#import $<$\-Airport\-Controller.\-h$>$}
+
+\-Inheritance diagram for \-Airport\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.931937cm]{interface_airport_controller}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_airport_controller_aea5cca35271e003b83bd175641e7ef5e}{init\-With\-Airport\-Name\-:location\-:and\-I\-D\-:}
+\item 
+(void) -\/ \hyperlink{interface_airport_controller_a2ad69d5a18599af2989c8503daa402c7}{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-String $\ast$ \hyperlink{interface_airport_controller_aa5c51181e127f9b4ccbb502d8916b114}{airport\-Name}
+\item 
+\hyperlink{interface_a_t_c_point}{\-A\-T\-C\-Point} $\ast$ \hyperlink{interface_airport_controller_ad6a7fdc0a276639ab840c6e8066069aa}{airport\-Location}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-One of the two specialized agent playing the role of controller. \-The airport controller handles as the name can let it guess an airport, and the zone surrounding it. \-It is not able to track the planes inside the zone but can still use the default messaging ability of every agent. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_airport_controller_a2ad69d5a18599af2989c8503daa402c7}{
+\index{\-Airport\-Controller@{\-Airport\-Controller}!finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}}
+\index{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}!AirportController@{\-Airport\-Controller}}
+\subsubsection[{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) finish\-Message\-Analysis\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{message\-Content}
+\item[{withMessageCode:(\-N\-V\-Message\-Code)}]{code}
+\item[{from:(\-N\-S\-String $\ast$)}]{sender}
+\item[{originallyTo:(\-N\-S\-String $\ast$)}]{original\-Receiver}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_airport_controller_a2ad69d5a18599af2989c8503daa402c7}
+\-This method is usually called if the \hyperlink{interface_basic_controller}{\-Basic\-Controller} was not able to use the message received. \-It transmits the message calling maybe more specific methods of the controller, with the content of the initial message. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-The content of the message, containing formatted information. \\
+\hline
+{\em code} & \-The code of the message. \\
+\hline
+{\em sender} & \-The initial sender of the message. \\
+\hline
+{\em original\-Receiver} & \-The destination of the message, which can this agent, or all the agents etc. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_controller_behavior_delegate-p_a472f0aba04d2caffc0035e0356b2f85c}{$<$\-Controller\-Behavior\-Delegate$>$}.
+
+\hypertarget{interface_airport_controller_aea5cca35271e003b83bd175641e7ef5e}{
+\index{\-Airport\-Controller@{\-Airport\-Controller}!init\-With\-Airport\-Name\-:location\-:and\-I\-D\-:@{init\-With\-Airport\-Name\-:location\-:and\-I\-D\-:}}
+\index{init\-With\-Airport\-Name\-:location\-:and\-I\-D\-:@{init\-With\-Airport\-Name\-:location\-:and\-I\-D\-:}!AirportController@{\-Airport\-Controller}}
+\subsubsection[{init\-With\-Airport\-Name\-:location\-:and\-I\-D\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) init\-With\-Airport\-Name\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{airport\-Name}
+\item[{location:({\bf \-A\-T\-C\-Point} $\ast$)}]{airport\-Location}
+\item[{andID:(int)}]{\-I\-D}
+\end{DoxyParamCaption}
+}}
+\label{interface_airport_controller_aea5cca35271e003b83bd175641e7ef5e}
+\-Creates one instance of the agent, with some specific attributes. 
+\begin{DoxyParams}{\-Parameters}
+{\em airport\-Name} & \-The name of the airport, used by the airplanes to track their destination. \\
+\hline
+{\em airport\-Location} & \-The position of the runway. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_airport_controller_ad6a7fdc0a276639ab840c6e8066069aa}{
+\index{\-Airport\-Controller@{\-Airport\-Controller}!airport\-Location@{airport\-Location}}
+\index{airport\-Location@{airport\-Location}!AirportController@{\-Airport\-Controller}}
+\subsubsection[{airport\-Location}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf \-A\-T\-C\-Point}$\ast$) airport\-Location\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_airport_controller_ad6a7fdc0a276639ab840c6e8066069aa}
+\-Gets the position of the runway. \hypertarget{interface_airport_controller_aa5c51181e127f9b4ccbb502d8916b114}{
+\index{\-Airport\-Controller@{\-Airport\-Controller}!airport\-Name@{airport\-Name}}
+\index{airport\-Name@{airport\-Name}!AirportController@{\-Airport\-Controller}}
+\subsubsection[{airport\-Name}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String$\ast$) airport\-Name\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_airport_controller_aa5c51181e127f9b4ccbb502d8916b114}
+\-Gets the name of the airport. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Airport\-Controller.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Airport\-Controller.\-m\end{DoxyCompactItemize}

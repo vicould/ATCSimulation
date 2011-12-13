@@ -1,0 +1,86 @@
+\hypertarget{interface_artifacts}{
+\section{\-Artifacts \-Class \-Reference}
+\label{interface_artifacts}\index{\-Artifacts@{\-Artifacts}}
+}
+
+
+{\ttfamily \#import $<$\-Artifacts.\-h$>$}
+
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(\-N\-S\-Integer) + \hyperlink{interface_artifacts_adb7b265d6d1054e7a0be864cdead1bb9}{calculate\-Current\-Zonefrom\-Point\-:}
+\item 
+(float) + \hyperlink{interface_artifacts_a5e4d3c0531320bde6dd9e835cc80eb18}{distance\-From\-Next\-Zone\-:on\-Route\-:}
+\item 
+(\hyperlink{interface_a_t_c_point}{\-A\-T\-C\-Point} $\ast$) + \hyperlink{interface_artifacts_aa2daaa0b9218e87908111a2e6951b9cf}{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Some other methods, that don't need any specific link to an actual instance of the objects, explaining why they all are static. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_artifacts_adb7b265d6d1054e7a0be864cdead1bb9}{
+\index{\-Artifacts@{\-Artifacts}!calculate\-Current\-Zonefrom\-Point\-:@{calculate\-Current\-Zonefrom\-Point\-:}}
+\index{calculate\-Current\-Zonefrom\-Point\-:@{calculate\-Current\-Zonefrom\-Point\-:}!Artifacts@{\-Artifacts}}
+\subsubsection[{calculate\-Current\-Zonefrom\-Point\-:}]{\setlength{\rightskip}{0pt plus 5cm}+ (\-N\-S\-Integer) calculate\-Current\-Zonefrom\-Point\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Point} $\ast$)}]{location}
+\end{DoxyParamCaption}
+}}
+\label{interface_artifacts_adb7b265d6d1054e7a0be864cdead1bb9}
+\-Returns the id of the current zone where the plane is located. 
+\begin{DoxyParams}{\-Parameters}
+{\em location} & \-The position of the airplane. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The \-I\-D of the zone where the plane is at. 
+\end{DoxyReturn}
+\hypertarget{interface_artifacts_aa2daaa0b9218e87908111a2e6951b9cf}{
+\index{\-Artifacts@{\-Artifacts}!calculate\-New\-Position\-From\-Current\-:after\-Interval\-:@{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}}
+\index{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:@{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}!Artifacts@{\-Artifacts}}
+\subsubsection[{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}]{\setlength{\rightskip}{0pt plus 5cm}+ ({\bf \-A\-T\-C\-Point} $\ast$) calculate\-New\-Position\-From\-Current\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{current\-Position}
+\item[{afterInterval:(\-N\-S\-Time\-Interval)}]{interval}
+\end{DoxyParamCaption}
+}}
+\label{interface_artifacts_aa2daaa0b9218e87908111a2e6951b9cf}
+\-Convenient method to calculate the new point reached by the airplane after flying for a certain time, with the parameters of the flight given in the other parameter. 
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Position} & \-The information about the current airplane, such as the route, the speed, and the initial position. \\
+\hline
+{\em interval} & \-The length of the flight. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Returns the new location of the airplane. 
+\end{DoxyReturn}
+\hypertarget{interface_artifacts_a5e4d3c0531320bde6dd9e835cc80eb18}{
+\index{\-Artifacts@{\-Artifacts}!distance\-From\-Next\-Zone\-:on\-Route\-:@{distance\-From\-Next\-Zone\-:on\-Route\-:}}
+\index{distance\-From\-Next\-Zone\-:on\-Route\-:@{distance\-From\-Next\-Zone\-:on\-Route\-:}!Artifacts@{\-Artifacts}}
+\subsubsection[{distance\-From\-Next\-Zone\-:on\-Route\-:}]{\setlength{\rightskip}{0pt plus 5cm}+ (float) distance\-From\-Next\-Zone\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Point} $\ast$)}]{position}
+\item[{onRoute:(\-N\-S\-Integer $\ast$)}]{route}
+\end{DoxyParamCaption}
+}}
+\label{interface_artifacts_a5e4d3c0531320bde6dd9e835cc80eb18}
+\-Calculates the distance to the next zone with the route and the initial position. 
+\begin{DoxyParams}{\-Parameters}
+{\em position} & \-The point where the airplane currently is located. \\
+\hline
+{\em route} & \-The azimut it follows. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The distance to the next zone on a straight line. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Utils/\-Artifacts.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Utils/\-Artifacts.\-m\end{DoxyCompactItemize}

@@ -1,0 +1,115 @@
+\hypertarget{interface_basic_agent}{
+\section{\-Basic\-Agent \-Class \-Reference}
+\label{interface_basic_agent}\index{\-Basic\-Agent@{\-Basic\-Agent}}
+}
+
+
+{\ttfamily \#import $<$\-Basic\-Agent.\-h$>$}
+
+\-Inheritance diagram for \-Basic\-Agent\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_basic_agent}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_basic_agent_a507fe1c35c4ecb5961dbe3f7c11133d1}{init\-With\-Agent\-Name\-:}
+\item 
+(void) -\/ \hyperlink{interface_basic_agent_abb32ee8123c330414a3ad0d54459b946}{send\-Message\-:from\-Type\-:to\-Agent\-:}
+\item 
+(void) -\/ \hyperlink{interface_basic_agent_a66e140561d343ac308020cdd99129df5}{receive\-Message\-:}
+\item 
+\hypertarget{interface_basic_agent_a949077cf7d4071bdd3de67f17310caa7}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_basic_agent_a949077cf7d4071bdd3de67f17310caa7}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+id$<$ \hyperlink{protocol_agent_behavior_delegate-p}{\-Agent\-Behavior\-Delegate} $>$ \hyperlink{interface_basic_agent_a05f2c02931ad325b50029b55565d612d}{agent\-Behavior\-Delegate}
+\item 
+id$<$ \hyperlink{protocol_artifacts_delegate-p}{\-Artifacts\-Delegate} $>$ \hyperlink{interface_basic_agent_a1d96109fc3410b6b23a08296ecc44554}{artifact\-Delegate}
+\item 
+\-N\-S\-String $\ast$ \hyperlink{interface_basic_agent_a763a80618c57ff7402e0f19e1b077eb3}{agent\-Name}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A basic class defining some ground behaviors for an agent, such as the messaging capabilities. \-As an agent it replies to some of the messages received from the other agents, using its reasoning capabilities to determine if an answer is needed and wanted according to its goal. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_basic_agent_a507fe1c35c4ecb5961dbe3f7c11133d1}{
+\index{\-Basic\-Agent@{\-Basic\-Agent}!init\-With\-Agent\-Name\-:@{init\-With\-Agent\-Name\-:}}
+\index{init\-With\-Agent\-Name\-:@{init\-With\-Agent\-Name\-:}!BasicAgent@{\-Basic\-Agent}}
+\subsubsection[{init\-With\-Agent\-Name\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) init\-With\-Agent\-Name\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{name}
+\end{DoxyParamCaption}
+}}
+\label{interface_basic_agent_a507fe1c35c4ecb5961dbe3f7c11133d1}
+\-Creates an instance of an agent. 
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \-The name of the agent, setting the destinator for the messages. \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_basic_agent_a66e140561d343ac308020cdd99129df5}{
+\index{\-Basic\-Agent@{\-Basic\-Agent}!receive\-Message\-:@{receive\-Message\-:}}
+\index{receive\-Message\-:@{receive\-Message\-:}!BasicAgent@{\-Basic\-Agent}}
+\subsubsection[{receive\-Message\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) receive\-Message\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Notification $\ast$)}]{notification}
+\end{DoxyParamCaption}
+}}
+\label{interface_basic_agent_a66e140561d343ac308020cdd99129df5}
+\-The method which is called when the agent receives a message from others. 
+\begin{DoxyParams}{\-Parameters}
+{\em notification} & \-The object wrapping the different elements of the message. \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_basic_agent_abb32ee8123c330414a3ad0d54459b946}{
+\index{\-Basic\-Agent@{\-Basic\-Agent}!send\-Message\-:from\-Type\-:to\-Agent\-:@{send\-Message\-:from\-Type\-:to\-Agent\-:}}
+\index{send\-Message\-:from\-Type\-:to\-Agent\-:@{send\-Message\-:from\-Type\-:to\-Agent\-:}!BasicAgent@{\-Basic\-Agent}}
+\subsubsection[{send\-Message\-:from\-Type\-:to\-Agent\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) send\-Message\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{message}
+\item[{fromType:(\-N\-V\-Message\-Code)}]{type}
+\item[{toAgent:(\-N\-S\-String $\ast$)}]{agent\-Name}
+\end{DoxyParamCaption}
+}}
+\label{interface_basic_agent_abb32ee8123c330414a3ad0d54459b946}
+\-Top level method to send messages to other agents. 
+\begin{DoxyParams}{\-Parameters}
+{\em message} & \-The content of the message to be sent, as a string. \\
+\hline
+{\em type} & \-The corresponding code of the message. \\
+\hline
+{\em agent\-Name} & \-The name of the destinator of this message. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_basic_agent_a05f2c02931ad325b50029b55565d612d}{
+\index{\-Basic\-Agent@{\-Basic\-Agent}!agent\-Behavior\-Delegate@{agent\-Behavior\-Delegate}}
+\index{agent\-Behavior\-Delegate@{agent\-Behavior\-Delegate}!BasicAgent@{\-Basic\-Agent}}
+\subsubsection[{agent\-Behavior\-Delegate}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id$<${\bf \-Agent\-Behavior\-Delegate}$>$) agent\-Behavior\-Delegate\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_basic_agent_a05f2c02931ad325b50029b55565d612d}
+\-A property used to set the object implementing the various methods of the \hyperlink{protocol_agent_behavior_delegate-p}{\-Agent\-Behavior\-Delegate}. \hypertarget{interface_basic_agent_a763a80618c57ff7402e0f19e1b077eb3}{
+\index{\-Basic\-Agent@{\-Basic\-Agent}!agent\-Name@{agent\-Name}}
+\index{agent\-Name@{agent\-Name}!BasicAgent@{\-Basic\-Agent}}
+\subsubsection[{agent\-Name}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String$\ast$) agent\-Name\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_basic_agent_a763a80618c57ff7402e0f19e1b077eb3}
+\-Gets the name of this agent. \hypertarget{interface_basic_agent_a1d96109fc3410b6b23a08296ecc44554}{
+\index{\-Basic\-Agent@{\-Basic\-Agent}!artifact\-Delegate@{artifact\-Delegate}}
+\index{artifact\-Delegate@{artifact\-Delegate}!BasicAgent@{\-Basic\-Agent}}
+\subsubsection[{artifact\-Delegate}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id$<${\bf \-Artifacts\-Delegate}$>$) artifact\-Delegate\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_basic_agent_a1d96109fc3410b6b23a08296ecc44554}
+\-A property used to set the object implementing the artifacts that the agent can use. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Basic\-Agent.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Basic\-Agent.\-m\end{DoxyCompactItemize}

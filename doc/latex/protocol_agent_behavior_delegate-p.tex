@@ -1,0 +1,81 @@
+\hypertarget{protocol_agent_behavior_delegate-p}{
+\section{$<$\-Agent\-Behavior\-Delegate$>$ \-Protocol \-Reference}
+\label{protocol_agent_behavior_delegate-p}\index{$<$\-Agent\-Behavior\-Delegate$>$@{$<$\-Agent\-Behavior\-Delegate$>$}}
+}
+
+
+{\ttfamily \#import $<$\-Agent\-Behavior\-Delegate.\-h$>$}
+
+\-Inheritance diagram for $<$\-Agent\-Behavior\-Delegate$>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{protocol_agent_behavior_delegate-p}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{protocol_agent_behavior_delegate-p_ac4e1d47826a7916c7a454ca1b7aa2e79}{analyze\-Message\-:with\-Original\-Destinator\-:}
+\item 
+(void) -\/ \hyperlink{protocol_agent_behavior_delegate-p_ae65ac71cad3f34ea837b363f3eb53966}{start\-Simulation}
+\item 
+(void) -\/ \hyperlink{protocol_agent_behavior_delegate-p_a9177a82f871c00aa7513cbf5d0cb8ca5}{stop\-Simulation}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This protocol defines abstract methods an agent needs to implement to provide more evolved behaviors than the common \hyperlink{interface_basic_agent}{\-Basic\-Agent} object. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{protocol_agent_behavior_delegate-p_ac4e1d47826a7916c7a454ca1b7aa2e79}{
+\index{\-Agent\-Behavior\-Delegate-\/p@{\-Agent\-Behavior\-Delegate-\/p}!analyze\-Message\-:with\-Original\-Destinator\-:@{analyze\-Message\-:with\-Original\-Destinator\-:}}
+\index{analyze\-Message\-:with\-Original\-Destinator\-:@{analyze\-Message\-:with\-Original\-Destinator\-:}!AgentBehaviorDelegate-p@{\-Agent\-Behavior\-Delegate-\/p}}
+\subsubsection[{analyze\-Message\-:with\-Original\-Destinator\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) analyze\-Message\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Dictionary $\ast$)}]{message\-Content}
+\item[{withOriginalDestinator:(\-N\-S\-String $\ast$)}]{destinator}
+\end{DoxyParamCaption}
+}}
+\label{protocol_agent_behavior_delegate-p_ac4e1d47826a7916c7a454ca1b7aa2e79}
+\-Finish processing the message, as kindly cut by the \hyperlink{interface_basic_agent}{\-Basic\-Agent}. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-A dictionary containing the different characteristics of the message, such as its type, its content, etc. \\
+\hline
+{\em destinator} & \-The original destinator of this message (the particular agent, broadcast methods, etc.). \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{interface_airplane_ae11a6a90304a9b78bdd2653b6a62a1ed}{\-Airplane}, and \hyperlink{interface_basic_controller_aa08efe5b2a6835efe6cdbd60084c7888}{\-Basic\-Controller}.
+
+\hypertarget{protocol_agent_behavior_delegate-p_ae65ac71cad3f34ea837b363f3eb53966}{
+\index{\-Agent\-Behavior\-Delegate-\/p@{\-Agent\-Behavior\-Delegate-\/p}!start\-Simulation@{start\-Simulation}}
+\index{start\-Simulation@{start\-Simulation}!AgentBehaviorDelegate-p@{\-Agent\-Behavior\-Delegate-\/p}}
+\subsubsection[{start\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) start\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{protocol_agent_behavior_delegate-p_ae65ac71cad3f34ea837b363f3eb53966}
+\-Asks the agent to begin to run, processing the inputs and trying to reach its goal. 
+
+\-Reimplemented in \hyperlink{interface_airplane_ac72298feeb1eabb6930d59d87a6b769e}{\-Airplane}, \hyperlink{class_zone_controller_a06708c84f0edc0169eb5688af2995477}{\-Zone\-Controller}, and \hyperlink{interface_basic_controller_a6fb09a381fa1044c1a133d3aeb0b02e6}{\-Basic\-Controller}.
+
+\hypertarget{protocol_agent_behavior_delegate-p_a9177a82f871c00aa7513cbf5d0cb8ca5}{
+\index{\-Agent\-Behavior\-Delegate-\/p@{\-Agent\-Behavior\-Delegate-\/p}!stop\-Simulation@{stop\-Simulation}}
+\index{stop\-Simulation@{stop\-Simulation}!AgentBehaviorDelegate-p@{\-Agent\-Behavior\-Delegate-\/p}}
+\subsubsection[{stop\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) stop\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{protocol_agent_behavior_delegate-p_a9177a82f871c00aa7513cbf5d0cb8ca5}
+\-Asks the agent to stop all the activities. 
+
+\-Reimplemented in \hyperlink{interface_airplane_a88f2c57f879dfc9f1799a4d31b8d8d2d}{\-Airplane}, \hyperlink{class_zone_controller_ae7f6a5d43d659e35c0acc11ea7cc894a}{\-Zone\-Controller}, and \hyperlink{interface_basic_controller_a2a7181ab5a5de771efb559fd110b63b0}{\-Basic\-Controller}.
+
+
+
+\-The documentation for this protocol was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Agent\-Behavior\-Delegate.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,195 @@
+\hypertarget{interface_airplane}{
+\section{\-Airplane \-Class \-Reference}
+\label{interface_airplane}\index{\-Airplane@{\-Airplane}}
+}
+
+
+{\ttfamily \#import $<$\-Airplane.\-h$>$}
+
+\-Inheritance diagram for \-Airplane\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_airplane}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_airplane_a4cd0671cfd995a78a594f1b47aaf25bd}{init\-With\-Initial\-Data\-:}
+\item 
+\hypertarget{interface_airplane_a4b031466149b2e6be2fcb7e1f4444ecb}{
+(void) -\/ {\bfseries set\-Course\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a4b031466149b2e6be2fcb7e1f4444ecb}
+
+\item 
+\hypertarget{interface_airplane_a1e84a055df9ee4361766d1e2d8ca9237}{
+(void) -\/ {\bfseries set\-Speed\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a1e84a055df9ee4361766d1e2d8ca9237}
+
+\item 
+\hypertarget{interface_airplane_a7ea31c35eecc0cb5441458ea9096e4aa}{
+(void) -\/ {\bfseries set\-Destination\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a7ea31c35eecc0cb5441458ea9096e4aa}
+
+\item 
+\hypertarget{interface_airplane_ae0bae343afd146a22f00b33bbc56bab8}{
+(void) -\/ {\bfseries set\-Last\-Position\-Check\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_ae0bae343afd146a22f00b33bbc56bab8}
+
+\item 
+(void) -\/ \hyperlink{interface_airplane_ac72298feeb1eabb6930d59d87a6b769e}{start\-Simulation}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_airplane_a88f2c57f879dfc9f1799a4d31b8d8d2d}{stop\-Simulation}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_airplane_ae11a6a90304a9b78bdd2653b6a62a1ed}{analyze\-Message\-:with\-Original\-Destinator\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+\hypertarget{interface_airplane_a589eeedbcf0abb117387c66b3e617be1}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a589eeedbcf0abb117387c66b3e617be1}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_a_t_c_airplane_information}{\-A\-T\-C\-Airplane\-Information} $\ast$ \hyperlink{interface_airplane_ae7aaedc8e578708c9658b88148015dfb}{own\-Information}
+\item 
+\-N\-S\-Integer \hyperlink{interface_airplane_a8dc93028dc827369e6f3d4944afa8ef4}{speed}
+\item 
+\-N\-S\-Integer \hyperlink{interface_airplane_ace9b050dac86dbd1ef53425c87e56918}{course}
+\item 
+\-N\-S\-String $\ast$ \hyperlink{interface_airplane_ab52b5148d157f283296221cfe90e6144}{destination}
+\item 
+\hypertarget{interface_airplane_a4ea2ca03397863bbddcd107098c85f76}{
+\-N\-S\-String $\ast$ {\bfseries current\-Controller}}
+\label{interface_airplane_a4ea2ca03397863bbddcd107098c85f76}
+
+\item 
+\hypertarget{interface_airplane_a17d86638a8f132eb42bfaf2bd22d36ec}{
+\-N\-S\-Timer $\ast$ {\bfseries position\-Updater}}
+\label{interface_airplane_a17d86638a8f132eb42bfaf2bd22d36ec}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_airplane_a88a0d3040e9ad781914262e202a30415}{
+(\-N\-S\-Date $\ast$) -\/ {\bfseries last\-Position\-Check}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a88a0d3040e9ad781914262e202a30415}
+
+\item 
+\hypertarget{interface_airplane_a12fbc6e73f3bba427f33fc7958b24baa}{
+(void) -\/ {\bfseries update\-Position}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a12fbc6e73f3bba427f33fc7958b24baa}
+
+\item 
+\hypertarget{interface_airplane_ac53b2796a475adee695001e7e47d8728}{
+(void) -\/ {\bfseries send\-Current\-Position}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_ac53b2796a475adee695001e7e47d8728}
+
+\item 
+\hypertarget{interface_airplane_a1a093752da09714abd1ce75a1e3abf7c}{
+(void) -\/ {\bfseries change\-Zone\-With\-New\-Controller\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a1a093752da09714abd1ce75a1e3abf7c}
+
+\item 
+\hypertarget{interface_airplane_a5d0fb5ca4531152fc86b396573df03a4}{
+(void) -\/ {\bfseries update\-Position\-In\-Environmemt\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_airplane_a5d0fb5ca4531152fc86b396573df03a4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-The agent representing an airplane. \-It flies by itself with some characteristics defined in its own\-Information property. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_airplane_ae11a6a90304a9b78bdd2653b6a62a1ed}{
+\index{\-Airplane@{\-Airplane}!analyze\-Message\-:with\-Original\-Destinator\-:@{analyze\-Message\-:with\-Original\-Destinator\-:}}
+\index{analyze\-Message\-:with\-Original\-Destinator\-:@{analyze\-Message\-:with\-Original\-Destinator\-:}!Airplane@{\-Airplane}}
+\subsubsection[{analyze\-Message\-:with\-Original\-Destinator\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) analyze\-Message\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Dictionary $\ast$)}]{message\-Content}
+\item[{withOriginalDestinator:(\-N\-S\-String $\ast$)}]{destinator}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_airplane_ae11a6a90304a9b78bdd2653b6a62a1ed}
+\-Finish processing the message, as kindly cut by the \hyperlink{interface_basic_agent}{\-Basic\-Agent}. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-A dictionary containing the different characteristics of the message, such as its type, its content, etc. \\
+\hline
+{\em destinator} & \-The original destinator of this message (the particular agent, broadcast methods, etc.). \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_agent_behavior_delegate-p_ac4e1d47826a7916c7a454ca1b7aa2e79}{$<$\-Agent\-Behavior\-Delegate$>$}.
+
+\hypertarget{interface_airplane_a4cd0671cfd995a78a594f1b47aaf25bd}{
+\index{\-Airplane@{\-Airplane}!init\-With\-Initial\-Data\-:@{init\-With\-Initial\-Data\-:}}
+\index{init\-With\-Initial\-Data\-:@{init\-With\-Initial\-Data\-:}!Airplane@{\-Airplane}}
+\subsubsection[{init\-With\-Initial\-Data\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) init\-With\-Initial\-Data\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{airplane\-Information}
+\end{DoxyParamCaption}
+}}
+\label{interface_airplane_a4cd0671cfd995a78a594f1b47aaf25bd}
+\-Creates an instance of the airplane, setting the characteristics using the \hyperlink{interface_a_t_c_airplane_information}{\-A\-T\-C\-Airplane\-Information} class, which holds data such as the speed, the course, etc. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane\-Information} & \-A collection of informations about this airplane. \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_airplane_ac72298feeb1eabb6930d59d87a6b769e}{
+\index{\-Airplane@{\-Airplane}!start\-Simulation@{start\-Simulation}}
+\index{start\-Simulation@{start\-Simulation}!Airplane@{\-Airplane}}
+\subsubsection[{start\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) start\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_airplane_ac72298feeb1eabb6930d59d87a6b769e}
+\-Asks the agent to begin to run, processing the inputs and trying to reach its goal. 
+
+\-Reimplemented from \hyperlink{protocol_agent_behavior_delegate-p_ae65ac71cad3f34ea837b363f3eb53966}{$<$\-Agent\-Behavior\-Delegate$>$}.
+
+\hypertarget{interface_airplane_a88f2c57f879dfc9f1799a4d31b8d8d2d}{
+\index{\-Airplane@{\-Airplane}!stop\-Simulation@{stop\-Simulation}}
+\index{stop\-Simulation@{stop\-Simulation}!Airplane@{\-Airplane}}
+\subsubsection[{stop\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) stop\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_airplane_a88f2c57f879dfc9f1799a4d31b8d8d2d}
+\-Asks the agent to stop all the activities. 
+
+\-Reimplemented from \hyperlink{protocol_agent_behavior_delegate-p_a9177a82f871c00aa7513cbf5d0cb8ca5}{$<$\-Agent\-Behavior\-Delegate$>$}.
+
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_airplane_ace9b050dac86dbd1ef53425c87e56918}{
+\index{\-Airplane@{\-Airplane}!course@{course}}
+\index{course@{course}!Airplane@{\-Airplane}}
+\subsubsection[{course}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Integer) course\hspace{0.3cm}{\ttfamily  \mbox{[}read, assign\mbox{]}}}}
+\label{interface_airplane_ace9b050dac86dbd1ef53425c87e56918}
+\-Gets the course of the airplane. \hypertarget{interface_airplane_ab52b5148d157f283296221cfe90e6144}{
+\index{\-Airplane@{\-Airplane}!destination@{destination}}
+\index{destination@{destination}!Airplane@{\-Airplane}}
+\subsubsection[{destination}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String $\ast$) destination\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_airplane_ab52b5148d157f283296221cfe90e6144}
+\-Gets the destination of the airplane. \hypertarget{interface_airplane_ae7aaedc8e578708c9658b88148015dfb}{
+\index{\-Airplane@{\-Airplane}!own\-Information@{own\-Information}}
+\index{own\-Information@{own\-Information}!Airplane@{\-Airplane}}
+\subsubsection[{own\-Information}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf \-A\-T\-C\-Airplane\-Information}$\ast$) own\-Information\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_airplane_ae7aaedc8e578708c9658b88148015dfb}
+\-Gets the information instance for this object. \hypertarget{interface_airplane_a8dc93028dc827369e6f3d4944afa8ef4}{
+\index{\-Airplane@{\-Airplane}!speed@{speed}}
+\index{speed@{speed}!Airplane@{\-Airplane}}
+\subsubsection[{speed}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Integer) speed\hspace{0.3cm}{\ttfamily  \mbox{[}read, assign\mbox{]}}}}
+\label{interface_airplane_a8dc93028dc827369e6f3d4944afa8ef4}
+\-Gets the speed of the airplane. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Airplane.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Airplane.\-m\end{DoxyCompactItemize}

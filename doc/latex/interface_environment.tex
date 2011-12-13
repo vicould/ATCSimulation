@@ -1,0 +1,443 @@
+\hypertarget{interface_environment}{
+\section{\-Environment \-Class \-Reference}
+\label{interface_environment}\index{\-Environment@{\-Environment}}
+}
+
+
+{\ttfamily \#import $<$\-Environment.\-h$>$}
+
+\-Inheritance diagram for \-Environment\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_environment}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_environment_a949f18c6bc3e13c7e9a384e07f78ad60}{init\-With\-Display\-Delegate\-:}
+\item 
+(void) -\/ \hyperlink{interface_environment_a26a052e4413709c3f86409f116681e5f}{start\-Simulation}
+\item 
+(void) -\/ \hyperlink{interface_environment_a3083143effe80b2d3a5d18340f95933e}{stop\-Simulation}
+\item 
+(void) -\/ \hyperlink{interface_environment_abef32e5236a6cf77a3c0af62f9b4f8a0}{reset\-Simulation}
+\item 
+\hypertarget{interface_environment_ab03ecf0e3dbdabd32554205c560e996d}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_ab03ecf0e3dbdabd32554205c560e996d}
+
+\item 
+(\-N\-S\-Integer) -\/ \hyperlink{interface_environment_aad3825ab9cebeacc656c9dd81d13e01d}{calculate\-Current\-Zone\-From\-Point\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(float) -\/ \hyperlink{interface_environment_a877eabcf3de9386771a9a296fb9b5fe6}{distance\-From\-Next\-Zone\-:on\-Route\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(\hyperlink{interface_a_t_c_point}{\-A\-T\-C\-Point} $\ast$) -\/ \hyperlink{interface_environment_afaa0307df5ae6e96037bf867d020bf7d}{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(\-N\-S\-String $\ast$) -\/ \hyperlink{interface_environment_ae5e0c4a273d295bbfb33bc4d964883a6}{controller\-Name\-For\-Zone\-I\-D\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(float) -\/ \hyperlink{interface_environment_abdfaafe29461c4bf01b6ffb285c09355}{calculate\-Azimut\-To\-Destination\-:from\-Point\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+\hypertarget{interface_environment_ae06053e76e4af77ec00cf6c4169be74c}{
+(\-B\-O\-O\-L) -\/ {\bfseries check\-If\-Point\-Is\-On\-Runway\-:from\-Zone\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_ae06053e76e4af77ec00cf6c4169be74c}
+
+\item 
+(int) -\/ \hyperlink{interface_environment_adca1b072cc72d7e1e3cf51f265d0780b}{create\-Zone\-I\-D}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+\hypertarget{interface_environment_a84e94279398d88a72243364e8cf98afd}{
+(\hyperlink{interface_a_t_c_point}{\-A\-T\-C\-Point} $\ast$) -\/ {\bfseries calculate\-Planes\-Intersection\-With\-Plane1\-Infos\-:and\-Plane2\-Infos\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a84e94279398d88a72243364e8cf98afd}
+
+\item 
+\hypertarget{interface_environment_a9e39d539d6e429814e2f92932d77b5d4}{
+(void) -\/ {\bfseries line\-Equation\-From\-Point\-:and\-Course\-:\-With\-A\-:b\-:and\-C\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a9e39d539d6e429814e2f92932d77b5d4}
+
+\item 
+(void) -\/ \hyperlink{interface_environment_a0fb5f82206bc9d8404d8dae4fe53e7d1}{update\-Airplane\-Information\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_environment_aadba00d3e1ef7a5c94073cae64efa406}{land\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_environment_a7b809370007c121fd16faaa1cdd7354b}{crash\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_environment_a0d3dc964e5b6e6c9b4d73e99796c2d30}{remove\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\item 
+(void) -\/ \hyperlink{interface_environment_a69d6de38803175da4f50bb45e89ac29f}{update\-Interface\-With\-Informations\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+id$<$ \hyperlink{protocol_environment_display_delegate-p}{\-Environment\-Display\-Delegate} $>$ \hyperlink{interface_environment_a424601815b84dea769a7ffbaab1289bf}{display\-Delegate}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_environment_a781ba0e2e19e6cca48eb70e0efac06eb}{zones}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_environment_a82e2d51cea5f8cbbbcfc968348d1b9be}{airport\-Controllers}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_environment_a3d62231f10bae1d800466e43bfcc2da7}{zone\-Controllers}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_environment_a59a7f74390b883720a224468155bf5f8}{airplanes}
+\item 
+\hypertarget{interface_environment_a1428d4c087fbe0c8ff8246c9cf88fbef}{
+\-N\-S\-Mutable\-Dictionary $\ast$ {\bfseries zone\-White\-Pages}}
+\label{interface_environment_a1428d4c087fbe0c8ff8246c9cf88fbef}
+
+\item 
+\hypertarget{interface_environment_a16d985987c2d74227af4c68c1e7d0175}{
+int {\bfseries last\-I\-D}}
+\label{interface_environment_a16d985987c2d74227af4c68c1e7d0175}
+
+\item 
+\hypertarget{interface_environment_ae659363a7f14f24a41ce7272a361b084}{
+\-N\-S\-Dictionary $\ast$ {\bfseries airports\-White\-Pages}}
+\label{interface_environment_ae659363a7f14f24a41ce7272a361b084}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_environment_a6a1ffc692affc1318c14a68b0bc09c11}{
+(void) -\/ {\bfseries create\-Environment}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a6a1ffc692affc1318c14a68b0bc09c11}
+
+\item 
+\hypertarget{interface_environment_a7e53d4cf14c0ffb0d4a25286352120ef}{
+(\hyperlink{interface_airplane}{\-Airplane} $\ast$) -\/ {\bfseries create\-Airplane\-With\-Initial\-Info\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a7e53d4cf14c0ffb0d4a25286352120ef}
+
+\item 
+\hypertarget{interface_environment_af9d8f10f317b6a72845caf4b63d6ab30}{
+(void) -\/ {\bfseries represent\-Starting\-Environment}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_af9d8f10f317b6a72845caf4b63d6ab30}
+
+\item 
+\hypertarget{interface_environment_ab9517f5b8b144ca437f77a3ab22fe76f}{
+(void) -\/ {\bfseries on\-Main\-Thread\-Update\-Interface\-With\-Informations\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_ab9517f5b8b144ca437f77a3ab22fe76f}
+
+\item 
+\hypertarget{interface_environment_af9e11114725a1f4ec3bdda1d0ff97983}{
+(void) -\/ {\bfseries on\-Main\-Thread\-Update\-Airplane\-Information\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_af9e11114725a1f4ec3bdda1d0ff97983}
+
+\item 
+\hypertarget{interface_environment_a2257810d6bc317ecb4877668bb2bafb1}{
+(void) -\/ {\bfseries on\-Main\-Thread\-Land\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a2257810d6bc317ecb4877668bb2bafb1}
+
+\item 
+\hypertarget{interface_environment_a95fc69d064b3dc0b7cb6ff0e77e38ab8}{
+(void) -\/ {\bfseries on\-Main\-Thread\-Crash\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a95fc69d064b3dc0b7cb6ff0e77e38ab8}
+
+\item 
+\hypertarget{interface_environment_a19bdd197b867a80910aab6643da359d7}{
+(void) -\/ {\bfseries on\-Main\-Thread\-Remove\-Airplane\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_environment_a19bdd197b867a80910aab6643da359d7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-The environment of the simulation, handling the different agents that interact together, the playground for them (the map, the borders, the zones).
+
+\-It provides several artifacts to these agents, defined either in the \-Artifacts or in the \hyperlink{protocol_artifacts_delegate-p}{\-Artifacts\-Delegate}, to help them perform certain actions (such as calculate their position, etc.), or access the interface.
+
+\-The environment also owns a reference to the main interface of the application, so that it can display on the screen information to the user. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_environment_abdfaafe29461c4bf01b6ffb285c09355}{
+\index{\-Environment@{\-Environment}!calculate\-Azimut\-To\-Destination\-:from\-Point\-:@{calculate\-Azimut\-To\-Destination\-:from\-Point\-:}}
+\index{calculate\-Azimut\-To\-Destination\-:from\-Point\-:@{calculate\-Azimut\-To\-Destination\-:from\-Point\-:}!Environment@{\-Environment}}
+\subsubsection[{calculate\-Azimut\-To\-Destination\-:from\-Point\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (float) calculate\-Azimut\-To\-Destination\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{destination}
+\item[{fromPoint:({\bf \-A\-T\-C\-Point} $\ast$)}]{current\-Location}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_abdfaafe29461c4bf01b6ffb285c09355}
+\-Method to calculate the course to follow to reach the destination. 
+\begin{DoxyParams}{\-Parameters}
+{\em destination} & \-The destination to fly to. \\
+\hline
+{\em current\-Location} & \-The current location of the airplane. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The course, in degrees, to follow to reach the airport. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_aeffe6d6022ce0292fbc7895f6b364444}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_aad3825ab9cebeacc656c9dd81d13e01d}{
+\index{\-Environment@{\-Environment}!calculate\-Current\-Zone\-From\-Point\-:@{calculate\-Current\-Zone\-From\-Point\-:}}
+\index{calculate\-Current\-Zone\-From\-Point\-:@{calculate\-Current\-Zone\-From\-Point\-:}!Environment@{\-Environment}}
+\subsubsection[{calculate\-Current\-Zone\-From\-Point\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Integer) calculate\-Current\-Zone\-From\-Point\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Point} $\ast$)}]{location}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_aad3825ab9cebeacc656c9dd81d13e01d}
+\-Returns the id of the current zone where the plane is located. 
+\begin{DoxyParams}{\-Parameters}
+{\em location} & \-The position of the airplane. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The \-I\-D of the zone where the plane is at. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_a7853374c9472cadfb53237833298b935}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_afaa0307df5ae6e96037bf867d020bf7d}{
+\index{\-Environment@{\-Environment}!calculate\-New\-Position\-From\-Current\-:after\-Interval\-:@{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}}
+\index{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:@{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}!Environment@{\-Environment}}
+\subsubsection[{calculate\-New\-Position\-From\-Current\-:after\-Interval\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf \-A\-T\-C\-Point} $\ast$) calculate\-New\-Position\-From\-Current\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{current\-Position}
+\item[{afterInterval:(\-N\-S\-Time\-Interval)}]{interval}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_afaa0307df5ae6e96037bf867d020bf7d}
+\-Convenient method to calculate the new point reached by the airplane after flying for a certain time, with the parameters of the flight given in the other parameter. 
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Position} & \-The information about the current airplane, such as the route, the speed, and the initial position. \\
+\hline
+{\em interval} & \-The length of the flight. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Returns the new location of the airplane. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_a5f198490fb7fc6450c4f8efd0b912884}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_ae5e0c4a273d295bbfb33bc4d964883a6}{
+\index{\-Environment@{\-Environment}!controller\-Name\-For\-Zone\-I\-D\-:@{controller\-Name\-For\-Zone\-I\-D\-:}}
+\index{controller\-Name\-For\-Zone\-I\-D\-:@{controller\-Name\-For\-Zone\-I\-D\-:}!Environment@{\-Environment}}
+\subsubsection[{controller\-Name\-For\-Zone\-I\-D\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String $\ast$) controller\-Name\-For\-Zone\-I\-D\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(int)}]{zone\-I\-D}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_ae5e0c4a273d295bbfb33bc4d964883a6}
+\-Get the name of the controller for the specified zone \-I\-D. 
+\begin{DoxyParams}{\-Parameters}
+{\em zone\-I\-D} & \-The id of the zone where the controller's name is desired. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The name of the controller managing the zone. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_ac984d3c52657bbbbbb075001df6a8991}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_a7b809370007c121fd16faaa1cdd7354b}{
+\index{\-Environment@{\-Environment}!crash\-Airplane\-:@{crash\-Airplane\-:}}
+\index{crash\-Airplane\-:@{crash\-Airplane\-:}!Environment@{\-Environment}}
+\subsubsection[{crash\-Airplane\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) crash\-Airplane\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{airplane\-Info}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_a7b809370007c121fd16faaa1cdd7354b}
+\-Asks the environment to hide the specified airplane, as it crashed (after running out of fuel or colliding with another airplane). 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane} & \-The informations about the airplane that just had an accident. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_afd62a02fca4f76ab726adad37748acbc}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_adca1b072cc72d7e1e3cf51f265d0780b}{
+\index{\-Environment@{\-Environment}!create\-Zone\-I\-D@{create\-Zone\-I\-D}}
+\index{create\-Zone\-I\-D@{create\-Zone\-I\-D}!Environment@{\-Environment}}
+\subsubsection[{create\-Zone\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (int) create\-Zone\-I\-D 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_adca1b072cc72d7e1e3cf51f265d0780b}
+\-A method to create a unique \-I\-D for each class. \begin{DoxyReturn}{\-Returns}
+\-Returns an unique id that can be used to identify the zones. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_a6d2f14d38897bb71758447e26f1ef335}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_a877eabcf3de9386771a9a296fb9b5fe6}{
+\index{\-Environment@{\-Environment}!distance\-From\-Next\-Zone\-:on\-Route\-:@{distance\-From\-Next\-Zone\-:on\-Route\-:}}
+\index{distance\-From\-Next\-Zone\-:on\-Route\-:@{distance\-From\-Next\-Zone\-:on\-Route\-:}!Environment@{\-Environment}}
+\subsubsection[{distance\-From\-Next\-Zone\-:on\-Route\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (float) distance\-From\-Next\-Zone\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Point} $\ast$)}]{position}
+\item[{onRoute:(\-N\-S\-Integer $\ast$)}]{route}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_a877eabcf3de9386771a9a296fb9b5fe6}
+\-Calculates the distance to the next zone with the route and the initial position. 
+\begin{DoxyParams}{\-Parameters}
+{\em position} & \-The point where the airplane currently is located. \\
+\hline
+{\em route} & \-The azimut it follows. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The distance to the next zone on a straight line. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_a9058a8fd4599a2e2a1f514114dbe6f03}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_a949f18c6bc3e13c7e9a384e07f78ad60}{
+\index{\-Environment@{\-Environment}!init\-With\-Display\-Delegate\-:@{init\-With\-Display\-Delegate\-:}}
+\index{init\-With\-Display\-Delegate\-:@{init\-With\-Display\-Delegate\-:}!Environment@{\-Environment}}
+\subsubsection[{init\-With\-Display\-Delegate\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) init\-With\-Display\-Delegate\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(id)}]{object}
+\end{DoxyParamCaption}
+}}
+\label{interface_environment_a949f18c6bc3e13c7e9a384e07f78ad60}
+\-Creates an instance of the environment, and sets the display delegate responding to the methods defined in the \hyperlink{protocol_environment_display_delegate-p}{\-Environment\-Display\-Delegate} protocol, so that the environment can ask to perform certain actions on the interface. 
+\begin{DoxyParams}{\-Parameters}
+{\em \-The} & delegate allowing access to the interface. \-All calls to the interface must be made on the main thread. \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_environment_aadba00d3e1ef7a5c94073cae64efa406}{
+\index{\-Environment@{\-Environment}!land\-Airplane\-:@{land\-Airplane\-:}}
+\index{land\-Airplane\-:@{land\-Airplane\-:}!Environment@{\-Environment}}
+\subsubsection[{land\-Airplane\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) land\-Airplane\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{airplane\-Name}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_aadba00d3e1ef7a5c94073cae64efa406}
+\-Asks the environment to hide the specified airplane, as it has reached its destination. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane} & \-The informations about the airplane that should land. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_a6240e7bc0746d8d4013dc748907d8cd2}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_a0d3dc964e5b6e6c9b4d73e99796c2d30}{
+\index{\-Environment@{\-Environment}!remove\-Airplane\-:@{remove\-Airplane\-:}}
+\index{remove\-Airplane\-:@{remove\-Airplane\-:}!Environment@{\-Environment}}
+\subsubsection[{remove\-Airplane\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) remove\-Airplane\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{airplane\-Name}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_a0d3dc964e5b6e6c9b4d73e99796c2d30}
+\-Method used by the controllers to remove an airplane from the simulation when it exited the map. 
+\begin{DoxyParams}{\-Parameters}
+{\em airplane} & \-The airplane to remove from the simulation. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_ae52932443f640e0a80ff0cb653fc6684}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_abef32e5236a6cf77a3c0af62f9b4f8a0}{
+\index{\-Environment@{\-Environment}!reset\-Simulation@{reset\-Simulation}}
+\index{reset\-Simulation@{reset\-Simulation}!Environment@{\-Environment}}
+\subsubsection[{reset\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) reset\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{interface_environment_abef32e5236a6cf77a3c0af62f9b4f8a0}
+\-Resets the simulation, recreates the environment and the agents interacting in it. \hypertarget{interface_environment_a26a052e4413709c3f86409f116681e5f}{
+\index{\-Environment@{\-Environment}!start\-Simulation@{start\-Simulation}}
+\index{start\-Simulation@{start\-Simulation}!Environment@{\-Environment}}
+\subsubsection[{start\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) start\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{interface_environment_a26a052e4413709c3f86409f116681e5f}
+\-Starts the simulation once it is ready. \hypertarget{interface_environment_a3083143effe80b2d3a5d18340f95933e}{
+\index{\-Environment@{\-Environment}!stop\-Simulation@{stop\-Simulation}}
+\index{stop\-Simulation@{stop\-Simulation}!Environment@{\-Environment}}
+\subsubsection[{stop\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) stop\-Simulation 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}
+\label{interface_environment_a3083143effe80b2d3a5d18340f95933e}
+\-Stops the simulation. \hypertarget{interface_environment_a0fb5f82206bc9d8404d8dae4fe53e7d1}{
+\index{\-Environment@{\-Environment}!update\-Airplane\-Information\-:@{update\-Airplane\-Information\-:}}
+\index{update\-Airplane\-Information\-:@{update\-Airplane\-Information\-:}!Environment@{\-Environment}}
+\subsubsection[{update\-Airplane\-Information\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) update\-Airplane\-Information\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{information}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_a0fb5f82206bc9d8404d8dae4fe53e7d1}
+\-Asks the environment to display on the map one object. \-This methods is typically invoked from the airplane. 
+\begin{DoxyParams}{\-Parameters}
+{\em information} & \-The information to display on the map. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_a819d9706a61adbefd1cde3129a5302d1}{$<$\-Artifacts\-Delegate$>$}.
+
+\hypertarget{interface_environment_a69d6de38803175da4f50bb45e89ac29f}{
+\index{\-Environment@{\-Environment}!update\-Interface\-With\-Informations\-:@{update\-Interface\-With\-Informations\-:}}
+\index{update\-Interface\-With\-Informations\-:@{update\-Interface\-With\-Informations\-:}!Environment@{\-Environment}}
+\subsubsection[{update\-Interface\-With\-Informations\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) update\-Interface\-With\-Informations\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-Array $\ast$)}]{informations}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_environment_a69d6de38803175da4f50bb45e89ac29f}
+\-Asks the environment to display on the map the informations retrieved by the controllers. 
+\begin{DoxyParams}{\-Parameters}
+{\em informations} & \-An array containing \hyperlink{interface_a_t_c_airplane_information}{\-A\-T\-C\-Airplane\-Information} objects, as created by the caller. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_artifacts_delegate-p_ab126cb115bd250e03117358ee7d9ce58}{$<$\-Artifacts\-Delegate$>$}.
+
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_environment_a59a7f74390b883720a224468155bf5f8}{
+\index{\-Environment@{\-Environment}!airplanes@{airplanes}}
+\index{airplanes@{airplanes}!Environment@{\-Environment}}
+\subsubsection[{airplanes}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Array$\ast$) airplanes\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_environment_a59a7f74390b883720a224468155bf5f8}
+\-Gets the airplanes running in the simulation. \hypertarget{interface_environment_a82e2d51cea5f8cbbbcfc968348d1b9be}{
+\index{\-Environment@{\-Environment}!airport\-Controllers@{airport\-Controllers}}
+\index{airport\-Controllers@{airport\-Controllers}!Environment@{\-Environment}}
+\subsubsection[{airport\-Controllers}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Array$\ast$) airport\-Controllers\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_environment_a82e2d51cea5f8cbbbcfc968348d1b9be}
+\-Gets the airport controllers running in the simulation. \hypertarget{interface_environment_a424601815b84dea769a7ffbaab1289bf}{
+\index{\-Environment@{\-Environment}!display\-Delegate@{display\-Delegate}}
+\index{display\-Delegate@{display\-Delegate}!Environment@{\-Environment}}
+\subsubsection[{display\-Delegate}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id$<${\bf \-Environment\-Display\-Delegate}$>$) display\-Delegate\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_environment_a424601815b84dea769a7ffbaab1289bf}
+\-Property permitting an access to the interface delegate. \hypertarget{interface_environment_a3d62231f10bae1d800466e43bfcc2da7}{
+\index{\-Environment@{\-Environment}!zone\-Controllers@{zone\-Controllers}}
+\index{zone\-Controllers@{zone\-Controllers}!Environment@{\-Environment}}
+\subsubsection[{zone\-Controllers}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Array$\ast$) zone\-Controllers\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_environment_a3d62231f10bae1d800466e43bfcc2da7}
+\-Gets the zone controllers running in the simulation. \hypertarget{interface_environment_a781ba0e2e19e6cca48eb70e0efac06eb}{
+\index{\-Environment@{\-Environment}!zones@{zones}}
+\index{zones@{zones}!Environment@{\-Environment}}
+\subsubsection[{zones}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Mutable\-Array$\ast$) zones\hspace{0.3cm}{\ttfamily  \mbox{[}read, retain\mbox{]}}}}
+\label{interface_environment_a781ba0e2e19e6cca48eb70e0efac06eb}
+\-Gets the zones that cluster the map. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Environment.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Environment.\-m\end{DoxyCompactItemize}

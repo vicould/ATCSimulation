@@ -1,0 +1,100 @@
+\hypertarget{interface_a_t_c_airplane_information}{
+\section{\-A\-T\-C\-Airplane\-Information \-Class \-Reference}
+\label{interface_a_t_c_airplane_information}\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}}
+}
+
+
+{\ttfamily \#import $<$\-A\-T\-C\-Airplane\-Information.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_a_t_c_airplane_information_ab14e098122c2950093db2f6a617ca496}{
+(id) -\/ {\bfseries init\-With\-Zone\-:and\-Point\-:}}
+\label{interface_a_t_c_airplane_information_ab14e098122c2950093db2f6a617ca496}
+
+\item 
+\hypertarget{interface_a_t_c_airplane_information_a7fbd6eb3b64741cc4d1184c3292cd5b4}{
+(void) -\/ {\bfseries dealloc}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_a_t_c_airplane_information_a7fbd6eb3b64741cc4d1184c3292cd5b4}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(\hyperlink{interface_a_t_c_airplane_information}{\-A\-T\-C\-Airplane\-Information} $\ast$) + \hyperlink{interface_a_t_c_airplane_information_a71be041249e50f0a6b3b9c6c7fd96723}{plane\-Information\-From\-Existing\-:}
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Integer \hyperlink{interface_a_t_c_airplane_information_af795c45df27d97b4194ea6c1f640cf9f}{current\-Zone\-I\-D}
+\item 
+\hyperlink{interface_a_t_c_point}{\-A\-T\-C\-Point} $\ast$ \hyperlink{interface_a_t_c_airplane_information_a1feb624e5acd0a158e94f089f977c38c}{coordinates}
+\item 
+\-N\-S\-Integer \hyperlink{interface_a_t_c_airplane_information_a3c51274a6f30a1f0658c6eb2d6f343d6}{speed}
+\item 
+\-N\-S\-Integer \hyperlink{interface_a_t_c_airplane_information_a3184f5c6d3a5a6faac3c0809163f471d}{course}
+\item 
+\-N\-S\-String $\ast$ \hyperlink{interface_a_t_c_airplane_information_a436971fb85545905060e5a6d46cd4c28}{destination}
+\item 
+\-N\-S\-String $\ast$ \hyperlink{interface_a_t_c_airplane_information_a1d08b25f87906549c53e16c9ec1e42fc}{airplane\-Name}
+\item 
+\hypertarget{interface_a_t_c_airplane_information_a9fcdcc36700159b4437a8b5bfb08f40b}{
+\-N\-S\-Date $\ast$ {\bfseries information\-Validity}}
+\label{interface_a_t_c_airplane_information_a9fcdcc36700159b4437a8b5bfb08f40b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A class containing all the information needed to completely characterize an airplane. \-It is used both by the airplane and the controllers to hold the information about the airplane, and to be able to represent it correctly then. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_a_t_c_airplane_information_a71be041249e50f0a6b3b9c6c7fd96723}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!plane\-Information\-From\-Existing\-:@{plane\-Information\-From\-Existing\-:}}
+\index{plane\-Information\-From\-Existing\-:@{plane\-Information\-From\-Existing\-:}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{plane\-Information\-From\-Existing\-:}]{\setlength{\rightskip}{0pt plus 5cm}+ ({\bf \-A\-T\-C\-Airplane\-Information} $\ast$) plane\-Information\-From\-Existing\-: 
+\begin{DoxyParamCaption}
+\item[{dummy({\bf \-A\-T\-C\-Airplane\-Information} $\ast$)}]{info}
+\end{DoxyParamCaption}
+}}
+\label{interface_a_t_c_airplane_information_a71be041249e50f0a6b3b9c6c7fd96723}
+\-Duplicates one object. 
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_a_t_c_airplane_information_a1d08b25f87906549c53e16c9ec1e42fc}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!airplane\-Name@{airplane\-Name}}
+\index{airplane\-Name@{airplane\-Name}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{airplane\-Name}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String$\ast$) airplane\-Name\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_a_t_c_airplane_information_a1d08b25f87906549c53e16c9ec1e42fc}
+\-The name of the airplane, which is unique. \hypertarget{interface_a_t_c_airplane_information_a1feb624e5acd0a158e94f089f977c38c}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!coordinates@{coordinates}}
+\index{coordinates@{coordinates}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{coordinates}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf \-A\-T\-C\-Point}$\ast$) coordinates\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_a_t_c_airplane_information_a1feb624e5acd0a158e94f089f977c38c}
+\-Property describing the location of the airplane. \hypertarget{interface_a_t_c_airplane_information_a3184f5c6d3a5a6faac3c0809163f471d}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!course@{course}}
+\index{course@{course}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{course}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Integer) course\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_a_t_c_airplane_information_a3184f5c6d3a5a6faac3c0809163f471d}
+\-Its route. \hypertarget{interface_a_t_c_airplane_information_af795c45df27d97b4194ea6c1f640cf9f}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!current\-Zone\-I\-D@{current\-Zone\-I\-D}}
+\index{current\-Zone\-I\-D@{current\-Zone\-I\-D}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{current\-Zone\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Integer) current\-Zone\-I\-D\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_a_t_c_airplane_information_af795c45df27d97b4194ea6c1f640cf9f}
+\-Property containing the zone the airplane is in. \hypertarget{interface_a_t_c_airplane_information_a436971fb85545905060e5a6d46cd4c28}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!destination@{destination}}
+\index{destination@{destination}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{destination}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-String$\ast$) destination\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_a_t_c_airplane_information_a436971fb85545905060e5a6d46cd4c28}
+\-Its destination. \hypertarget{interface_a_t_c_airplane_information_a3c51274a6f30a1f0658c6eb2d6f343d6}{
+\index{\-A\-T\-C\-Airplane\-Information@{\-A\-T\-C\-Airplane\-Information}!speed@{speed}}
+\index{speed@{speed}!ATCAirplaneInformation@{\-A\-T\-C\-Airplane\-Information}}
+\subsubsection[{speed}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (\-N\-S\-Integer) speed\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_a_t_c_airplane_information_a3c51274a6f30a1f0658c6eb2d6f343d6}
+\-The speed of the airplane. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Utils/\-A\-T\-C\-Airplane\-Information.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Utils/\-A\-T\-C\-Airplane\-Information.\-m\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\hypertarget{interface_zone_controller}{
+\section{\-Zone\-Controller \-Class \-Reference}
+\label{interface_zone_controller}\index{\-Zone\-Controller@{\-Zone\-Controller}}
+}
+
+
+{\ttfamily \#import $<$\-Zone\-Controller.\-h$>$}
+
+\-Inheritance diagram for \-Zone\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.931937cm]{interface_zone_controller}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_zone_controller_a7f77c80ebe53f4dcde9dfbdc703a2d38}{
+(id) -\/ {\bfseries init}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_zone_controller_a7f77c80ebe53f4dcde9dfbdc703a2d38}
+
+\item 
+(void) -\/ \hyperlink{interface_zone_controller_aaee71e51737c671990bd2c5594344fba}{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_zone_controller_a92ba61e4c98a97aa3d2d7f9114a269f1}{
+(void) -\/ {\bfseries analyze\-Position\-:from\-Airplane\-Name\-:}{\ttfamily  \mbox{[}implementation\mbox{]}}}
+\label{interface_zone_controller_a92ba61e4c98a97aa3d2d7f9114a269f1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-One of the two specialized agent playing the role of a controller. \-It can track the airplanes, and communicate with them. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_zone_controller_aaee71e51737c671990bd2c5594344fba}{
+\index{\-Zone\-Controller@{\-Zone\-Controller}!finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}}
+\index{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}!ZoneController@{\-Zone\-Controller}}
+\subsubsection[{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) finish\-Message\-Analysis\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{message\-Content}
+\item[{withMessageCode:(\-N\-V\-Message\-Code)}]{code}
+\item[{from:(\-N\-S\-String $\ast$)}]{sender}
+\item[{originallyTo:(\-N\-S\-String $\ast$)}]{original\-Receiver}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily  \mbox{[}implementation\mbox{]}}}}
+\label{interface_zone_controller_aaee71e51737c671990bd2c5594344fba}
+\-This method is usually called if the \hyperlink{interface_basic_controller}{\-Basic\-Controller} was not able to use the message received. \-It transmits the message calling maybe more specific methods of the controller, with the content of the initial message. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-The content of the message, containing formatted information. \\
+\hline
+{\em code} & \-The code of the message. \\
+\hline
+{\em sender} & \-The initial sender of the message. \\
+\hline
+{\em original\-Receiver} & \-The destination of the message, which can this agent, or all the agents etc. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented from \hyperlink{protocol_controller_behavior_delegate-p_a472f0aba04d2caffc0035e0356b2f85c}{$<$\-Controller\-Behavior\-Delegate$>$}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Zone\-Controller.\-h\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Zone\-Controller.\-m\end{DoxyCompactItemize}

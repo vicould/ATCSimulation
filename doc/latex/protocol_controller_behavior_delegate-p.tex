@@ -1,0 +1,57 @@
+\hypertarget{protocol_controller_behavior_delegate-p}{
+\section{$<$\-Controller\-Behavior\-Delegate$>$ \-Protocol \-Reference}
+\label{protocol_controller_behavior_delegate-p}\index{$<$\-Controller\-Behavior\-Delegate$>$@{$<$\-Controller\-Behavior\-Delegate$>$}}
+}
+
+
+{\ttfamily \#import $<$\-Controller\-Behavior\-Delegate.\-h$>$}
+
+\-Inheritance diagram for $<$\-Controller\-Behavior\-Delegate$>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{protocol_controller_behavior_delegate-p}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{protocol_controller_behavior_delegate-p_a472f0aba04d2caffc0035e0356b2f85c}{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This protocol defines the various methods a controller needs to implement, to provide an extended support for other capabilities reached through the messaging features. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{protocol_controller_behavior_delegate-p_a472f0aba04d2caffc0035e0356b2f85c}{
+\index{\-Controller\-Behavior\-Delegate-\/p@{\-Controller\-Behavior\-Delegate-\/p}!finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}}
+\index{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:@{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}!ControllerBehaviorDelegate-p@{\-Controller\-Behavior\-Delegate-\/p}}
+\subsubsection[{finish\-Message\-Analysis\-:with\-Message\-Code\-:from\-:originally\-To\-:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) finish\-Message\-Analysis\-: 
+\begin{DoxyParamCaption}
+\item[{dummy(\-N\-S\-String $\ast$)}]{message\-Content}
+\item[{withMessageCode:(\-N\-V\-Message\-Code)}]{code}
+\item[{from:(\-N\-S\-String $\ast$)}]{sender}
+\item[{originallyTo:(\-N\-S\-String $\ast$)}]{original\-Receiver}
+\end{DoxyParamCaption}
+}}
+\label{protocol_controller_behavior_delegate-p_a472f0aba04d2caffc0035e0356b2f85c}
+\-This method is usually called if the \hyperlink{interface_basic_controller}{\-Basic\-Controller} was not able to use the message received. \-It transmits the message calling maybe more specific methods of the controller, with the content of the initial message. 
+\begin{DoxyParams}{\-Parameters}
+{\em message\-Content} & \-The content of the message, containing formatted information. \\
+\hline
+{\em code} & \-The code of the message. \\
+\hline
+{\em sender} & \-The initial sender of the message. \\
+\hline
+{\em original\-Receiver} & \-The destination of the message, which can this agent, or all the agents etc. \\
+\hline
+\end{DoxyParams}
+
+
+\-Reimplemented in \hyperlink{class_zone_controller_aaee71e51737c671990bd2c5594344fba}{\-Zone\-Controller}, and \hyperlink{interface_airport_controller_a2ad69d5a18599af2989c8503daa402c7}{\-Airport\-Controller}.
+
+
+
+\-The documentation for this protocol was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-T\-C\-Simulation/\-Agents/\-Controller\-Behavior\-Delegate.\-h\end{DoxyCompactItemize}
